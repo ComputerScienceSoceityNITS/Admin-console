@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text:wght@500&family=Festive&family=Inter&family=Lobster+Two:wght@400;700&family=Montserrat&family=Roboto+Mono&family=Sirin+Stencil&family=Splash&family=Stylish&family=Supermercado+One&family=Titillium+Web&family=Ubuntu:wght@300;500;700&display=swap');
+@import url('https://cdn.syncfusion.com/ej2/material.css');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat',sans-serif;
+}
+.App{
+    width: 100vw;
+    height: 100vh;
+    background: rgb(221, 221, 221);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.App>.controlBoard{
+    width: 15rem;
+    background: orange;
+    height: 80%;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.App>.controlBoard>p{
+    width: 15rem;
+    padding: 1rem;
+    border-radius: 0.3rem;
+    font-size:1.5rem;
+    color: white;
+    background: orange;
+    width: 80%;
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+}
+.App>.controlBoard>p:hover{
+    width: 15rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-size:1.5rem;
+    color: orange;
+    background: rgb(221, 221, 221);
+    width: 80%;
+}
+.activeLink{
+    color: rgb(151, 98, 0) !important;
+    background: white !important;
+}
+.App>.pages{
+    margin-top: 1rem;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    margin-left: 1rem;
+}
+.e-input-group:not(.e-float-icon-left), .e-input-group.e-success:not(.e-float-icon-left), .e-input-group.e-warning:not(.e-float-icon-left), .e-input-group.e-error:not(.e-float-icon-left), .e-input-group.e-control-wrapper:not(.e-float-icon-left), .e-input-group.e-control-wrapper.e-success:not(.e-float-icon-left), .e-input-group.e-control-wrapper.e-warning:not(.e-float-icon-left), .e-input-group.e-control-wrapper.e-error:not(.e-float-icon-left){
+    border: none;
+  }
+
+  @media screen and (max-width: 767px) {
+    .App>.controlBoard{
+        width: 3rem;
+    }
+  }

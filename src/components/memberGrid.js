@@ -10,7 +10,7 @@ const MemberGrid = ({ data }) => {
 
 const RowElement = ({ data }) => {
   return <div className="row">
-    <img src={data.} alt="img" />
+    <img src={data.avatar.url} alt="img" />
   </div>;
 };
 

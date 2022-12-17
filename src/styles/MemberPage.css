@@ -1,0 +1,31 @@
+.MemberPage{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+img{
+    height: 5rem;
+    width: 5rem;
+}
+/* table{
+    overflow: auto;
+    background: whitesmoke;
+}
+.e-row{
+    margin-top:0.5rem;
+    background: white;
+    border-top: 1px solid red !important;
+}
+.e-columnheader{
+    padding: 0.5rem;
+    font: size 1.5em;
+    margin: 1rem 0;
+}
+.e-hide{
+    display: none;
+}
+.e-row{
+    margin: 1rem 0;
+    padding: 0.5rem;
+    transform: translateX("120px");
+} */

@@ -7,10 +7,18 @@ function App() {
   return (
     <div className="App">
       <div className="controlBoard">
-        <p id="eve" onClick={() => setPageRoute(!pageRoute)} className={pageRoute ? "activeLink" : null}>
+        <p
+          id="eve"
+          onClick={() => setPageRoute(!pageRoute)}
+          className={pageRoute ? null : "activeLink"}
+        >
           Events
         </p>
-        <p id="mem" onClick={() => setPageRoute(!pageRoute)} className={pageRoute ? null : "activeLink"}>
+        <p
+          id="mem"
+          onClick={() => setPageRoute(!pageRoute)}
+          className={pageRoute ? "activeLink" : null}
+        >
           Members
         </p>
       </div>

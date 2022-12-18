@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text:wght@500&family=Festive&family=Inter&family=Lobster+Two:wght@400;700&family=Montserrat&family=Roboto+Mono&family=Sirin+Stencil&family=Splash&family=Stylish&family=Supermercado+One&family=Titillium+Web&family=Ubuntu:wght@300;500;700&display=swap');
-@import url('https://cdn.syncfusion.com/ej2/material.css');
 
 *{
     margin: 0;
@@ -59,12 +58,45 @@
     overflow: auto;
     margin-left: 1rem;
 }
-.e-input-group:not(.e-float-icon-left), .e-input-group.e-success:not(.e-float-icon-left), .e-input-group.e-warning:not(.e-float-icon-left), .e-input-group.e-error:not(.e-float-icon-left), .e-input-group.e-control-wrapper:not(.e-float-icon-left), .e-input-group.e-control-wrapper.e-success:not(.e-float-icon-left), .e-input-group.e-control-wrapper.e-warning:not(.e-float-icon-left), .e-input-group.e-control-wrapper.e-error:not(.e-float-icon-left){
-    border: none;
-  }
 
   @media screen and (max-width: 767px) {
     .App>.controlBoard{
         width: 3rem;
     }
   }
+
+.btn{
+    border: none;
+    padding: 0.5rem;
+    border-radius: .2rem;
+    background: orange;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+.btn:hover{
+    border: none;
+    background: white;
+    color: orange;
+}
+.headBar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem;
+    gap: 1rem;
+}
+.headBar input{
+    border: none;
+    outline: none;
+    margin: 0 0.5rem;
+    /* border-bottom: 5px solid black; */
+    background: white;
+    padding: .5rem;
+    border-radius: .2rem;
+    transition: all 0.3s ease-in-out;
+}
+.headBar input:focus{
+    border-bottom: 2px solid red;
+    background: whitesmoke;
+}

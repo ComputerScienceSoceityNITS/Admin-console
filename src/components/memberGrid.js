@@ -58,9 +58,8 @@ const RowElement = ({ data }) => {
           <AiFillFacebook />
         </a>
       </div>
-      <button className="btn" onClick={() =>(
-        <MemberUpdate updateMember={updateMember} setupdateMember={setupdateMember} id={data._id}/>
-      ) }>Edit</button>
+      <button className="btn" onClick={() => setupdateMember(!updateMember)
+       }>Edit</button>
       <button className="btn" onClick={() => handleDelete(data._id)}>
         Delete
       </button>

@@ -3,26 +3,28 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const MemberUpdate = ({ id,updateMember, setupdateMember }) => {
+  console.log(`${id}`);
     let BASE_URL = `http://localhost:5000/api/admin/member/${id}`;
     let response;
     let data;
     const accessMember = async() => {
          response = await fetch(BASE_URL,{method:"GET"});
          data = await response.json()
+         console.log(data)
     }
 
 
     accessMember();
 
 
-  const [name, setName] = useState(`${data.name}`);
-  const [image, setImage] = useState(`${data.avatar.url}`);
-  const [role, setRole] = useState(`${data.role}`);
-  const [session, setSession] = useState(`${data.session}`);
-  const [year, setYear] = useState(`${data.year}`);
-  const [social, setSocial] = useState({"instagram":`${data.socialMedia.instagram}`,"linkedin":`${data.socialMedia.linkedin}`,"github":`${data.socialMedia.github}`,
+   let [name, setName] = useState(`${data.name}`);
+  let [image, setImage] = useState();
+  let [role, setRole] = useState(`${data.role}`);
+  let [session, setSession] = useState(`${data.session}`);
+  let [year, setYear] = useState(`${data.year}`);
+  let [social, setSocial] = useState({"instagram":`${data.socialMedia.instagram}`,"linkedin":`${data.socialMedia.linkedin}`,"github":`${data.socialMedia.github}`,
   "facebook":`${data.socialMedia.facebook}`});
-  
+
   function handleSubmit(e) {
     e.preventDefault();
     const sendData = JSON.stringify({
@@ -50,7 +52,7 @@ const MemberUpdate = ({ id,updateMember, setupdateMember }) => {
   return (
     <div className="createPage">
       <p className="btn close" onClick={() => setupdateMember(!updateMember)}>
-        X
+        Cancel
       </p>
       <label htmlFor="name">Name</label>
       <input

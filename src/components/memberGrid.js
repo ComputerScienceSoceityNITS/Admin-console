@@ -65,7 +65,7 @@ const RowElement = ({ data }) => {
       </button>
       </div>
       {updateMember && (
-        <MemberUpdate id={data._id} updateMember={updateMember} setupdateMember={setupdateMember} />
+        <MemberUpdate id={data._id} updateMember={updateMember} setupdateMember={setupdateMember} datasent={data}/>
       )}
       </div>
   );

@@ -2,28 +2,15 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const MemberUpdate = ({ id,updateMember, setupdateMember }) => {
-  console.log(`${id}`);
-    let BASE_URL = `http://localhost:5000/api/admin/member/${id}`;
-    let response;
-    let data;
-    const accessMember = async() => {
-         response = await fetch(BASE_URL,{method:"GET"});
-         data = await response.json()
-         console.log(data)
-    }
-
-
-    accessMember();
-
-
-   let [name, setName] = useState(`${data.name}`);
+const MemberUpdate = ({ id,updateMember, setupdateMember,datasent }) => {
+  console.log(`${id}`);    
+  let [name, setName] = useState(`${datasent.name}`);
   let [image, setImage] = useState();
-  let [role, setRole] = useState(`${data.role}`);
-  let [session, setSession] = useState(`${data.session}`);
-  let [year, setYear] = useState(`${data.year}`);
-  let [social, setSocial] = useState({"instagram":`${data.socialMedia.instagram}`,"linkedin":`${data.socialMedia.linkedin}`,"github":`${data.socialMedia.github}`,
-  "facebook":`${data.socialMedia.facebook}`});
+  let [role, setRole] = useState(`${datasent.role}`);
+  let [session, setSession] = useState(`${datasent.session}`);
+  let [year, setYear] = useState(`${datasent.year}`);
+  let [social, setSocial] = useState({"instagram":`${datasent.socialMedia.instagram}`,"linkedin":`${datasent.socialMedia.linkedin}`,"github":`${datasent.socialMedia.github}`,
+  "facebook":`${datasent.socialMedia.facebook}`});
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -38,7 +25,7 @@ const MemberUpdate = ({ id,updateMember, setupdateMember }) => {
     console.log(sendData);
     async function addNew() {
       try {
-        const res = await axios.post(
+        const res = await axios.put(
           `http://localhost:5000/api/admin/member/${id}`,
           sendData
         );

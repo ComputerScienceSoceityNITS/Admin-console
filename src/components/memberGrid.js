@@ -1,4 +1,7 @@
-import React from "react";
+
+import MemberUpdate from "./MemberUpdate";
+
+import React, { useState } from "react";
 import axios from "axios";
 import {
   AiFillLinkedin,
@@ -7,15 +10,18 @@ import {
   AiFillGithub,
 } from "react-icons/ai";
 
+
+
 const MemberGrid = ({ data }) => {
   return (
     <div className="table">
       {data.length > 0 && data.map((member) => <RowElement data={member} />)}
-    </div>
+  </div>
   );
 };
 
 const RowElement = ({ data }) => {
+  const [updateMember, setupdateMember] = useState(false);
   const handleDelete = (id) => {
     console.log(id);
     async function del() {
@@ -31,6 +37,7 @@ const RowElement = ({ data }) => {
     del();
   };
   return (
+    <div>
     <div className="row" key={data._id}>
       <img src={data.avatar.url} alt="img" />
       <h3>{data.name}</h3>
@@ -51,11 +58,16 @@ const RowElement = ({ data }) => {
           <AiFillFacebook />
         </a>
       </div>
-      <button className="btn">Edit</button>
+      <button className="btn" onClick={() => setupdateMember(!updateMember)
+       }>Edit</button>
       <button className="btn" onClick={() => handleDelete(data._id)}>
         Delete
       </button>
-    </div>
+      </div>
+      {updateMember && (
+        <MemberUpdate id={data._id} updateMember={updateMember} setupdateMember={setupdateMember} datasent={data}/>
+      )}
+      </div>
   );
 };
 

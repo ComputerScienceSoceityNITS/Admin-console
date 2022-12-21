@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../styles/MemberPage.css";
-import MemberGrid from "../components/MemberGrid";
+import MemberGrid from "../components/memberGrid";
 import MemberCreate from "../components/MemberCreate";
-
 const MemberPage = () => {
   const [data, setData] = useState([]);
   const [addMember, setAddMember] = useState(false);
@@ -53,7 +52,7 @@ const MemberPage = () => {
       </div>
       <MemberGrid data={data} />
       {addMember && (
-        <MemberCreate addMember={addMember} setAddMember={setAddMember} />
+        <MemberCreate  addMember={addMember} setAddMember={setAddMember} />
       )}
     </div>
   );

@@ -3,26 +3,27 @@ import axios from "axios";
 import "../styles/MemberPage.css";
 import MemberGrid from "../components/memberGrid";
 import MemberCreate from "../components/MemberCreate";
+import GetMembers from "../services/GetMembers";
+import "toastify-js/src/toastify.css"
+
 const MemberPage = () => {
   const [data, setData] = useState([]);
   const [addMember, setAddMember] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [dataReserved, setDataReserved] = useState([]);
+
+  const fetch = async ()=>{
+    const members = await GetMembers()
+    setData(members)
+  }
+
   useEffect(() => {
     // fetch("https://tasty-crab-hosiery.cyclic.app/api/admin/members/21-22")
-    async function fetchAllEvents() {
-      try {
-        const res = await axios.get(
-          "https://tasty-crab-hosiery.cyclic.app/api/admin/members/21-22"
-        );
-        console.log(res);
-        setData(res.data.members);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    fetchAllEvents();
+    fetch()
+    console.log(data);
   }, []);
+
+
   const handleSearch = () => {
     setDataReserved(data);
     const list1 = data.filter((element) => element.name.includes(searchText));
@@ -50,7 +51,10 @@ const MemberPage = () => {
           </button>
         </div>
       </div>
-      <MemberGrid data={data} />
+      {data?
+        <MemberGrid data={data} />
+        :''
+      }
       {addMember && (
         <MemberCreate  addMember={addMember} setAddMember={setAddMember} />
       )}

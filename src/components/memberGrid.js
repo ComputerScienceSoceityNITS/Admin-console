@@ -22,6 +22,7 @@ const MemberGrid = ({ data }) => {
 
 const RowElement = ({ data }) => {
   const [updateMember, setupdateMember] = useState(false);
+  
   const handleDelete = (id) => {
     console.log(id);
     async function del() {
@@ -36,6 +37,8 @@ const RowElement = ({ data }) => {
     }
     del();
   };
+
+  
   return (
     <div>
     <div className="row" key={data._id}>
@@ -44,7 +47,7 @@ const RowElement = ({ data }) => {
       <p>{data.role}</p>
       <p>{data.session}</p>
       <p>{data.year}</p>
-      <div className="socials">
+      {data.socialMedia?<div className="socials">
         <a href={data.socialMedia.instagram}>
           <AiFillInstagram />
         </a>
@@ -57,7 +60,7 @@ const RowElement = ({ data }) => {
         <a href={data.socialMedia.facebook}>
           <AiFillFacebook />
         </a>
-      </div>
+      </div>:''}
       <button className="btn" onClick={() => setupdateMember(!updateMember)
        }>Edit</button>
       <button className="btn" onClick={() => handleDelete(data._id)}>

@@ -3,6 +3,9 @@ import MemberPage from "./pages/memberPage";
 import EventPage from "./pages/eventPage";
 import "./styles/App.css";
 import { ToastContainer, toast } from "react-toastify";
+
+import AuthPage from "./pages/AuthPage";
+
 import "react-toastify/dist/ReactToastify.css";
 function App() {
   const [pageRoute, setPageRoute] = useState(true);
@@ -25,7 +28,7 @@ function App() {
           Members
         </p>
       </div>
-      <div className="pages">{pageRoute ? <MemberPage /> : <EventPage />}</div>
+  <div className="pages">{pageRoute ? <MemberPage /> : <EventPage />}</div>
     </div>
   );
 }

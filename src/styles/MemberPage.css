@@ -13,7 +13,7 @@ img{
     left: 50%;
     transform: translate(-50%,-50%);
     padding: 1rem;
-    background: radial-gradient(circle at top,rgba(255, 203, 203, 0.9),rgba(245, 245, 245, 0.9));
+    background: radial-gradient(circle at top,rgba(255, 203, 203, 0.95),rgba(245, 245, 245, 0.95));
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -24,6 +24,7 @@ img{
     border: 2px solid white;
     border-radius: 0.5rem;
     width: 1000px;
+    box-shadow: 0px 0px 7px 2px rgba(0,0,0,0.2);
 }
 .createPage>input,.createPage>fieldset>div>input{
     border: none;
@@ -56,4 +57,53 @@ img{
     position: absolute;
     top: 5%;
     right: 5%;
+}
+
+.table{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    /* margin-top: 1rem; */
+    /* background: whitesmoke; */
+    padding: .5rem .5rem;
+}
+
+.row{
+    width: 25rem;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    background: white;
+    gap: 1rem;
+    overflow-y: hidden;
+    height: 7rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+.row h3{
+    min-width: 15rem;
+    text-align: right;
+}
+.expand{
+    height: 15rem;
+}
+a:hover{
+    color: orange;
+}
+.row>p,.row>div{
+    padding: 0.5rem;
+    background: white;
+    border-radius: .2rem;
+}
+.row>p:hover,.row>div:hover{
+    padding: 0.5rem;
+    background: whitesmoke;
+    border-radius: .2rem;
 }

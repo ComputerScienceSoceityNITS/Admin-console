@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const Login = ({setLogin,login}) => {
+const Login = ({setIn,In}) => {
   
   return (
     <div className="Form">

@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text:wght@500&family=Festive&family=Inter&family=Lobster+Two:wght@400;700&family=Montserrat&family=Roboto+Mono&family=Sirin+Stencil&family=Splash&family=Stylish&family=Supermercado+One&family=Titillium+Web&family=Ubuntu:wght@300;500;700&display=swap');
-
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat',sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
-.App{
+
+.App {
     width: 100vw;
     height: 100vh;
     background: rgb(221, 221, 221);
@@ -15,23 +15,24 @@
     align-items: center;
     overflow: hidden;
 }
-.App>.controlBoard{
+
+.App>.controlBoard {
     width: 15rem;
     background: orange;
     height: 80%;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
-
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-.App>.controlBoard>p{
+
+.App>.controlBoard>p {
     width: 15rem;
     padding: 1rem;
     border-radius: 0.3rem;
-    font-size:1.5rem;
+    font-size: 1.5rem;
     color: white;
     background: orange;
     width: 80%;
@@ -39,20 +40,23 @@
     cursor: pointer;
     font-weight: bold;
 }
-.App>.controlBoard>p:hover{
+
+.App>.controlBoard>p:hover {
     width: 15rem;
     padding: 1rem;
     border-radius: 0.5rem;
-    font-size:1.5rem;
+    font-size: 1.5rem;
     color: orange;
     background: rgb(221, 221, 221);
     width: 80%;
 }
-.activeLink{
+
+.activeLink {
     color: rgb(151, 98, 0) !important;
     background: white !important;
 }
-.App>.pages{
+
+.App>.pages {
     /* margin-top: 1rem; */
     width: 100vw;
     height: 100vh;
@@ -60,13 +64,13 @@
     margin-left: 1rem;
 }
 
-  @media screen and (max-width: 767px) {
-    .App>.controlBoard{
+@media screen and (max-width: 767px) {
+    .App>.controlBoard {
         width: 3rem;
     }
-  }
+}
 
-.btn{
+.btn {
     border: none;
     padding: 0.5rem;
     border-radius: .2rem;
@@ -77,12 +81,14 @@
     margin: 0 0.5rem;
     font-weight: bold;
 }
-.btn:hover{
+
+.btn:hover {
     border: none;
     background: white;
     color: orange;
 }
-.headBar{
+
+.headBar {
     position: sticky;
     top: 0;
     left: 0;
@@ -94,7 +100,8 @@
     background: rgba(221, 221, 221, 0.9);
     backdrop-filter: blur(5px);
 }
-.headBar input{
+
+.headBar input {
     border: none;
     outline: none;
     margin: 0 0.5rem;
@@ -105,7 +112,8 @@
     transition: all 0.3s ease-in-out;
     border-bottom: 2px solid transparent;
 }
-.headBar input:focus{
+
+.headBar input:focus {
     border-bottom: 2px solid orange;
     background: whitesmoke;
 }

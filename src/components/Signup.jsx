@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const Signup = ({setLogin,login}) => {
+const Signup = ({setIn,In}) => {
   
   return (
     <div className="Form">

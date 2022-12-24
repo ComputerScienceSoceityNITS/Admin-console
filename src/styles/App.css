@@ -37,6 +37,7 @@
     width: 80%;
     transition: all 0.2s ease-in;
     cursor: pointer;
+    font-weight: bold;
 }
 .App>.controlBoard>p:hover{
     width: 15rem;
@@ -52,7 +53,7 @@
     background: white !important;
 }
 .App>.pages{
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     width: 100vw;
     height: 100vh;
     overflow: auto;
@@ -70,9 +71,11 @@
     padding: 0.5rem;
     border-radius: .2rem;
     background: orange;
-    color: #fff;
+    color: #ffffff;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
+    margin: 0 0.5rem;
+    font-weight: bold;
 }
 .btn:hover{
     border: none;
@@ -80,11 +83,16 @@
     color: orange;
 }
 .headBar{
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: .5rem;
-    gap: 1rem;
+    padding: 1rem;
+    background: rgba(221, 221, 221, 0.9);
+    backdrop-filter: blur(5px);
 }
 .headBar input{
     border: none;
@@ -95,8 +103,9 @@
     padding: .5rem;
     border-radius: .2rem;
     transition: all 0.3s ease-in-out;
+    border-bottom: 2px solid transparent;
 }
 .headBar input:focus{
-    border-bottom: 2px solid red;
+    border-bottom: 2px solid orange;
     background: whitesmoke;
 }

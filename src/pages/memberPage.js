@@ -13,8 +13,9 @@ const MemberPage = () => {
   const [searchText, setSearchText] = useState("");
   const [dataReserved, setDataReserved] = useState([]);
 
-  const fetch = async () => {
-    const members = await GetMembers();
+  const fetch = async (session) => {
+    setLoading(true);
+    const members = await GetMembers(session);
     setData(members);
     setLoading(false);
     console.log(members);
@@ -22,7 +23,7 @@ const MemberPage = () => {
 
   useEffect(() => {
     // fetch("https://tasty-crab-hosiery.cyclic.app/api/admin/members/21-22")
-    fetch();
+    fetch("21-22"); // for local testing, use the default session
     console.log(data);
   }, []);
 
@@ -46,6 +47,11 @@ const MemberPage = () => {
       setData(dataReserved);
     }
   };
+
+  const handleSelect = (e) => {
+    const session = e.target.value;
+    fetch(session);
+  };
   return (
     <div>
       <div className="headBar">
@@ -63,6 +69,21 @@ const MemberPage = () => {
             />
           </form>
         </div>
+        <select
+          name="sessionSelect"
+          id="sessionSelect"
+          className="btn"
+          onChange={handleSelect}
+          title="select session"
+        >
+          <option value="22-23">22-23</option>
+          <option value="21-22" selected>
+            21-22
+          </option>
+          <option value="20-21">20-21</option>
+          <option value="19-20">19-20</option>
+          <option value="18-19">18-19</option>
+        </select>
       </div>
       {loading ? <Loader /> : <MemberGrid data={data} />}
       {addMember && (

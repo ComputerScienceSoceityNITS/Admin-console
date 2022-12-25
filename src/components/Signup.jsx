@@ -1,33 +1,33 @@
 import React from "react";
 
 
-const Signup = ({setIn,In}) => {
-  
+const Signup = ({ setIn, In }) => {
+
   return (
     <div className="Form">
-    <h1>Sign Up</h1>
-  <form>
-  <input
-        type="mail"
-        placeholder="Email"
-       
-      />
-  <input
-    type="text"
-    placeholder="Password"
-   
-  />
-  <input
-        type="text"
-        placeholder="Confirm Password"
-       
-      />
-  
-  <button  >
-  Signup
-  </button>
-  </form>
-</div>
+      <h1>Sign Up</h1>
+      <form>
+        <input
+          type="email"
+          placeholder="Email"
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          required
+        />
+        <input
+          type="password"
+          placeholder="Confirm Password"
+          required
+        />
+
+        <button  >
+          Signup
+        </button>
+      </form>
+    </div>
   );
 };
 

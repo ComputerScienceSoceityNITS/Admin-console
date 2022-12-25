@@ -5,17 +5,20 @@ import MemberGrid from "../components/memberGrid";
 import MemberCreate from "../components/MemberCreate";
 import GetMembers from "../services/GetMembers";
 import "toastify-js/src/toastify.css"
+import DeleteMembers from "../services/DeleteMembers";
 
 const MemberPage = () => {
   const [data, setData] = useState([]);
   const [addMember, setAddMember] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [dataReserved, setDataReserved] = useState([]);
-
+  const [members, setMembers] = useState([]);
+  
   const fetch = async ()=>{
     const members = await GetMembers()
     setData(members)
   }
+ 
 
   useEffect(() => {
     // fetch("https://tasty-crab-hosiery.cyclic.app/api/admin/members/21-22")
@@ -34,6 +37,8 @@ const MemberPage = () => {
     }
   };
   return (
+  
+    
     <div>
       <div className="headBar">
         <button className="btn" onClick={() => setAddMember(!addMember)}>
@@ -59,7 +64,14 @@ const MemberPage = () => {
         <MemberCreate  addMember={addMember} setAddMember={setAddMember} />
       )}
     </div>
-  );
+    
+  
+    
+    
+  )
+  
+
+    
 };
 
 export default MemberPage;

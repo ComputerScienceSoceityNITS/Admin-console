@@ -19,6 +19,7 @@ const MemberGrid = ({ data }) => {
 
 const RowElement = ({ data }) => {
   const [updateMember, setupdateMember] = useState(false);
+  
   const [clickedRow, setClickedRow] = useState(false);
   const handleDelete = (id) => {
     console.log(id);

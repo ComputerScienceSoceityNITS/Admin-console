@@ -4,6 +4,7 @@ import axios from "axios";
 const MemberUpdate = ({ id,updateMember, setupdateMember,datasent }) => {
   console.log(`${id}`);    
   let [name, setName] = useState(`${datasent.name}`);
+  // let [image, setImage] = useState(datasent.avatar.url);
   let [image, setImage] = useState();
   let [role, setRole] = useState(`${datasent.role}`);
   let [session, setSession] = useState(`${datasent.session}`);
@@ -15,7 +16,7 @@ const MemberUpdate = ({ id,updateMember, setupdateMember,datasent }) => {
     e.preventDefault();
     const sendData = JSON.stringify({
       name,
-      image,
+      // image,
       role,
       session,
       year,
@@ -54,7 +55,7 @@ const MemberUpdate = ({ id,updateMember, setupdateMember,datasent }) => {
         type="file"
         name="image"
         id="image"
-        value={image}
+        // value={image}
         onChange={(e) => setImage(e.target.value)}
       />
       <label htmlFor="role">Role</label>

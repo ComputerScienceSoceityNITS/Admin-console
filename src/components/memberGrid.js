@@ -11,7 +11,7 @@ import {
 const MemberGrid = ({ data }) => {
   return (
     <div className="table">
-      {data.length > 0 && data.map((member) => <RowElement data={member} />)}
+      {data? data.map((member) => <RowElement data={member} />):''}
     </div>
   );
 };

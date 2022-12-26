@@ -4,6 +4,8 @@ import MemberGrid from "../components/memberGrid";
 import MemberCreate from "../components/MemberCreate";
 import Loader from "../components/loader";
 import GetMembers from "../services/GetMembers";
+import "toastify-js/src/toastify.css"
+import DeleteMembers from "../services/DeleteMembers";
 import { toast } from "react-toastify";
 
 const MemberPage = () => {
@@ -12,6 +14,7 @@ const MemberPage = () => {
   const [addMember, setAddMember] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [dataReserved, setDataReserved] = useState([]);
+  const [members, setMembers] = useState([]);
 
   const fetch = async (session) => {
     setLoading(true);
@@ -53,6 +56,8 @@ const MemberPage = () => {
     fetch(session);
   };
   return (
+  
+    
     <div>
       <div className="headBar">
         <button className="btn" onClick={() => setAddMember(!addMember)}>
@@ -90,7 +95,14 @@ const MemberPage = () => {
         <MemberCreate addMember={addMember} setAddMember={setAddMember} />
       )}
     </div>
-  );
+    
+  
+    
+    
+  )
+  
+
+    
 };
 
 export default MemberPage;

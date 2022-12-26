@@ -17,6 +17,7 @@
     border: 1px solid #000;
     overflow: hidden;
     transition: 0.3s linear;
+    border-radius: 0.5rem;
 }
 
 .container.active {
@@ -30,6 +31,7 @@
     display: flex;
     align-items: center;
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../images/auth-bg-img.jpeg');
+    /* background: orange; */
     background-size: cover;
     background-position: center;
     justify-content: center;
@@ -79,15 +81,17 @@
 .Form form input:not([type="submit"]) {
     width: 100%;
     padding: 10px;
-    border: 2px solid #000;
-    outline: none !important;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-    border-radius: 5px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid black;
+    /* border-radius: 5px; */
     margin-bottom: 10px;
     font-size: 0.99rem;
     color: #000;
+}
+
+.Form form input:not([type="submit"]):focus {
+    border-bottom: 2px solid red;
 }
 
 .Form form button {

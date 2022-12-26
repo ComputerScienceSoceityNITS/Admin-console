@@ -19,9 +19,7 @@ const MemberCreate = ({ addMember, setAddMember }) => {
     sendForm.set("avatar", image);
 
     const members = CreateMembers(sendForm);
-    
   }
-
 
   return (
     <div className="createPage">
@@ -43,8 +41,17 @@ const MemberCreate = ({ addMember, setAddMember }) => {
         name="image"
         id="image"
         // value={image}
-        // onChange={(e) => setImage(e.target.files[0])}
-        onChange={(e) => setImage(e.target.files[0])}
+        title="Uploaded Image"
+        onChange={(e) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(e.target.files[0]);
+          console.log({ reader });
+          reader.addEventListener("load", (e) => {
+            const image = document.querySelector(".imageUpload");
+            image.attributes.src.value = e.target.result;
+          });
+          setImage(e.target.files[0]);
+        }}
       />
       <label htmlFor="role">Role</label>
       <input
@@ -115,6 +122,7 @@ const MemberCreate = ({ addMember, setAddMember }) => {
           />
         </div>
       </fieldset>
+      <img className="imageUpload" src="" alt="" />
       <button className="btn" onClick={handleSubmit}>
         Create
       </button>

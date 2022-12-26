@@ -1,8 +1,8 @@
 nav {
-    position: relative;
+    /* position: relative; */
     height: 40px;
     width: 100%;
-    background-color: #000;
+    background-color: orange;
     color: #fff;
     display: flex;
     align-items: center;
@@ -11,14 +11,20 @@ nav {
     padding-bottom: 30px;
 }
 
-nav h3 {
+nav h2 {
     color: #fff;
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: bold;
     padding: 0px 10px;
+    margin-left: 1rem;
 }
 
 nav .btn {
     margin: 40px;
+    border:1px solid white ;
+}
+nav .btn:hover {
+    margin: 40px;
+    border:1px solid white ;
 }

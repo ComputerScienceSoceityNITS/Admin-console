@@ -9,6 +9,7 @@ import {
 } from "react-icons/ai";
 
 const MemberGrid = ({ data }) => {
+  data.sort((a, b) => b.year - a.year);
   return (
     <div className="table">
       {data.length > 0 && data.map((member) => <RowElement data={member} />)}
@@ -36,10 +37,10 @@ const RowElement = ({ data }) => {
   };
 
   return (
-    <div>
+    <div key={data.id}>
       <div
         className={clickedRow ? "row expand" : "row"}
-        key={data.name}
+        key={data.id}
         onClick={() => setClickedRow(!clickedRow)}
         draggable
         title="Expandable on click"

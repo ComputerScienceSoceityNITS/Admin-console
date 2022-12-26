@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const MemberUpdate = ({ id,updateMember, setupdateMember,datasent }) => {
-  console.log(`${id}`);    
+const MemberUpdate = ({ id, updateMember, setupdateMember, datasent }) => {
+  console.log(`${id}`);
   let [name, setName] = useState(`${datasent.name}`);
   // let [image, setImage] = useState(datasent.avatar.url);
   let [image, setImage] = useState();
   let [role, setRole] = useState(`${datasent.role}`);
   let [session, setSession] = useState(`${datasent.session}`);
   let [year, setYear] = useState(`${datasent.year}`);
-  let [social, setSocial] = useState({"instagram":`${datasent.socialMedia.instagram}`,"linkedin":`${datasent.socialMedia.linkedin}`,"github":`${datasent.socialMedia.github}`,
-  "facebook":`${datasent.socialMedia.facebook}`});
+  let [social, setSocial] = useState({
+    "instagram": `${datasent.socialMedia.instagram}`, "linkedin": `${datasent.socialMedia.linkedin}`, "github": `${datasent.socialMedia.github}`,
+    "facebook": `${datasent.socialMedia.facebook}`
+  });
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -39,7 +41,7 @@ const MemberUpdate = ({ id,updateMember, setupdateMember,datasent }) => {
   return (
     <div className="createPage">
       <p className="btn close" onClick={() => setupdateMember(!updateMember)}>
-        Cancel
+        X
       </p>
       <label htmlFor="name">Name</label>
       <input
@@ -56,7 +58,17 @@ const MemberUpdate = ({ id,updateMember, setupdateMember,datasent }) => {
         name="image"
         id="image"
         // value={image}
-        onChange={(e) => setImage(e.target.value)}
+        onChange={(e) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(e.target.files[0]);
+          console.log({ reader });
+          reader.addEventListener("load", (e) => {
+            const image = document.querySelector(".imageUpload");
+            image.attributes.src.value = e.target.result;
+          });
+          setImage(e.target.value);
+        }}
+
       />
       <label htmlFor="role">Role</label>
       <input
@@ -127,11 +139,12 @@ const MemberUpdate = ({ id,updateMember, setupdateMember,datasent }) => {
           />
         </div>
       </fieldset>
+      <img className="imageUpload" src={datasent.avatar.url} alt="" />
       <button className="btn" onClick={handleSubmit}>
         Update
       </button>
-        </div>
-        );
+    </div>
+  );
 };
 
 export default MemberUpdate;

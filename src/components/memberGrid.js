@@ -12,7 +12,7 @@ const MemberGrid = ({ data }) => {
   data.sort((a, b) => b.year - a.year);
   return (
     <div className="table">
-      {data.length > 0 && data.map((member) => <RowElement data={member} />)}
+      {data? data.map((member) => <RowElement data={member} />):''}
     </div>
   );
 };

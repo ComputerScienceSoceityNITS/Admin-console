@@ -1,0 +1,30 @@
+nav {
+    /* position: relative; */
+    height: 40px;
+    width: 100%;
+    background-color: orange;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+nav h2 {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0px 10px;
+    margin-left: 1rem;
+}
+
+nav .btn {
+    margin: 40px;
+    border:1px solid white ;
+}
+nav .btn:hover {
+    margin: 40px;
+    border:1px solid white ;
+}

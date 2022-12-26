@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import CreateMembers from "../services/CreateMembers";
 import axios from "axios";
 
 const MemberCreate = ({ addMember, setAddMember }) => {
@@ -8,30 +9,18 @@ const MemberCreate = ({ addMember, setAddMember }) => {
   const [session, setSession] = useState("22-23");
   const [year, setYear] = useState(2);
   const [social, setSocial] = useState({});
+
   function handleSubmit(e) {
-    e.preventDefault();
-    const sendData = JSON.stringify({
-      name,
-      image,
-      role,
-      session,
-      year,
-      social,
-    });
-    console.log(sendData);
-    async function addNew() {
-      try {
-        const res = await axios.post(
-          "http://localhost:5000/api/admin/member/new",
-          sendData
-        );
-        console.log(res.data.id);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    addNew();
+    const sendForm = new FormData();
+    sendForm.set("name", name);
+    sendForm.set("session", session);
+    sendForm.set("year", year);
+    sendForm.set("role", role);
+    sendForm.set("avatar", image);
+
+    const members = CreateMembers(sendForm);
   }
+
   return (
     <div className="createPage">
       <p className="btn close" onClick={() => setAddMember(!addMember)}>
@@ -51,8 +40,18 @@ const MemberCreate = ({ addMember, setAddMember }) => {
         type="file"
         name="image"
         id="image"
-        value={image}
-        onChange={(e) => setImage(e.target.value)}
+        // value={image}
+        title="Uploaded Image"
+        onChange={(e) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(e.target.files[0]);
+          console.log({ reader });
+          reader.addEventListener("load", (e) => {
+            const image = document.querySelector(".imageUpload");
+            image.attributes.src.value = e.target.result;
+          });
+          setImage(e.target.files[0]);
+        }}
       />
       <label htmlFor="role">Role</label>
       <input
@@ -123,6 +122,7 @@ const MemberCreate = ({ addMember, setAddMember }) => {
           />
         </div>
       </fieldset>
+      <img className="imageUpload" src="" alt="" />
       <button className="btn" onClick={handleSubmit}>
         Create
       </button>

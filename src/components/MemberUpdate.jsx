@@ -10,8 +10,8 @@ const MemberUpdate = ({ id, updateMember, setupdateMember, datasent }) => {
   let [session, setSession] = useState(`${datasent.session}`);
   let [year, setYear] = useState(`${datasent.year}`);
   let [social, setSocial] = useState({
-    "instagram": `${datasent.socialMedia.instagram}`, "linkedin": `${datasent.socialMedia.linkedin}`, "github": `${datasent.socialMedia.github}`,
-    "facebook": `${datasent.socialMedia.facebook}`
+    "instagram": `${datasent.socialMedia !== undefined && datasent.socialMedia.instagram}`, "linkedin": `${datasent.socialMedia !== undefined && datasent.socialMedia.linkedin}`, "github": `${datasent.socialMedia !== undefined && datasent.socialMedia.github}`,
+    "facebook": `${datasent.socialMedia !== undefined && datasent.socialMedia.facebook}`
   });
 
   function handleSubmit(e) {
@@ -68,7 +68,6 @@ const MemberUpdate = ({ id, updateMember, setupdateMember, datasent }) => {
           });
           setImage(e.target.value);
         }}
-
       />
       <label htmlFor="role">Role</label>
       <input

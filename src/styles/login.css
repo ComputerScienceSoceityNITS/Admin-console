@@ -5,7 +5,7 @@
     flex-direction: column;
     height: 91.5vh;
     width: 100%;
-    background: linear-gradient(45deg, rgba(255, 192, 203, 0.5), rgba(0, 255, 255, 0.5)), url("../../public/media/background-2462431_1920.jpg") no-repeat center center/cover;
+    /* background: linear-gradient(45deg, rgba(255, 192, 203, 0.5), rgba(0, 255, 255, 0.5)), url("../../public/media/background-2462431_1920.jpg") no-repeat center center/cover; */
 }
 
 .Form {
@@ -50,9 +50,15 @@ input {
     width: 15rem;
 }
 
+.Form>form>input[placeholder] {
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
 input:focus {
     border-bottom: 2px solid orange;
-    backdrop-filter: blur(50px);
+    /* backdrop-filter: blur(50px); */
 }
 
 .Form>form>.btn {

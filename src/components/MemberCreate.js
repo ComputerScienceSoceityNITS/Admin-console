@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import CreateMembers from "../services/CreateMembers";
-import axios from "axios";
 
 const MemberCreate = ({ addMember, setAddMember }) => {
   const [name, setName] = useState("John");
   const [image, setImage] = useState();
-  const [role, setRole] = useState("Dev-Wing Member");
+  const [role, setRole] = useState("Dev-Wing");
   const [session, setSession] = useState("22-23");
   const [year, setYear] = useState(2);
   const [social, setSocial] = useState({});
@@ -17,7 +16,6 @@ const MemberCreate = ({ addMember, setAddMember }) => {
     sendForm.set("year", year);
     sendForm.set("role", role);
     sendForm.set("avatar", image);
-
     const members = CreateMembers(sendForm);
   }
 

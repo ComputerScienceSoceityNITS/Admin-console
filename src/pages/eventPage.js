@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../styles/EventPage.css";
-import  GetEvents from "../services/GetEvents";
+import  GetEvents from "../services/Events/GetEvents";
 import "toastify-js/src/toastify.css";
-import DeleteEvents from "../services/DeleteEvents";
-
-
-
-
+import DeleteEvents from "../services/Events/DeleteEvents";
 
 
 const EventPage = () => {

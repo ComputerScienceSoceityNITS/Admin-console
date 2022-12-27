@@ -4,10 +4,31 @@ import EventPage from "./pages/eventPage";
 import "./styles/App.css";
 import Navbar from "./components/Navbar";
 import Login from "./components/login";
+import axios from "axios";
+import { useEffect } from "react";
+import {get} from 'react-cookie'
+import useCookies from "react-cookie/cjs/useCookies";
+import {Cookies} from 'react-cookie'
 
 function App() {
   const [pageRoute, setPageRoute] = useState(true);
   const [authenticated, setAuthenticated] = useState(false);
+  const [cookies, setCookie, removeCookie] = useCookies(['css']);
+
+  axios.defaults.withCredentials = true
+  useEffect(()=>{
+    if (cookies.CSS_Website!=='undefined' && cookies.CSS_Website) {
+      console.log(typeof(cookies.CSS_Website));
+      setAuthenticated(true)
+    }
+    else{
+      console.log(cookies.CSS_Website);
+      console.log(Cookies.get('CSS_Website'))
+      console.log(document.cookie);
+      setAuthenticated(false)
+    }
+  },[cookies.CSS_Website])
+
   return (
     <>
       <Navbar setIn={setAuthenticated} In={authenticated} />
@@ -35,7 +56,7 @@ function App() {
           {/* <AuthPage /> */}
         </div>
       ) : (
-        <Login />
+        <Login setIn={setAuthenticated} In={authenticated} />
       )}
     </>
   );

@@ -1,10 +1,13 @@
 import React from 'react';
 import "../styles/Navbar.css";
+import {useCookies} from 'react-cookie'
 // import axios from 'axios';
 const Navbar = ({ setIn, In }) => {
+  const [cookies, setCookie, removeCookie] = useCookies(['css']);
+
   const handleLogout = () => {
-    setIn(!In);
-    // axios.get("http://tasty-crab-hosiery.cyclic.app/api/admin/logout")
+    setCookie('CSS_Website',undefined,{path:'/'})
+    setIn(false)
   }
   console.log({ In, setIn });
   return (
@@ -12,8 +15,7 @@ const Navbar = ({ setIn, In }) => {
       <h2>CSS Admin Console</h2>
       <div>
         {In ?
-          (<button type="button" className="btn" onClick={handleLogout}>Log Out</button>) :
-          (<button type="button" className="btn" onClick={() => setIn(!In)}>Log In</button>) //to be removed later. on login logout will show, but login will be removed.
+          (<button type="button" className="btn" onClick={handleLogout}>Log Out</button>) :''
         }
       </div>
     </nav>

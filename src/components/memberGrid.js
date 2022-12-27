@@ -7,7 +7,7 @@ import {
   AiFillFacebook,
   AiFillGithub,
 } from "react-icons/ai";
-import DeleteMembers from "../services/DeleteMembers";
+import DeleteMembers from "../services/Members/DeleteMembers";
 
 const MemberGrid = ({ data }) => {
   data.sort((a, b) => b.year - a.year);

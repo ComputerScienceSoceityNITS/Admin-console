@@ -1,10 +1,12 @@
 import axios from 'axios';
 import React from 'react'
+import ServerUrl from '../../ServerUrl';
 import { toast } from 'react-toastify';
 const EditEvents = async (sendForm,id) => {
+
   try {
     const res = await axios.put(
-      `http://localhost:5000/api/admin/event/${id}`,
+      `${ServerUrl}/event/${id}`,
       sendForm,
       // sendData,
       {

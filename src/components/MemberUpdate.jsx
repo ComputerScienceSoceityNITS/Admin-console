@@ -11,7 +11,7 @@ const MemberUpdate = ({ id,updateMember, setupdateMember,datasent }) => {
   const [role, setRole] = useState();
   const [session, setSession] = useState();
   const [year, setYear] = useState();
-  const [social, setSocial] = useState();
+  const [social, setSocial] = useState({});
 
   useEffect(()=>{
     setName(datasent.name);
@@ -33,7 +33,7 @@ const MemberUpdate = ({ id,updateMember, setupdateMember,datasent }) => {
     sendForm.set("role",role);
     sendForm.set("session",session);
     sendForm.set("year",year);
-    sendForm.set("social",social);
+    sendForm.set("socialMedia",JSON.stringify(social));
 
     const members = EditMembers(sendForm, id )
 
@@ -94,7 +94,7 @@ const MemberUpdate = ({ id,updateMember, setupdateMember,datasent }) => {
             type="url"
             name="instagram"
             id="instagram"
-            value={social?social.instagram:''}
+            value={social.instagram}
             onChange={(e) =>
               setSocial({ ...social, instagram: e.target.value })
             }
@@ -106,7 +106,7 @@ const MemberUpdate = ({ id,updateMember, setupdateMember,datasent }) => {
             type="url"
             name="linkedin"
             id="linkedin"
-            value={social?social.linkedin:''}
+            value={social.linkedin}
             onChange={(e) => setSocial({ ...social, linkedin: e.target.value })}
           />
         </div>
@@ -116,7 +116,7 @@ const MemberUpdate = ({ id,updateMember, setupdateMember,datasent }) => {
             type="url"
             name="github"
             id="github"
-            value={social?social.github:''}
+            value={social.github}
             onChange={(e) => setSocial({ ...social, github: e.target.value })}
           />
         </div>
@@ -126,7 +126,7 @@ const MemberUpdate = ({ id,updateMember, setupdateMember,datasent }) => {
             type="url"
             name="facebook"
             id="facebook"
-            value={social?social.facebook:''}
+            value={social.facebook}
             onChange={(e) => setSocial({ ...social, facebook: e.target.value })}
           />
         </div>

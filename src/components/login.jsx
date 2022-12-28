@@ -27,9 +27,7 @@ const Login = ({ setIn, In }) => {
         );
         
         if (res.status === 201) {
-          console.log(res.data.CSS_Website);
-          setCookie("CSS_Website",res.data.CSS_Website,{path:'/'})
-          // document.cookie = `CSS_Website=${res.data.token};path=/`
+          setCookie("CSS_Website",res.data.token,{path:'/'})
           setIn(true);
         } else {
           toast.error("Wrong email or password");

@@ -1,10 +1,12 @@
 import axios from 'axios';
 import React from 'react'
+import ServerUrl from '../../ServerUrl';
 import { toast } from 'react-toastify';
+
 const CreateEvents = async (sendForm) => {
   try {
     const res = await axios.post(
-      "http://localhost:5000/api/admin/event/new",
+      `${ServerUrl}/event/new`,
       sendForm,
       // sendData,
       {

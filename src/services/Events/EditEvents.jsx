@@ -1,7 +1,9 @@
+import axios from 'axios';
 import React from 'react'
 import ServerUrl from '../../ServerUrl';
+import { toast } from 'react-toastify';
+const EditEvents = async (sendForm,id) => {
 
-const EditEvents = async (sendForm) => {
   try {
     const res = await axios.put(
       `${ServerUrl}/event/${id}`,

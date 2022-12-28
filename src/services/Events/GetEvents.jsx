@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React from 'react'
 import { toast } from 'react-toastify';
+import ServerUrl from '../../ServerUrl';
 
 const GetEvents = async () => {
     try {
         const res = await axios.get(
-          "http://localhost:5000/api/admin/events"
+          `${ServerUrl}/events`
         );
         console.log("hello");
         // toast.success("success")

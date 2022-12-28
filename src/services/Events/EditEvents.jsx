@@ -1,9 +1,10 @@
 import React from 'react'
+import ServerUrl from '../../ServerUrl';
 
 const EditEvents = async (sendForm) => {
   try {
     const res = await axios.put(
-      `http://localhost:5000/api/admin/event/${id}`,
+      `${ServerUrl}/event/${id}`,
       sendForm,
       // sendData,
       {

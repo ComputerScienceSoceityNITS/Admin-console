@@ -8,12 +8,14 @@ import axios from "axios";
 import { useEffect } from "react";
 import {get} from 'react-cookie'
 import useCookies from "react-cookie/cjs/useCookies";
-import {Cookies} from 'react-cookie'
+import {CookiesProvider, Cookies} from 'react-cookie'
+import { useContext } from "react";
+import { createContext } from "react";
 
 function App() {
   const [pageRoute, setPageRoute] = useState(true);
   const [authenticated, setAuthenticated] = useState(false);
-  const [cookies, setCookie, removeCookie] = useCookies(['css']);
+  const [cookies, setCookie, removeCookie] = useCookies();
 
   axios.defaults.withCredentials = true
   useEffect(()=>{
@@ -22,8 +24,7 @@ function App() {
       setAuthenticated(true)
     }
     else{
-      console.log(cookies.CSS_Website);
-      console.log(Cookies.get('CSS_Website'))
+      console.log(cookies);
       console.log(document.cookie);
       setAuthenticated(false)
     }
@@ -31,6 +32,8 @@ function App() {
 
   return (
     <>
+      <CookiesProvider>
+
       <Navbar setIn={setAuthenticated} In={authenticated} />
       {authenticated ? (
         <div className="App">
@@ -39,14 +42,14 @@ function App() {
               id="eve"
               onClick={() => setPageRoute(!pageRoute)}
               className={pageRoute ? null : "activeLink"}
-            >
+              >
               Events
             </p>
             <p
               id="mem"
               onClick={() => setPageRoute(!pageRoute)}
               className={pageRoute ? "activeLink" : null}
-            >
+              >
               Members
             </p>
           </div>
@@ -57,7 +60,8 @@ function App() {
         </div>
       ) : (
         <Login setIn={setAuthenticated} In={authenticated} />
-      )}
+        )}
+        </CookiesProvider>
     </>
   );
 }

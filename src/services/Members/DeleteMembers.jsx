@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React from 'react'
 import { toast } from 'react-toastify';
+import ServerUrl from '../../ServerUrl';
 
 const DeleteMembers = async (id) => {
     try {
         const res = await axios.delete(
-          `http://localhost:5000/api/admin/member/${id}`
+          `${ServerUrl}/member/${id}`
         );
         console.log(res);
         toast.success("deleted successfully")

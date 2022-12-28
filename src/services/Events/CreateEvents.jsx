@@ -1,9 +1,10 @@
 import React from 'react'
+import ServerUrl from '../../ServerUrl';
 
 const CreateEvents = async (sendForm) => {
   try {
     const res = await axios.post(
-      "http://localhost:5000/api/admin/event/new",
+      `${ServerUrl}/event/new`,
       sendForm,
       // sendData,
       {

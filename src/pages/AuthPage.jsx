@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import Login from "../components/login";
+import React,{ useState, useEffect, useRef} from 'react';
+import Login from "../components/Login";
 import Signup from "../components/Signup";
 import Navbar from "../components/Navbar";
 import "../styles/AuthPage.css";

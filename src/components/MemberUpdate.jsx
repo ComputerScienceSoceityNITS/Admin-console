@@ -6,15 +6,6 @@ import { useEffect } from "react";
 const MemberUpdate = ({ id, updateMember, setupdateMember, datasent }) => {
   // console.log(`${i}`);    
   const [name, setName] = useState();
-  // let [image, setImage] = useState(datasent.avatar.url);
-  // let [image, setImage] = useState();
-  // let [role, setRole] = useState(`${datasent.role}`);
-  // let [session, setSession] = useState(`${datasent.session}`);
-  // let [year, setYear] = useState(`${datasent.year}`);
-  // let [social, setSocial] = useState({
-  //   "instagram": `${datasent.socialMedia !== undefined && datasent.socialMedia.instagram}`, "linkedin": `${datasent.socialMedia !== undefined && datasent.socialMedia.linkedin}`, "github": `${datasent.socialMedia !== undefined && datasent.socialMedia.github}`,
-  //   "facebook": `${datasent.socialMedia !== undefined && datasent.socialMedia.facebook}`
-  // });
   const [image, setImage] = useState();
   const [role, setRole] = useState();
   const [session, setSession] = useState();

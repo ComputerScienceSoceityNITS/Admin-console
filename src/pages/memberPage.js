@@ -3,9 +3,9 @@ import "../styles/MemberPage.css";
 import MemberGrid from "../components/memberGrid";
 import MemberCreate from "../components/MemberCreate";
 import Loader from "../components/loader";
-import GetMembers from "../services/GetMembers";
+import GetMembers from "../services/Members/GetMembers";
 import "toastify-js/src/toastify.css"
-import DeleteMembers from "../services/DeleteMembers";
+import DeleteMembers from "../services/Members/DeleteMembers";
 import { toast } from "react-toastify";
 
 const MemberPage = () => {

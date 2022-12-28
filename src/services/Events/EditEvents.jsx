@@ -1,6 +1,7 @@
+import axios from 'axios';
 import React from 'react'
-
-const EditEvents = async (sendForm) => {
+import { toast } from 'react-toastify';
+const EditEvents = async (sendForm,id) => {
   try {
     const res = await axios.put(
       `http://localhost:5000/api/admin/event/${id}`,

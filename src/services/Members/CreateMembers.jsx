@@ -3,14 +3,14 @@ import React from 'react'
 import { toast } from 'react-toastify';
 
 const CreateMembers = async (sendForm) => {
-
     try {
         const res = await axios.post(
           "http://localhost:5000/api/admin/member/new",
           sendForm,
           // sendData,
           {
-            headers:{"Content-Type":"multipart/form-data"}
+            headers:{"Content-Type":"multipart/form-data"},
+            withCredentials: true
           }
         );
         toast.success("Members Created")

@@ -1,44 +1,49 @@
 import React, { useState } from "react";
 import axios from "axios";
+import EditMembers from "../services/Members/EditMembers";
+import { useEffect } from "react";
 
 const MemberUpdate = ({ id,updateMember, setupdateMember,datasent }) => {
-  console.log(`${id}`);    
-  let [name, setName] = useState(`${datasent.name}`);
-  let [image, setImage] = useState();
-  let [role, setRole] = useState(`${datasent.role}`);
-  let [session, setSession] = useState(`${datasent.session}`);
-  let [year, setYear] = useState(`${datasent.year}`);
-  let [social, setSocial] = useState({"instagram":`${datasent.socialMedia.instagram}`,"linkedin":`${datasent.socialMedia.linkedin}`,"github":`${datasent.socialMedia.github}`,
-  "facebook":`${datasent.socialMedia.facebook}`});
+  // console.log(`${i}`);    
+  const [name, setName] = useState();
+  // let [image, setImage] = useState(datasent.avatar.url);
+  const [image, setImage] = useState();
+  const [role, setRole] = useState();
+  const [session, setSession] = useState();
+  const [year, setYear] = useState();
+  const [social, setSocial] = useState({});
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const sendData = JSON.stringify({
-      name,
-      image,
-      role,
-      session,
-      year,
-      social,
-    });
-    console.log(sendData);
-    async function addNew() {
-      try {
-        const res = await axios.put(
-          `http://localhost:5000/api/admin/member/${id}`,
-          sendData
-        );
-        console.log(res.data.id);
-      } catch (err) {
-        console.log(err);
-      }
+  useEffect(()=>{
+    setName(datasent.name);
+    setRole(datasent.role);
+    setSession(datasent.session);
+    setYear(datasent.year);
+    setSocial(datasent.socialMedia?{"instagram":`${datasent.socialMedia.instagram}`,"linkedin":`${datasent.socialMedia.linkedin}`,"github":`${datasent.socialMedia.github}`,
+    "facebook":`${datasent.socialMedia.facebook}`}:undefined);
+  },[datasent])
+
+  const handleSubmit = ()=> {
+
+    const sendForm = new FormData()
+    sendForm.set("name",name);
+    if (image){
+      console.log(image);
+      sendForm.set("avatar",image);
     }
-    addNew();
+    sendForm.set("role",role);
+    sendForm.set("session",session);
+    sendForm.set("year",year);
+    sendForm.set("socialMedia",JSON.stringify(social));
+
+    const members = EditMembers(sendForm, id )
+
   }
+
+
   return (
     <div className="createPage">
       <p className="btn close" onClick={() => setupdateMember(!updateMember)}>
-        Cancel
+        X
       </p>
       <label htmlFor="name">Name</label>
       <input
@@ -54,8 +59,8 @@ const MemberUpdate = ({ id,updateMember, setupdateMember,datasent }) => {
         type="file"
         name="image"
         id="image"
-        value={image}
-        onChange={(e) => setImage(e.target.value)}
+        // value={image}
+        onChange={(e) => setImage(e.target.files[0])}
       />
       <label htmlFor="role">Role</label>
       <input
@@ -126,11 +131,11 @@ const MemberUpdate = ({ id,updateMember, setupdateMember,datasent }) => {
           />
         </div>
       </fieldset>
-      <button className="btn" onClick={handleSubmit}>
+      <button className="btn" onClick={()=>{handleSubmit()}}>
         Update
       </button>
-        </div>
-        );
+    </div>
+  );
 };
 
 export default MemberUpdate;

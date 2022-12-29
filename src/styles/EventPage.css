@@ -1,7 +1,103 @@
-.EventPage{
-    width:100%;
-    height: 100vh;
+.MemberPage{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+img{
+    height: 5rem;
+    width: 5rem;
+}
+.createPage{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 1rem;
+    background: radial-gradient(circle at top,rgba(255, 203, 203, 0.9),rgba(245, 245, 245, 0.9));
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .5rem;
+    width: 80%;
+    z-index: 10;
+    border: 2px solid white;
+    border-radius: 0.5rem;
+    width: 1000px;
+}
+.createPage>input,.createPage>fieldset>div>input{
+    border: none;
+    outline: none;
+    border-bottom: 5px solid black;
+    background: white;
+    padding: .5rem;
+    border-radius: .2rem;
+    transition: all 0.3s ease-in-out;
+}
+.createPage>input:focus,.createPage>fieldset>div>input:focus{
+    border-bottom: 5px solid red;
+    background: whitesmoke;
+}
+.createPage>fieldset{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.createPage>fieldset>div{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .5rem;
+    padding: 1rem;
+}
+
+.createPage .close{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+}
+.table{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1rem;
+    background-color: rgb(235, 226, 206);
+}
+.table div{
+    width: 45%;
+}
+
+.headBar{
+    background-color: rgb(216, 216, 216);
+    margin: 0;
+    padding: 0;
+}
+
+.row{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    /* position: sticky; */
+    flex-wrap: wrap;
+    align-items: center;
+    background: white;
+    gap: 1rem;
+    overflow-y: hidden;
+    height: 10rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
+    /* transition: all 0.3s ease-in-out; */
+    transition: width 1s, height 1.5s;
+    /* backdrop-filter: blur(4px); */
+    box-shadow: 0px 0px 10px 5px grey;
+    /* background-color: red; */
+}
+.row:hover{
+    height: 20rem;
+    width:auto;
+
 }

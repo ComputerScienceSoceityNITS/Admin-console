@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 const GetMembers = async () => {
     try {
         const res = await axios.get(
-          "http://localhost:5000/api/admin/members/21-22"
+          "http://tasty-crab-hosiery.cyclic.app/api/admin/members/21-22"
         );
         // toast.success("success")
         return (res.data.members);

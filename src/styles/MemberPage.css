@@ -57,3 +57,47 @@ img{
     top: 5%;
     right: 5%;
 }
+.table{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1rem;
+    background-color: rgb(235, 226, 206);
+}
+.table div{
+    width: 45%;
+}
+
+.headBar{
+    background-color: rgb(216, 216, 216);
+    margin: 0;
+    padding: 0;
+}
+
+.row{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    /* position: sticky; */
+    flex-wrap: wrap;
+    align-items: center;
+    background: white;
+    gap: 1rem;
+    overflow-y: hidden;
+    height: 10rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
+    /* transition: all 0.3s ease-in-out; */
+    transition: width 1s, height 1.5s;
+    /* backdrop-filter: blur(4px); */
+    box-shadow: 0px 0px 10px 5px grey;
+    /* background-color: red; */
+}
+.row:hover{
+    height: 20rem;
+    width:auto;
+
+}

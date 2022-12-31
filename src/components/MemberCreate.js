@@ -10,14 +10,17 @@ const MemberCreate = ({ addMember, setAddMember }) => {
   const [session, setSession] = useState("22-23");
   const [year, setYear] = useState(2);
   const [social, setSocial] = useState({});
+  let socialTemp = {};
 
   function handleSubmit(e) {
     const sendForm = new FormData();
     sendForm.set("name", name);
     sendForm.set("session", session);
+    sendForm.set("socialMedia", JSON.stringify(social));
     sendForm.set("year", year);
     sendForm.set("role", role);
     sendForm.set("avatar", image);
+
     const members = CreateMembers(sendForm);
   }
 

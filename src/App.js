@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar";
 import Login from "./components/login";
 import axios from "axios";
 import { useEffect } from "react";
-import { get } from "react-cookie";
+import { CookiesProvider, get } from "react-cookie";
 import useCookies from "react-cookie/cjs/useCookies";
 import { Cookies } from "react-cookie";
 
@@ -30,33 +30,35 @@ function App() {
 
   return (
     <>
-      <Navbar setIn={setAuthenticated} In={authenticated} />
-      {authenticated ? (
-        <div className="App">
-          <div className="controlBoard">
-            <p
-              id="eve"
-              onClick={() => setPageRoute(!pageRoute)}
-              className={pageRoute ? null : "activeLink"}
-            >
-              Events
-            </p>
-            <p
-              id="mem"
-              onClick={() => setPageRoute(!pageRoute)}
-              className={pageRoute ? "activeLink" : null}
-            >
-              Members
-            </p>
+      <CookiesProvider>
+        <Navbar setIn={setAuthenticated} In={authenticated} />
+        {authenticated ? (
+          <div className="App">
+            <div className="controlBoard">
+              <p
+                id="eve"
+                onClick={() => setPageRoute(!pageRoute)}
+                className={pageRoute ? null : "activeLink"}
+              >
+                Events
+              </p>
+              <p
+                id="mem"
+                onClick={() => setPageRoute(!pageRoute)}
+                className={pageRoute ? "activeLink" : null}
+              >
+                Members
+              </p>
+            </div>
+            <div className="pages">
+              {pageRoute ? <MemberPage /> : <EventPage />}
+            </div>
+            {/* <AuthPage /> */}
           </div>
-          <div className="pages">
-            {pageRoute ? <MemberPage /> : <EventPage />}
-          </div>
-          {/* <AuthPage /> */}
-        </div>
-      ) : (
-        <Login setIn={setAuthenticated} In={authenticated} />
-      )}
+        ) : (
+          <Login setIn={setAuthenticated} In={authenticated} />
+        )}
+      </CookiesProvider>
     </>
   );
 }

@@ -8,14 +8,13 @@ const EventGrid = ({ data }) => {
 
   return (
     <div className="table">
-      {data? data.map((event) => <RowElement data={event} />):''}
+      {data ? data.map((event) => <RowElement data={event} />) : ''}
     </div>
   );
 };
 
 const RowElement = ({ data }) => {
   const [updateEvent, setupdateEvent] = useState(false);
-
   const [clickedRow, setClickedRow] = useState(false);
   const handleDelete = (id) => {
     console.log(id);
@@ -25,20 +24,23 @@ const RowElement = ({ data }) => {
   return (
     <div key={data.id}>
       <div
-        className={clickedRow ? "row expand" : "row"}
+        className={clickedRow ? "e_expand" : "e_row"}
         key={data.id}
         onClick={() => setClickedRow(!clickedRow)}
         draggable
         title="Expandable on click"
       >
-        <img src={data.images.url} alt="img" title="images" />
         <h3 title="Name">{data.name}</h3>
-        <p title="description">{data.description}</p>
-        <p title="formLink">Form Link:{data.formLink}</p>
-        <p title="startTime">Start Time:{data.startTime}</p>
-        <p title="start_end_Date">{data.startDate} to {data.endDate}</p>
-
-
+        {
+          data.images.map((img) => {
+            return <a href={img.url} target="_blank" rel="noopener noreferrer"><img src={img.url} alt="img" title="images" className="eventImages" /></a>
+          })
+        }
+        {/* <img src={data.images[i].url} alt="img" title="images" /> */}
+        <p title="formLink"><a href={data.formLink} target="_blank" title="form" rel="noopener noreferrer">Form Link</a></p>
+        <p title="startTime">Start Time : <b id="startTime">{data.startTime}</b></p>
+        <p title="start_end_Date">{data.startDate.split("T")[0]} to {data.endDate.split("T")[0]}</p>
+        <p title="description" id="desc">{data.description}</p>
         <div>
           <button
             className="btn"

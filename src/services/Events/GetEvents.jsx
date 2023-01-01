@@ -6,6 +6,7 @@ import ServerUrl from '../../ServerUrl';
 const GetEvents = async () => {
     try {
         const res = await axios.get(
+
           `${ServerUrl}/events`
         );
         console.log("hello");

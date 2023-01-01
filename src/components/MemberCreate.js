@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CreateMembers from "../services/Members/CreateMembers";
 import axios from "axios";
 import useCookies from "react-cookie/cjs/useCookies";
+import Loader from "../components/loader";
 
 const MemberCreate = ({ addMember, setAddMember }) => {
   const [name, setName] = useState("John");
@@ -10,6 +11,7 @@ const MemberCreate = ({ addMember, setAddMember }) => {
   const [session, setSession] = useState("22-23");
   const [year, setYear] = useState(2);
   const [social, setSocial] = useState({});
+  const [dataTransfer, setDataTransfer] = useState(false);
   let socialTemp = {};
 
   function handleSubmit(e) {
@@ -20,12 +22,17 @@ const MemberCreate = ({ addMember, setAddMember }) => {
     sendForm.set("year", year);
     sendForm.set("role", role);
     sendForm.set("avatar", image);
-
-    const members = CreateMembers(sendForm);
+    setDataTransfer(true);
+    const members = CreateMembers(sendForm, setDataTransfer);
   }
 
   return (
     <div className="createPage">
+      {dataTransfer && (
+        <div className="dataTransfer">
+          <Loader />
+        </div>
+      )}
       <p className="btn close" onClick={() => setAddMember(!addMember)}>
         X
       </p>

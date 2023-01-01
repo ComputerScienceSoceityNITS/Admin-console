@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CreateEvents from "../services/Events/CreateEvents";
 import axios from "axios";
 import { render } from "@testing-library/react";
+import Loader from "../components/loader";
 
 const EventCreate = ({ addEvent, setAddEvent }) => {
   const [name, setName] = useState("");
@@ -11,8 +12,10 @@ const EventCreate = ({ addEvent, setAddEvent }) => {
   const [startTime, setStartTime] = useState("");
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState(); //default:Date.now
+  const [dataTransfer, setDataTransfer] = useState(false);
 
   function handleSubmit(e) {
+    setDataTransfer(true);
     const sendForm = new FormData();
     sendForm.set("name", name);
     sendForm.set("description", description);
@@ -22,12 +25,17 @@ const EventCreate = ({ addEvent, setAddEvent }) => {
     sendForm.set("startDate", startDate);
     sendForm.set("endDate", endDate);
 
-    const events = CreateEvents(sendForm);
+    const events = CreateEvents(sendForm, setDataTransfer);
     console.log({ events, FormData, startDate, endDate, images });
   }
 
   return (
     <div className="createPage">
+      {dataTransfer && (
+        <div className="dataTransfer">
+          <Loader />
+        </div>
+      )}
       <p className="btn close" onClick={() => setAddEvent(!addEvent)}>
         X
       </p>

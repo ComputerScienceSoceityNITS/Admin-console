@@ -4,7 +4,7 @@ import MemberGrid from "../components/memberGrid";
 import MemberCreate from "../components/MemberCreate";
 import Loader from "../components/loader";
 import GetMembers from "../services/Members/GetMembers";
-import "toastify-js/src/toastify.css"
+import "toastify-js/src/toastify.css";
 import DeleteMembers from "../services/Members/DeleteMembers";
 import { toast } from "react-toastify";
 
@@ -36,9 +36,15 @@ const MemberPage = () => {
     if (dataReserved.length > 0) {
       setData(dataReserved);
     }
-    const list1 = data.filter((element) => element.name.includes(searchText));
-    const list2 = data.filter((element) => element.role.includes(searchText));
-    const list4 = data.filter((element) => element.year.includes(searchText));
+    const list1 = data.filter((element) =>
+      element.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    const list2 = data.filter((element) =>
+      element.role.toLowerCase().includes(searchText.toLowerCase())
+    );
+    const list4 = data.filter((element) =>
+      element.year.toLowerCase().includes(searchText.toLowerCase())
+    );
     const list_final = list1.concat(list2, list4);
     console.log(list_final);
     if (list_final.length > 0) {
@@ -56,8 +62,6 @@ const MemberPage = () => {
     fetch(session);
   };
   return (
-  
-    
     <div>
       <div className="headBar">
         <button className="btn" onClick={() => setAddMember(!addMember)}>
@@ -95,14 +99,7 @@ const MemberPage = () => {
         <MemberCreate addMember={addMember} setAddMember={setAddMember} />
       )}
     </div>
-    
-  
-    
-    
-  )
-  
-
-    
+  );
 };
 
 export default MemberPage;

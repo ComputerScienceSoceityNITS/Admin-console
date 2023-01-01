@@ -13,14 +13,14 @@ const MemberGrid = ({ data }) => {
   data.sort((a, b) => b.year - a.year);
   return (
     <div className="table">
-      {data? data.map((member) => <RowElement data={member} />):''}
+      {data ? data.map((member) => <RowElement data={member} />) : ""}
     </div>
   );
 };
 
 const RowElement = ({ data }) => {
   const [updateMember, setupdateMember] = useState(false);
-  
+
   const [clickedRow, setClickedRow] = useState(false);
   const handleDelete = (id) => {
     console.log(id);
@@ -47,35 +47,53 @@ const RowElement = ({ data }) => {
         draggable
         title="Expandable on click"
       >
-        <img src={data.avatar.url} alt="img" title="Avatar" />
+        <a href={data.avatar.url} target="_blank" rel="noopener noreferrer">
+          <img src={data.avatar.url} alt="img" title="Avatar" />
+        </a>
         <h3 title="Name">{data.name}</h3>
         <p title="Role">{data.role}</p>
         <p title="Session">{data.session}</p>
         <p title="Year">{data.year}</p>
         <div className="socials" title="Socials">
           {data.socialMedia ? (
-            <a href={data.socialMedia.instagram}>
+            <a
+              href={data.socialMedia.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <AiFillInstagram />
             </a>
           ) : (
             ""
           )}
           {data.socialMedia ? (
-            <a href={data.socialMedia.linkedin}>
+            <a
+              href={data.socialMedia.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <AiFillLinkedin />
             </a>
           ) : (
             ""
           )}
           {data.socialMedia ? (
-            <a href={data.socialMedia.github}>
+            <a
+              href={data.socialMedia.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <AiFillGithub />
             </a>
           ) : (
             ""
           )}
           {data.socialMedia ? (
-            <a href={data.socialMedia.facebook}>
+            <a
+              href={data.socialMedia.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <AiFillFacebook />
             </a>
           ) : (

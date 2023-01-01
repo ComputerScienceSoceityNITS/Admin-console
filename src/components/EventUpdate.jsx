@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import EditEvents from "../services/Events/EditEvents";
 import { useEffect } from "react";
+import Loader from "../components/loader";
 
 const EventUpdate = ({ id, updateEvent, setupdateEvent, datasent }) => {
   const [name, setName] = useState();
@@ -11,6 +12,7 @@ const EventUpdate = ({ id, updateEvent, setupdateEvent, datasent }) => {
   const [startTime, setStartTime] = useState();
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState(); //default:Date.now
+  const [dataTransfer, setDataTransfer] = useState(false);
 
   useEffect(() => {
     setName(datasent.name);
@@ -38,14 +40,19 @@ const EventUpdate = ({ id, updateEvent, setupdateEvent, datasent }) => {
     sendForm.set("startTime", startTime);
     sendForm.set("startDate", startDate);
     sendForm.set("endDate", endDate);
-
-    const events = EditEvents(sendForm, id)
+    setDataTransfer(true);
+    const events = EditEvents(sendForm, id, setDataTransfer);
 
   }
 
 
   return (
     <div className="createPage">
+      {dataTransfer && (
+        <div className="dataTransfer">
+          <Loader />
+        </div>
+      )}
       <p className="btn close" onClick={() => setupdateEvent(!updateEvent)}>
         X
       </p>

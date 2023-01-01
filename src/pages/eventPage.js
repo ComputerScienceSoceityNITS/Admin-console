@@ -5,7 +5,7 @@ import EventCreate from "../components/EventCreate";
 
 import Loader from "../components/loader";
 import GetEvents from "../services/Events/GetEvents";
-import "toastify-js/src/toastify.css"
+import "toastify-js/src/toastify.css";
 import DeleteEvents from "../services/Events/DeleteEvents";
 import { toast } from "react-toastify";
 
@@ -15,7 +15,6 @@ const EventPage = () => {
   const [addEvent, setAddEvent] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [dataReserved, setDataReserved] = useState([]);
-
 
   const [events, setEvents] = useState([]);
 
@@ -38,9 +37,15 @@ const EventPage = () => {
     if (dataReserved.length > 0) {
       setData(dataReserved);
     }
-    const list1 = data.filter((element) => element.name.includes(searchText));
-    const list2 = data.filter((element) => element.startTime.includes(searchText));
-    const list4 = data.filter((element) => element.startDate.includes(searchText));
+    const list1 = data.filter((element) =>
+      element.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    const list2 = data.filter((element) =>
+      element.startTime.toLowerCase().includes(searchText.toLowerCase())
+    );
+    const list4 = data.filter((element) =>
+      element.startDate.toLowerCase().includes(searchText.toLowerCase())
+    );
     const list_final = list1.concat(list2, list4);
     console.log(list_final);
     if (list_final.length > 0) {
@@ -69,13 +74,13 @@ const EventPage = () => {
             />
           </form>
         </div>
-        </div>
+      </div>
       {loading ? <Loader /> : <EventGrid data={data} />}
       {addEvent && (
         <EventCreate addEvent={addEvent} setAddEvent={setAddEvent} />
       )}
     </div>
-  )
+  );
 };
 
 export default EventPage;

@@ -6,62 +6,59 @@ import Navbar from "./components/Navbar";
 import Login from "./components/login";
 import axios from "axios";
 import { useEffect } from "react";
-import {get} from 'react-cookie'
+import { CookiesProvider, get } from "react-cookie";
 import useCookies from "react-cookie/cjs/useCookies";
-import {CookiesProvider, Cookies} from 'react-cookie'
-import { useContext } from "react";
-import { createContext } from "react";
+import { Cookies } from "react-cookie";
 
 function App() {
   const [pageRoute, setPageRoute] = useState(true);
   const [authenticated, setAuthenticated] = useState(false);
-  const [cookies, setCookie, removeCookie] = useCookies();
+  const [cookies, setCookie, removeCookie] = useCookies(["css"]);
 
-  axios.defaults.withCredentials = true
-  useEffect(()=>{
-    if (cookies.CSS_Website!=='undefined' && cookies.CSS_Website) {
-      console.log(typeof(cookies.CSS_Website));
-      setAuthenticated(true)
-    }
-    else{
-      console.log(cookies);
+  axios.defaults.withCredentials = true;
+  useEffect(() => {
+    if (cookies.CSS_Website !== "undefined" && cookies.CSS_Website) {
+      console.log(typeof cookies.CSS_Website);
+      setAuthenticated(true);
+    } else {
+      console.log(cookies.CSS_Website);
+      // console.log(Cookies.get("CSS_Website"));
       console.log(document.cookie);
-      setAuthenticated(false)
+      setAuthenticated(false);
     }
-  },[cookies.CSS_Website])
+  }, [cookies.CSS_Website]);
 
   return (
     <>
       <CookiesProvider>
-
-      <Navbar setIn={setAuthenticated} In={authenticated} />
-      {authenticated ? (
-        <div className="App">
-          <div className="controlBoard">
-            <p
-              id="eve"
-              onClick={() => setPageRoute(!pageRoute)}
-              className={pageRoute ? null : "activeLink"}
+        <Navbar setIn={setAuthenticated} In={authenticated} />
+        {authenticated ? (
+          <div className="App">
+            <div className="controlBoard">
+              <p
+                id="eve"
+                onClick={() => setPageRoute(!pageRoute)}
+                className={pageRoute ? null : "activeLink"}
               >
-              Events
-            </p>
-            <p
-              id="mem"
-              onClick={() => setPageRoute(!pageRoute)}
-              className={pageRoute ? "activeLink" : null}
+                Events
+              </p>
+              <p
+                id="mem"
+                onClick={() => setPageRoute(!pageRoute)}
+                className={pageRoute ? "activeLink" : null}
               >
-              Members
-            </p>
+                Members
+              </p>
+            </div>
+            <div className="pages">
+              {pageRoute ? <MemberPage /> : <EventPage />}
+            </div>
+            {/* <AuthPage /> */}
           </div>
-          <div className="pages">
-            {pageRoute ? <MemberPage /> : <EventPage />}
-          </div>
-          {/* <AuthPage /> */}
-        </div>
-      ) : (
-        <Login setIn={setAuthenticated} In={authenticated} />
+        ) : (
+          <Login setIn={setAuthenticated} In={authenticated} />
         )}
-        </CookiesProvider>
+      </CookiesProvider>
     </>
   );
 }

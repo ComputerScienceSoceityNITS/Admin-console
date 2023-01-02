@@ -31,6 +31,7 @@ img {
 }
 
 .createPage input,
+.createPage textarea,
 .createPage fieldset div input {
     border: none;
     outline: none;
@@ -42,6 +43,7 @@ img {
 }
 
 .createPage input:focus,
+.createPage textarea:focus,
 .createPage fieldset div input:focus {
     border-bottom: 3px solid orange;
     background: whitesmoke;

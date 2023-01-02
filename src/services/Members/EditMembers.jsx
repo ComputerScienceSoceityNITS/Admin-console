@@ -3,7 +3,7 @@ import React from 'react'
 import { toast } from 'react-toastify';
 import ServerUrl from '../../ServerUrl';
 
-const EditMembers = async (sendForm, id) => {
+const EditMembers = async (sendForm, id, setDataTransfer) => {
 
   try {
     const res = await axios.put(
@@ -11,16 +11,18 @@ const EditMembers = async (sendForm, id) => {
       sendForm,
       // sendData,
       {
-        headers:{"Content-Type":"multipart/form-data"}
+        headers: { "Content-Type": "multipart/form-data" }
       }
     );
-    toast.success("Members Edited")
+    toast.success("Member Updated");
+    setDataTransfer(false);
     console.log(id);
     return res.data.members
 
   } catch (err) {
     console.log(err);
-    toast.error("There's an error")
+    toast.error("There's an error");
+    setDataTransfer(false);
   }
 
 }

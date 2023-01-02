@@ -22,9 +22,10 @@ nav h2 {
 
 nav .btn {
     margin: 40px;
-    border:1px solid white ;
+    border: 1px solid white;
 }
+
 nav .btn:hover {
     margin: 40px;
-    border:1px solid white ;
+    border: 1px solid white;
 }

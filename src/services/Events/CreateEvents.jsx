@@ -3,22 +3,25 @@ import React from 'react'
 import ServerUrl from '../../ServerUrl';
 import { toast } from 'react-toastify';
 
-const CreateEvents = async (sendForm) => {
+const CreateEvents = async (sendForm, setDataTransfer) => {
   try {
     const res = await axios.post(
       `${ServerUrl}/event/new`,
       sendForm,
       // sendData,
       {
-        headers:{"Content-Type":"multipart/form-data"}
+        headers: { "Content-Type": "multipart/form-data" }
       }
     );
-    toast.success("Event Created")
-    return res.data.members
+    setDataTransfer(false);
+    toast.success("Event Created");
+    console.log({ res });
+    return res.data;
 
   } catch (err) {
     console.log(err);
-    toast.error("There's an error")
+    setDataTransfer(false);
+    toast.error("There's an error");
   }
 }
 

@@ -2,43 +2,57 @@ import React, { useState } from "react";
 import axios from "axios";
 import EditEvents from "../services/Events/EditEvents";
 import { useEffect } from "react";
+import Loader from "../components/loader";
 
-const EventUpdate = ({ id,updateEvent, setupdateEvent,datasent }) => {
+const EventUpdate = ({ id, updateEvent, setupdateEvent, datasent }) => {
   const [name, setName] = useState();
   const [description, setDescription] = useState();
-  const [image, setImage] = useState();
+  const [images, setImages] = useState();
   const [formLink, setFormLink] = useState();
   const [startTime, setStartTime] = useState();
   const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState(); //default:Date.now
+  const [dataTransfer, setDataTransfer] = useState(false);
 
-  useEffect(()=>{
+  useEffect(() => {
     setName(datasent.name);
     setDescription(datasent.description);
+    setImages(datasent.images);
     setFormLink(datasent.formLink);
     setStartTime(datasent.startTime);
-    setStartDate(datasent.startDate);
-  },[datasent])
+    // console.log({ datasent });
+    setStartDate(datasent.startDate.split('T')[0]);
+    setEndDate(datasent.endDate.split('T')[0]);
+    const imageBody = document.querySelector(".imageUploaded");
 
-  const handleSubmit = ()=> {
+  }, [datasent])
+
+  const handleSubmit = () => {
 
     const sendForm = new FormData()
-    sendForm.set("name",name);
-    if (image){
-      console.log(image);
-      sendForm.set("images",image);
+    sendForm.set("name", name);
+    if (images) {
+      console.log(images);
+      sendForm.set("images", images);
     }
-    sendForm.set("description",description);
-    sendForm.set("formLink",formLink);
-    sendForm.set("startTime",startTime);
-    sendForm.set("startDate",startDate);
-
-    const events = EditEvents(sendForm, id )
+    sendForm.set("description", description);
+    sendForm.set("formLink", formLink);
+    sendForm.set("startTime", startTime);
+    sendForm.set("startDate", startDate);
+    sendForm.set("endDate", endDate);
+    setDataTransfer(true);
+    const events = EditEvents(sendForm, id, setDataTransfer);
 
   }
 
 
   return (
     <div className="createPage">
+      {dataTransfer && (
+        <div className="dataTransfer">
+          <Loader />
+        </div>
+      )}
       <p className="btn close" onClick={() => setupdateEvent(!updateEvent)}>
         X
       </p>
@@ -51,25 +65,47 @@ const EventUpdate = ({ id,updateEvent, setupdateEvent,datasent }) => {
         accept="image"
         onChange={(e) => setName(e.target.value)}
       />
-      <label htmlFor="description">Description</label>
-      <textarea
-        rows="4" 
-        cols="50"
-        name="description"
-        id="description"
-        accept="image"
-        onChange={(e) => setDescription(e.target.value)}
-      >{description}</textarea>
 
-      <label htmlFor="image">Images</label>
+      <label htmlFor="images">Images</label>
       <input
         type="file"
         name="image"
         id="image"
+        multiple
         // value={image}
-        onChange={(e) => setImage(e.target.files[0])}
+        title="Uploaded Image"
+        onChange={(e) => {
+          const files = Array.from(e.target.files);
+          const imageBody = document.querySelector(".imageUploaded");
+          while (imageBody.firstChild) {
+            imageBody.removeChild(imageBody.lastChild);
+          }
+          setImages([]);
+          files.forEach((file) => {
+            const reader = new FileReader();
+
+            reader.onload = () => {
+              if (reader.readyState === 2) {
+                setImages((old) => [...old, reader.result]);
+                const links = document.createElement("a");
+                links.href = reader.result;
+                links.target = "_blank";
+                const image = document.createElement("img");
+                image.src = reader.result;
+                links.appendChild(image);
+                imageBody.appendChild(links);
+              }
+            };
+
+            reader.readAsDataURL(file);
+          });
+        }}
       />
-        <label htmlFor="formLink">Form Link</label>
+      <label htmlFor="imgupload">Image to be Uploaded</label>
+      <div className="imageUploaded" id="imgupload">
+
+      </div>
+      <label htmlFor="formLink">Form Link</label>
       <input
         type="text"
         name="formLink"
@@ -77,23 +113,50 @@ const EventUpdate = ({ id,updateEvent, setupdateEvent,datasent }) => {
         value={formLink}
         onChange={(e) => setFormLink(e.target.value)}
       />
-      <label htmlFor="startTime">Start Time</label>
-      <input
-        type="text"
-        name="startTime"
-        id="startTime"
-        value={startTime}
-        onChange={(e) => setStartTime(e.target.value)}
-      />
-      <label htmlFor="startDate">Year</label>
-      <input
-        type="date"
-        name="startDate"
-        id="startDate"
-        value={startDate}
-        onChange={(e) => setStartDate(e.target.value)}
-      />
-      <button className="btn" onClick={()=>{handleSubmit()}}>
+      <fieldset>
+        <legend>Event Date-Time</legend>
+        <div>
+          <label htmlFor="startTime">Start Time</label>
+          <input
+            type="time"
+            name="startTime"
+            id="startTime"
+            value={startTime}
+            onChange={(e) => setStartTime(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="startDate">Start Date</label>
+          <input
+            type="date"
+            name="startDate"
+            id="startDate"
+            value={startDate}
+            onChange={(e) => setStartDate(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="startDate">End Date</label>
+          <input
+            type="date"
+            name="startDate"
+            id="startDate"
+            value={endDate}
+            onChange={(e) => setEndDate(e.target.value)}
+          />
+        </div>
+      </fieldset>
+      <label htmlFor="description">Description</label>
+      <textarea
+        rows="8"
+        cols="110"
+        name="description"
+        id="description"
+        accept="image"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      >{description}</textarea>
+      <button className="btn" onClick={() => { handleSubmit() }}>
         Update
       </button>
     </div>

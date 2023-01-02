@@ -2,46 +2,51 @@ import React, { useState } from "react";
 import axios from "axios";
 import EditMembers from "../services/Members/EditMembers";
 import { useEffect } from "react";
+import Loader from "../components/loader";
 
-const MemberUpdate = ({ id,updateMember, setupdateMember,datasent }) => {
+const MemberUpdate = ({ id, updateMember, setupdateMember, datasent }) => {
   // console.log(`${i}`);    
   const [name, setName] = useState();
-  // let [image, setImage] = useState(datasent.avatar.url);
   const [image, setImage] = useState();
   const [role, setRole] = useState();
   const [session, setSession] = useState();
   const [year, setYear] = useState();
   const [social, setSocial] = useState({});
+  const [dataTransfer, setDataTransfer] = useState(false);
 
-  useEffect(()=>{
+  useEffect(() => {
     setName(datasent.name);
     setRole(datasent.role);
     setSession(datasent.session);
     setYear(datasent.year);
-    setSocial(datasent.socialMedia?{"instagram":`${datasent.socialMedia.instagram}`,"linkedin":`${datasent.socialMedia.linkedin}`,"github":`${datasent.socialMedia.github}`,
-    "facebook":`${datasent.socialMedia.facebook}`}:undefined);
-  },[datasent])
+    setSocial(datasent.socialMedia ? {
+      "instagram": `${datasent.socialMedia.instagram}`, "linkedin": `${datasent.socialMedia.linkedin}`, "github": `${datasent.socialMedia.github}`,
+      "facebook": `${datasent.socialMedia.facebook}`
+    } : undefined);
+  }, [datasent]);
 
-  const handleSubmit = ()=> {
-
+  const handleSubmit = () => {
+    setDataTransfer(true);
     const sendForm = new FormData()
-    sendForm.set("name",name);
-    if (image){
+    sendForm.set("name", name);
+    if (image) {
       console.log(image);
-      sendForm.set("avatar",image);
+      sendForm.set("avatar", image);
     }
-    sendForm.set("role",role);
-    sendForm.set("session",session);
-    sendForm.set("year",year);
-    sendForm.set("socialMedia",JSON.stringify(social));
+    sendForm.set("role", role);
+    sendForm.set("session", session);
+    sendForm.set("year", year);
+    sendForm.set("socialMedia", JSON.stringify(social));
 
-    const members = EditMembers(sendForm, id )
-
+    const members = EditMembers(sendForm, id, setDataTransfer);
   }
-
-
   return (
     <div className="createPage">
+      {dataTransfer && (
+        <div className="dataTransfer">
+          <Loader />
+        </div>
+      )}
       <p className="btn close" onClick={() => setupdateMember(!updateMember)}>
         X
       </p>
@@ -60,7 +65,16 @@ const MemberUpdate = ({ id,updateMember, setupdateMember,datasent }) => {
         name="image"
         id="image"
         // value={image}
-        onChange={(e) => setImage(e.target.files[0])}
+        onChange={(e) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(e.target.files[0]);
+          console.log({ reader });
+          reader.addEventListener("load", (e) => {
+            const image = document.querySelector(".imageUpload");
+            image.attributes.src.value = e.target.result;
+          });
+          setImage(e.target.files[0]);
+        }}
       />
       <label htmlFor="role">Role</label>
       <input
@@ -94,7 +108,7 @@ const MemberUpdate = ({ id,updateMember, setupdateMember,datasent }) => {
             type="url"
             name="instagram"
             id="instagram"
-            value={social.instagram}
+            value={social && social.instagram}
             onChange={(e) =>
               setSocial({ ...social, instagram: e.target.value })
             }
@@ -106,7 +120,7 @@ const MemberUpdate = ({ id,updateMember, setupdateMember,datasent }) => {
             type="url"
             name="linkedin"
             id="linkedin"
-            value={social.linkedin}
+            value={social && social.linkedin}
             onChange={(e) => setSocial({ ...social, linkedin: e.target.value })}
           />
         </div>
@@ -116,7 +130,7 @@ const MemberUpdate = ({ id,updateMember, setupdateMember,datasent }) => {
             type="url"
             name="github"
             id="github"
-            value={social.github}
+            value={social && social.github}
             onChange={(e) => setSocial({ ...social, github: e.target.value })}
           />
         </div>
@@ -126,12 +140,13 @@ const MemberUpdate = ({ id,updateMember, setupdateMember,datasent }) => {
             type="url"
             name="facebook"
             id="facebook"
-            value={social.facebook}
+            value={social && social.facebook}
             onChange={(e) => setSocial({ ...social, facebook: e.target.value })}
           />
         </div>
       </fieldset>
-      <button className="btn" onClick={()=>{handleSubmit()}}>
+      <img src={datasent.avatar && datasent.avatar.url} alt="" className="imageUpload" />
+      <button className="btn" onClick={() => { handleSubmit() }}>
         Update
       </button>
     </div>

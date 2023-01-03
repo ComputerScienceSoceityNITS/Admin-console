@@ -9,7 +9,7 @@ const Login = ({ setIn, In }) => {
   const ServerUrl = process.env.REACT_APP_SERVER_URL;
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [setCookie] = useCookies(['css']);
+  const [cookies, setCookie, removeCookie] = useCookies(['css']);
 
 
   const handleLogin = (e) => {

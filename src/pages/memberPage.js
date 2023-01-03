@@ -7,7 +7,7 @@ import GetMembers from "../services/Members/GetMembers";
 import "toastify-js/src/toastify.css";
 import { toast } from "react-toastify";
 
-const MemberPage = () => {
+const MemberPage = ({ mode }) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [addMember, setAddMember] = useState(false);
@@ -85,12 +85,15 @@ const MemberPage = () => {
           </option>
           <option value="20-21">20-21</option>
           <option value="19-20">19-20</option>
-          <option value="18-19">18-19</option>
         </select>
       </div>
-      {loading ? <Loader /> : <MemberGrid data={data} />}
+      {loading ? <Loader /> : <MemberGrid data={data} mode={mode} />}
       {addMember && (
-        <MemberCreate addMember={addMember} setAddMember={setAddMember} />
+        <MemberCreate
+          addMember={addMember}
+          setAddMember={setAddMember}
+          mode={mode}
+        />
       )}
     </div>
   );

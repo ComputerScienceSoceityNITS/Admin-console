@@ -3,16 +3,16 @@ import React, { useState } from "react";
 
 import DeleteEvents from "../services/Events/DeleteEvents";
 
-const EventGrid = ({ data }) => {
+const EventGrid = ({ data, mode }) => {
 
   return (
-    <div className="table">
-      {data ? data.map((event) => <RowElement data={event} />) : ''}
+    <div className={mode ? "table bright" : "table dark"}>
+      {data ? data.map((event) => <RowElement data={event} mode={mode} />) : ''}
     </div>
   );
 };
 
-const RowElement = ({ data }) => {
+const RowElement = ({ data, mode }) => {
   const [updateEvent, setupdateEvent] = useState(false);
   const [clickedRow, setClickedRow] = useState(false);
   const handleDelete = (id) => {
@@ -22,7 +22,7 @@ const RowElement = ({ data }) => {
   return (
     <div key={data.id}>
       <div
-        className={clickedRow ? "e_expand" : "e_row"}
+        className={clickedRow ? "e_row expand" : "e_row shrink"}
         key={data.id}
         onClick={() => setClickedRow(!clickedRow)}
         draggable
@@ -56,6 +56,7 @@ const RowElement = ({ data }) => {
           updateEvent={updateEvent}
           setupdateEvent={setupdateEvent}
           datasent={data}
+          mode={mode}
         />
       )}
     </div>

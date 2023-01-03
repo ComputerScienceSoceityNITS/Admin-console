@@ -4,6 +4,28 @@
     align-items: center;
 }
 
+/* .expand {
+    --height: unset;
+}
+
+.shrink {
+    --height: 7rem;
+} */
+
+.bright {
+    --gray: white;
+    --boxshadow: rgba(109, 109, 109, 0.9);
+    --CPbg1: rgba(255, 203, 203, 0.95);
+    --CPbg2: rgba(245, 245, 245, 0.95);
+}
+
+.dark {
+    --gray: rgba(27, 60, 84, 0.95);
+    --boxshadow: rgba(53, 53, 53, 0.9);
+    --CPbg1: rgba(32, 39, 62, 0.95);
+    --CPbg2: rgba(37, 47, 75, 0.95);
+}
+
 img {
     height: 5rem;
     width: 5rem;
@@ -15,16 +37,17 @@ img {
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 1rem;
-    background: radial-gradient(circle at top, rgba(255, 203, 203, 0.95), rgba(245, 245, 245, 0.95));
+    background: radial-gradient(circle at top, var(--CPbg1), var(--CPbg2));
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: flex-start;
     gap: .5rem;
     z-index: 10;
-    border: 2px solid white;
+    border: 2px solid var(--gray);
     border-radius: 0.5rem;
-    box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 7px 2px var(--boxshadow);
+    color: var(--black);
 }
 
 .createPage input,
@@ -33,24 +56,25 @@ img {
     border: none;
     outline: none;
     border-bottom: 3px solid black;
-    background: white;
+    background: var(--whitesmoke);
     padding: .5rem;
     border-radius: .2rem;
     transition: all 0.3s ease-in-out;
+    color: var(--black);
 }
 
 .createPage input:focus,
 .createPage textarea:focus,
 .createPage fieldset div input:focus {
     border-bottom: 3px solid orange;
-    background: whitesmoke;
+    background: var(--gray);
 }
 
 .createPage fieldset {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    border: 1px dashed black;
+    border: 1px dashed var(--black);
 }
 
 .createPage fieldset div {
@@ -81,6 +105,7 @@ img {
     flex-wrap: wrap;
     gap: 1rem;
     padding: .5rem .5rem;
+    color: var(--black);
 }
 
 .row {
@@ -89,13 +114,13 @@ img {
     justify-content: flex-start;
     flex-wrap: wrap;
     align-items: center;
-    background: white;
+    background: var(--gray);
     gap: 1rem;
     overflow-y: hidden;
     height: 7rem;
     padding: 1rem;
     border-radius: 0.5rem;
-    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 5px 1px var(--boxshadow);
     transition: all 0.3s ease-in-out;
     cursor: pointer;
 }
@@ -116,14 +141,14 @@ a:hover {
 .row p,
 .row div {
     padding: 0.5rem;
-    background: white;
+    background: var(--gray);
     border-radius: .2rem;
 }
 
 .row p:hover,
 .row div:hover {
     padding: 0.5rem;
-    background: whitesmoke;
+    background: var(--whitesmoke);
     border-radius: .2rem;
 }
 

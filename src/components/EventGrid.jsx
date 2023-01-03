@@ -1,6 +1,5 @@
 import EventUpdate from "./EventUpdate";
 import React, { useState } from "react";
-import axios from "axios";
 
 import DeleteEvents from "../services/Events/DeleteEvents";
 
@@ -17,7 +16,6 @@ const RowElement = ({ data }) => {
   const [updateEvent, setupdateEvent] = useState(false);
   const [clickedRow, setClickedRow] = useState(false);
   const handleDelete = (id) => {
-    console.log(id);
     DeleteEvents(id);
   };
 
@@ -36,7 +34,6 @@ const RowElement = ({ data }) => {
             return <a href={img.url} target="_blank" rel="noopener noreferrer"><img src={img.url} alt="img" title="images" className="eventImages" /></a>
           })
         }
-        {/* <img src={data.images[i].url} alt="img" title="images" /> */}
         <p title="formLink"><a href={data.formLink} target="_blank" title="form" rel="noopener noreferrer">Form Link</a></p>
         <p title="startTime">Start Time : <b id="startTime">{data.startTime}</b></p>
         <p title="start_end_Date">{data.startDate.split("T")[0]} to {data.endDate.split("T")[0]}</p>

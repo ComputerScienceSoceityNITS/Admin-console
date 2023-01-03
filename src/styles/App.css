@@ -28,7 +28,6 @@
 
 .App {
     width: 100vw;
-    /* height: 100vh; */
     height: 91.5vh;
     background: rgb(221, 221, 221);
     display: flex;
@@ -78,7 +77,6 @@
 }
 
 .App>.pages {
-    /* margin-top: 3rem; */
     width: 100vw;
     height: 91vh;
     overflow: auto;
@@ -126,7 +124,6 @@
     border: none;
     outline: none;
     margin: 0 0.5rem;
-    /* border-bottom: 5px solid black; */
     background: white;
     padding: .5rem;
     border-radius: .2rem;

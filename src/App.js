@@ -6,24 +6,19 @@ import Navbar from "./components/Navbar";
 import Login from "./components/login";
 import axios from "axios";
 import { useEffect } from "react";
-import { CookiesProvider, get } from "react-cookie";
+import { CookiesProvider } from "react-cookie";
 import useCookies from "react-cookie/cjs/useCookies";
-import { Cookies } from "react-cookie";
 
 function App() {
   const [pageRoute, setPageRoute] = useState(true);
   const [authenticated, setAuthenticated] = useState(false);
-  const [cookies, setCookie, removeCookie] = useCookies(["css"]);
+  const [cookies] = useCookies(["css"]);
 
   axios.defaults.withCredentials = true;
   useEffect(() => {
     if (cookies.CSS_Website !== "undefined" && cookies.CSS_Website) {
-      console.log(typeof cookies.CSS_Website);
       setAuthenticated(true);
     } else {
-      console.log(cookies.CSS_Website);
-      // console.log(Cookies.get("CSS_Website"));
-      console.log(document.cookie);
       setAuthenticated(false);
     }
   }, [cookies.CSS_Website]);

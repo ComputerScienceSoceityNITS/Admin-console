@@ -2,7 +2,7 @@ import React from 'react';
 import "../styles/Navbar.css";
 import { useCookies } from 'react-cookie';
 const Navbar = ({ setIn, In }) => {
-  const [setCookie] = useCookies(['css']);
+  const [cookies, setCookie, removeCookie] = useCookies(['css']);
 
   const handleLogout = () => {
     setCookie('CSS_Website', undefined, { path: '/' })

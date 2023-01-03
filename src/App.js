@@ -12,7 +12,7 @@ import useCookies from "react-cookie/cjs/useCookies";
 function App() {
   const [pageRoute, setPageRoute] = useState(true);
   const [authenticated, setAuthenticated] = useState(false);
-  const [cookies] = useCookies(["css"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["css"]);
 
   axios.defaults.withCredentials = true;
   useEffect(() => {

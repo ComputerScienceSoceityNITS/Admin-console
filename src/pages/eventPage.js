@@ -6,7 +6,6 @@ import EventCreate from "../components/EventCreate";
 import Loader from "../components/loader";
 import GetEvents from "../services/Events/GetEvents";
 import "toastify-js/src/toastify.css";
-import DeleteEvents from "../services/Events/DeleteEvents";
 import { toast } from "react-toastify";
 
 const EventPage = () => {
@@ -16,19 +15,15 @@ const EventPage = () => {
   const [searchText, setSearchText] = useState("");
   const [dataReserved, setDataReserved] = useState([]);
 
-  const [events, setEvents] = useState([]);
-
   const fetch = async () => {
     setLoading(true);
     const events = await GetEvents();
     setData(events);
     setLoading(false);
-    console.log(events);
   };
 
   useEffect(() => {
     fetch();
-    console.log(data);
   }, []);
 
   const handleSearch = (e) => {
@@ -47,7 +42,6 @@ const EventPage = () => {
       element.startDate.toLowerCase().includes(searchText.toLowerCase())
     );
     const list_final = list1.concat(list2, list4);
-    console.log(list_final);
     if (list_final.length > 0) {
       setData(list_final);
     } else {

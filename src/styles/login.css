@@ -36,7 +36,6 @@ h1 {
     font-size: 3rem;
     font-weight: 900;
     color: #000;
-    /* color: #fff; */
 }
 
 input {
@@ -45,7 +44,6 @@ input {
     border-bottom: 2px solid gray;
     background: transparent;
     padding: .5rem;
-    /* border-radius: .2rem; */
     transition: all 0.3s ease-in-out;
     width: 15rem;
 }
@@ -58,7 +56,6 @@ input {
 
 input:focus {
     border-bottom: 2px solid orange;
-    /* backdrop-filter: blur(50px); */
 }
 
 .Form>form>.btn {

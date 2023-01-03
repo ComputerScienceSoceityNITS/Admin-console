@@ -1,6 +1,5 @@
 import MemberUpdate from "./MemberUpdate";
 import React, { useState } from "react";
-import axios from "axios";
 import {
   AiFillLinkedin,
   AiFillInstagram,
@@ -20,21 +19,9 @@ const MemberGrid = ({ data }) => {
 
 const RowElement = ({ data }) => {
   const [updateMember, setupdateMember] = useState(false);
-
   const [clickedRow, setClickedRow] = useState(false);
+
   const handleDelete = (id) => {
-    console.log(id);
-    // async function del() {
-    //   try {
-    //     const res = await axios.delete(
-    //       `http://localhost:5000/api/admin/member/${id}`
-    //     );
-    //     console.log(res);
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // }
-    // del();
     DeleteMembers(id);
   };
 

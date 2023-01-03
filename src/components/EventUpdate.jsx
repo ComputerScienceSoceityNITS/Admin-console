@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import EditEvents from "../services/Events/EditEvents";
 import { useEffect } from "react";
 import Loader from "../components/loader";
@@ -20,7 +19,6 @@ const EventUpdate = ({ id, updateEvent, setupdateEvent, datasent }) => {
     setImages(datasent.images);
     setFormLink(datasent.formLink);
     setStartTime(datasent.startTime);
-    // console.log({ datasent });
     setStartDate(datasent.startDate.split('T')[0]);
     setEndDate(datasent.endDate.split('T')[0]);
     const imageBody = document.querySelector(".imageUploaded");
@@ -32,7 +30,6 @@ const EventUpdate = ({ id, updateEvent, setupdateEvent, datasent }) => {
     const sendForm = new FormData()
     sendForm.set("name", name);
     if (images) {
-      console.log(images);
       sendForm.set("images", images);
     }
     sendForm.set("description", description);
@@ -72,7 +69,6 @@ const EventUpdate = ({ id, updateEvent, setupdateEvent, datasent }) => {
         name="image"
         id="image"
         multiple
-        // value={image}
         title="Uploaded Image"
         onChange={(e) => {
           const files = Array.from(e.target.files);

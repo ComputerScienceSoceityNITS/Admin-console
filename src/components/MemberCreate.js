@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import CreateMembers from "../services/Members/CreateMembers";
-import axios from "axios";
-import useCookies from "react-cookie/cjs/useCookies";
 import Loader from "../components/loader";
 
 const MemberCreate = ({ addMember, setAddMember }) => {
@@ -12,7 +10,6 @@ const MemberCreate = ({ addMember, setAddMember }) => {
   const [year, setYear] = useState(2);
   const [social, setSocial] = useState({});
   const [dataTransfer, setDataTransfer] = useState(false);
-  let socialTemp = {};
 
   function handleSubmit(e) {
     const sendForm = new FormData();
@@ -50,7 +47,6 @@ const MemberCreate = ({ addMember, setAddMember }) => {
         type="file"
         name="image"
         id="image"
-        // value={image}
         title="Uploaded Image"
         onChange={(e) => {
           const reader = new FileReader();

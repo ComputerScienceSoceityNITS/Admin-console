@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import axios from "axios";
 import EditMembers from "../services/Members/EditMembers";
 import { useEffect } from "react";
 import Loader from "../components/loader";
 
 const MemberUpdate = ({ id, updateMember, setupdateMember, datasent }) => {
-  // console.log(`${i}`);    
   const [name, setName] = useState();
   const [image, setImage] = useState();
   const [role, setRole] = useState();
@@ -30,7 +28,6 @@ const MemberUpdate = ({ id, updateMember, setupdateMember, datasent }) => {
     const sendForm = new FormData()
     sendForm.set("name", name);
     if (image) {
-      console.log(image);
       sendForm.set("avatar", image);
     }
     sendForm.set("role", role);

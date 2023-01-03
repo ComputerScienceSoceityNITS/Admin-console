@@ -1,14 +1,12 @@
 import axios from 'axios';
-import React from 'react'
 import { toast } from 'react-toastify';
-import ServerUrl from '../../ServerUrl';
 
 const CreateMembers = async (sendForm, setDataTransfer) => {
+  const ServerUrl = process.env.REACT_APP_SERVER_URL;
   try {
     const res = await axios.post(
       `${ServerUrl}/member/new`,
       sendForm,
-      // sendData,
       {
         headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true
@@ -19,7 +17,6 @@ const CreateMembers = async (sendForm, setDataTransfer) => {
     return res.data.members
 
   } catch (err) {
-    console.log(err);
     toast.error("There's an error");
     setDataTransfer(false);
   }

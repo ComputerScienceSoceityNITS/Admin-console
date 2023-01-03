@@ -5,7 +5,6 @@ import MemberCreate from "../components/MemberCreate";
 import Loader from "../components/loader";
 import GetMembers from "../services/Members/GetMembers";
 import "toastify-js/src/toastify.css";
-import DeleteMembers from "../services/Members/DeleteMembers";
 import { toast } from "react-toastify";
 
 const MemberPage = () => {
@@ -14,20 +13,16 @@ const MemberPage = () => {
   const [addMember, setAddMember] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [dataReserved, setDataReserved] = useState([]);
-  const [members, setMembers] = useState([]);
 
   const fetch = async (session) => {
     setLoading(true);
     const members = await GetMembers(session);
     setData(members);
     setLoading(false);
-    console.log(members);
   };
 
   useEffect(() => {
-    // fetch("https://tasty-crab-hosiery.cyclic.app/api/admin/members/21-22")
     fetch("21-22"); // for local testing, use the default session
-    console.log(data);
   }, []);
 
   const handleSearch = (e) => {
@@ -46,7 +41,6 @@ const MemberPage = () => {
       element.year.toLowerCase().includes(searchText.toLowerCase())
     );
     const list_final = list1.concat(list2, list4);
-    console.log(list_final);
     if (list_final.length > 0) {
       setData(list_final);
     } else {

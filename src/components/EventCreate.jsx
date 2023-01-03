@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import CreateEvents from "../services/Events/CreateEvents";
-import axios from "axios";
-import { render } from "@testing-library/react";
 import Loader from "../components/loader";
 
 const EventCreate = ({ addEvent, setAddEvent }) => {
@@ -26,7 +24,6 @@ const EventCreate = ({ addEvent, setAddEvent }) => {
     sendForm.set("endDate", endDate);
 
     const events = CreateEvents(sendForm, setDataTransfer);
-    console.log({ events, FormData, startDate, endDate, images });
   }
 
   return (
@@ -55,7 +52,6 @@ const EventCreate = ({ addEvent, setAddEvent }) => {
         name="image"
         id="image"
         multiple
-        // value={image}
         title="Uploaded Image"
         onChange={(e) => {
           const files = Array.from(e.target.files);
@@ -136,7 +132,6 @@ const EventCreate = ({ addEvent, setAddEvent }) => {
         accept="image"
         onChange={(e) => setDescription(e.target.value)}
       >{description}</textarea>
-      {/* <img className="imageUpload" src="" alt="" /> */}
       <button className="btn" onClick={handleSubmit}>
         Create
       </button>

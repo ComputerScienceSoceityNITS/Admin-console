@@ -8,7 +8,7 @@ import GetEvents from "../services/Events/GetEvents";
 import "toastify-js/src/toastify.css";
 import { toast } from "react-toastify";
 
-const EventPage = () => {
+const EventPage = ({ mode }) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [addEvent, setAddEvent] = useState(false);
@@ -69,9 +69,13 @@ const EventPage = () => {
           </form>
         </div>
       </div>
-      {loading ? <Loader /> : <EventGrid data={data} />}
+      {loading ? <Loader /> : <EventGrid data={data} mode={mode} />}
       {addEvent && (
-        <EventCreate addEvent={addEvent} setAddEvent={setAddEvent} />
+        <EventCreate
+          addEvent={addEvent}
+          setAddEvent={setAddEvent}
+          mode={mode}
+        />
       )}
     </div>
   );

@@ -7,17 +7,41 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+.bright {
+    --orange: orange;
+    --orange2: rgba(255, 166, 0, 0.9);
+    --white: white;
+    --bg: rgb(221, 221, 221);
+    --bg2: rgba(221, 221, 221, 0.9);
+    --activeLink: rgb(151, 98, 0);
+    --whitesmoke: whitesmoke;
+    --dataTransfer: rgba(255, 192, 203, 0.9);
+    --black: black;
+}
+
+.dark {
+    --orange: rgba(45, 77, 99, 1);
+    --orange2: rgba(45, 77, 99, .9);
+    --white: white;
+    --bg: rgb(28, 28, 56);
+    --bg2: rgba(28, 28, 56, 0.9);
+    --activeLink: rgba(45, 77, 99, 1);
+    --whitesmoke: rgb(70, 70, 70);
+    --dataTransfer: rgba(62, 48, 50, 0.9);
+    --black: white;
+}
+
 ::-webkit-scrollbar {
     width: 1rem;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: orange;
+    background: var(--orange);
     border-radius: 0.2rem;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: white;
+    background: var(--white);
     border-radius: 0.2rem;
 }
 
@@ -29,7 +53,7 @@
 .App {
     width: 100vw;
     height: 91.5vh;
-    background: rgb(221, 221, 221);
+    background: var(--bg);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,43 +61,57 @@
 }
 
 .App>.controlBoard {
-    width: 15rem;
-    background: orange;
-    height: 80%;
+    /* width: 5rem; */
+    position: absolute;
+    left: 0;
+    background: var(--orange2);
+    height: 70%;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    transition: all 0.2s ease-in;
+    backdrop-filter: blur(0.5rem);
+}
+
+.shrinkControl {
+    width: 5rem;
+}
+
+.expandControl {
+    width: 15rem;
 }
 
 .App>.controlBoard>p {
     width: 15rem;
-    padding: 1rem;
+    padding: 1rem 0;
     border-radius: 0.3rem;
     font-size: 1.5rem;
-    color: white;
-    background: orange;
+    color: var(--white);
+    background: transparent;
     width: 80%;
     transition: all 0.2s ease-in;
     cursor: pointer;
     font-weight: bold;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .App>.controlBoard>p:hover {
     width: 15rem;
-    padding: 1rem;
     border-radius: 0.5rem;
     font-size: 1.5rem;
-    color: orange;
-    background: rgb(221, 221, 221);
+    color: var(--orange2);
+    background: var(--bg);
     width: 80%;
 }
 
 .activeLink {
-    color: rgb(151, 98, 0) !important;
-    background: white !important;
+    color: var(--activeLink) !important;
+    background: var(--white) !important;
 }
 
 .App>.pages {
@@ -93,8 +131,8 @@
     border: none;
     padding: 0.5rem;
     border-radius: .2rem;
-    background: orange;
-    color: #ffffff;
+    background: var(--orange);
+    color: var(--white);
     transition: all 0.3s ease-in-out;
     cursor: pointer;
     margin: 0 0.5rem;
@@ -103,8 +141,8 @@
 
 .btn:hover {
     border: none;
-    background: white;
-    color: orange;
+    background: var(--white);
+    color: var(--orange);
 }
 
 .headBar {
@@ -116,7 +154,7 @@
     justify-content: center;
     align-items: center;
     padding: 1rem;
-    background: rgba(221, 221, 221, 0.9);
+    background: var(--bg2);
     backdrop-filter: blur(5px);
 }
 
@@ -124,7 +162,7 @@
     border: none;
     outline: none;
     margin: 0 0.5rem;
-    background: white;
+    background: var(--white);
     padding: .5rem;
     border-radius: .2rem;
     transition: all 0.3s ease-in-out;
@@ -132,8 +170,8 @@
 }
 
 .headBar input:focus {
-    border-bottom: 2px solid orange;
-    background: whitesmoke;
+    border-bottom: 2px solid var(--orange);
+    background: var(--whitesmoke);
 }
 
 .dataTransfer {
@@ -143,6 +181,19 @@
     width: 100%;
     height: 100%;
     z-index: 100;
-    background: rgba(255, 192, 203, 0.915);
+    background: var(--dataTransfer);
     overflow: hidden;
+}
+
+.socialIcons {
+    color: var(--black);
+}
+
+.modeIcons {
+    font-size: 2rem;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 0.3rem;
+    border: 2px solid var(--white);
+    margin-left: 1rem;
 }

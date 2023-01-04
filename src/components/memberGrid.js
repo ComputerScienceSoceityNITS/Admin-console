@@ -8,16 +8,18 @@ import {
 } from "react-icons/ai";
 import DeleteMembers from "../services/Members/DeleteMembers";
 
-const MemberGrid = ({ data }) => {
+const MemberGrid = ({ data, mode }) => {
   data.sort((a, b) => b.year - a.year);
   return (
-    <div className="table">
-      {data ? data.map((member) => <RowElement data={member} />) : ""}
+    <div className={mode ? "table bright" : "table dark"}>
+      {data
+        ? data.map((member) => <RowElement data={member} mode={mode} />)
+        : ""}
     </div>
   );
 };
 
-const RowElement = ({ data }) => {
+const RowElement = ({ data, mode }) => {
   const [updateMember, setupdateMember] = useState(false);
   const [clickedRow, setClickedRow] = useState(false);
 
@@ -28,7 +30,7 @@ const RowElement = ({ data }) => {
   return (
     <div key={data.id}>
       <div
-        className={clickedRow ? "row expand" : "row"}
+        className={clickedRow ? "row expand" : "row shrink"}
         key={data.id}
         onClick={() => setClickedRow(!clickedRow)}
         draggable
@@ -48,7 +50,7 @@ const RowElement = ({ data }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <AiFillInstagram />
+              <AiFillInstagram className="socialIcons" />
             </a>
           ) : (
             ""
@@ -59,7 +61,7 @@ const RowElement = ({ data }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <AiFillLinkedin />
+              <AiFillLinkedin className="socialIcons" />
             </a>
           ) : (
             ""
@@ -70,7 +72,7 @@ const RowElement = ({ data }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <AiFillGithub />
+              <AiFillGithub className="socialIcons" />
             </a>
           ) : (
             ""
@@ -81,7 +83,7 @@ const RowElement = ({ data }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <AiFillFacebook />
+              <AiFillFacebook className="socialIcons" />
             </a>
           ) : (
             ""
@@ -105,6 +107,7 @@ const RowElement = ({ data }) => {
           updateMember={updateMember}
           setupdateMember={setupdateMember}
           datasent={data}
+          mode={mode}
         />
       )}
     </div>

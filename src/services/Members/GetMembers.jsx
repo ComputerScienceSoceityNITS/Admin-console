@@ -10,7 +10,7 @@ const GetMembers = async (session) => {
     );
     return (res.data.members);
   } catch (err) {
-    toast.error(err)
+    toast.error(err);
   }
 }
 

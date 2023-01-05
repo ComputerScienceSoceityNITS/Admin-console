@@ -11,6 +11,7 @@ const DeleteEvents = async (id, reloadReq, setReloadReq) => {
     setReloadReq(!reloadReq);
     return res;
   } catch (err) {
+    toast.error(err);
     return err;
   }
 }

@@ -24,7 +24,7 @@ const EventPage = ({ mode }) => {
 
   useEffect(() => {
     fetch();
-  }, []);
+  }, [addEvent]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -67,6 +67,14 @@ const EventPage = ({ mode }) => {
               onChange={(e) => setSearchText(e.target.value)}
             />
           </form>
+        </div>
+        <div
+          className="btn"
+          onClick={() => {
+            fetch();
+          }}
+        >
+          Reload
         </div>
       </div>
       {loading ? <Loader /> : <EventGrid data={data} mode={mode} />}

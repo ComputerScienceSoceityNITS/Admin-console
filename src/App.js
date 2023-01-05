@@ -16,6 +16,7 @@ function App() {
   const [cookies, setCookie, removeCookie] = useCookies(["css"]);
   const [mode, setMode] = useState(true);
   const [clicked, setClicked] = useState(false);
+  const [logging, setLogging] = useState(false);
 
   axios.defaults.withCredentials = true;
 
@@ -43,9 +44,22 @@ function App() {
           In={authenticated}
           mode={mode}
           setMode={setMode}
+          logging={logging}
+          setLogging={setLogging}
         />
-        {authenticated ? (
+        {!logging ? (
           <div className={mode ? "App bright" : "App dark"}>
+            <div className="welcomeScreen">
+              <div>
+                <p>CSS</p>
+              </div>
+              <div>
+                <p>Admin</p>
+              </div>
+              <div>
+                <p>Console</p>
+              </div>
+            </div>
             <div
               className={
                 clicked
@@ -80,7 +94,13 @@ function App() {
             {/* <AuthPage /> */}
           </div>
         ) : (
-          <Login setIn={setAuthenticated} In={authenticated} mode={mode} />
+          <Login
+            setIn={setAuthenticated}
+            In={authenticated}
+            mode={mode}
+            logging={logging}
+            setLogging={setLogging}
+          />
         )}
       </CookiesProvider>
     </>

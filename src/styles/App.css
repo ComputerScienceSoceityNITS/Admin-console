@@ -197,3 +197,71 @@
     border: 2px solid var(--white);
     margin-left: 1rem;
 }
+
+.welcomeScreen {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background: var(--bg);
+    filter: invert(0.2);
+    gap: 1rem;
+    flex-direction: column;
+    animation: animateLoad 1.5s linear forwards;
+    animation-delay: 2s;
+    overflow-y: hidden;
+}
+
+.welcomeScreen div {
+    font-size: 5rem;
+    position: relative;
+    top: 0;
+    left: 0;
+    font-family: "Supermercado One", cursive;
+    color: var(--white);
+    font-weight: 900;
+    text-align: center;
+    /* animation: animateLoad1 1s linear forwards; */
+    overflow-y: hidden;
+    /* border-bottom: 5px solid var(--white); */
+
+}
+
+.welcomeScreen p {
+    font-size: 5rem;
+    position: relative;
+    top: 0;
+    left: 0;
+    font-family: "Supermercado One", cursive;
+    color: var(--white);
+    font-weight: 900;
+    text-align: center;
+    animation: animateLoad1 1s linear forwards;
+    overflow-y: hidden;
+    /* border-bottom: 5px solid var(--white); */
+}
+
+@keyframes animateLoad {
+    0% {
+        top: 0rem;
+    }
+
+    100% {
+        top: -100vh;
+    }
+}
+
+@keyframes animateLoad1 {
+    0% {
+        top: 5rem;
+    }
+
+    100% {
+        top: 0rem;
+    }
+}

@@ -3,7 +3,7 @@ import "../styles/Navbar.css";
 import { useCookies } from 'react-cookie';
 import { BsFillSunFill, BsMoonFill } from "react-icons/bs";
 
-const Navbar = ({ setIn, In, mode, setMode }) => {
+const Navbar = ({ setIn, In, mode, setMode, logging, setLogging }) => {
   const [cookies, setCookie, removeCookie] = useCookies(['css']);
 
   const handleLogout = () => {
@@ -13,6 +13,9 @@ const Navbar = ({ setIn, In, mode, setMode }) => {
   const handleMode = () => {
     setCookie('Mode', !mode, { path: '/' });
     setMode(!mode);
+  }
+  const handleLogin = () => {
+    setLogging(!logging);
   }
   return (
     <nav className={mode ? "bright" : "dark"} >
@@ -24,7 +27,8 @@ const Navbar = ({ setIn, In, mode, setMode }) => {
       <h2>CSS Admin Console</h2>
       <div>
         {In ?
-          (<button type="button" className="btn" onClick={handleLogout}>Log Out</button>) : ""
+          (<button type="button" className="btn" onClick={handleLogout}>Log Out</button>) :
+          (<button type="button" className="btn" onClick={handleLogin}>Log In</button>)
         }
       </div>
     </nav>

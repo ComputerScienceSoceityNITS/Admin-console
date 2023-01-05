@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CreateMembers from "../services/Members/CreateMembers";
 import Loader from "../components/loader";
 
-const MemberCreate = ({ addMember, setAddMember }) => {
+const MemberCreate = ({ addMember, setAddMember, reloadReq, setReloadReq }) => {
   const [name, setName] = useState("John");
   const [image, setImage] = useState();
   const [role, setRole] = useState("Dev-Wing");
@@ -20,7 +20,12 @@ const MemberCreate = ({ addMember, setAddMember }) => {
     sendForm.set("role", role);
     sendForm.set("avatar", image);
     setDataTransfer(true);
-    const members = CreateMembers(sendForm, setDataTransfer);
+    const members = CreateMembers(
+      sendForm,
+      setDataTransfer,
+      reloadReq,
+      setReloadReq
+    );
   }
 
   return (

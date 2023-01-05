@@ -8,23 +8,30 @@ import {
 } from "react-icons/ai";
 import DeleteMembers from "../services/Members/DeleteMembers";
 
-const MemberGrid = ({ data, mode }) => {
+const MemberGrid = ({ data, mode, reloadReq, setReloadReq }) => {
   data.sort((a, b) => b.year - a.year);
   return (
     <div className={mode ? "table bright" : "table dark"}>
       {data
-        ? data.map((member) => <RowElement data={member} mode={mode} />)
+        ? data.map((member) => (
+            <RowElement
+              data={member}
+              mode={mode}
+              reloadReq={reloadReq}
+              setReloadReq={setReloadReq}
+            />
+          ))
         : ""}
     </div>
   );
 };
 
-const RowElement = ({ data, mode }) => {
+const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
   const [updateMember, setupdateMember] = useState(false);
   const [clickedRow, setClickedRow] = useState(false);
 
   const handleDelete = (id) => {
-    DeleteMembers(id);
+    DeleteMembers(id, reloadReq, setReloadReq);
   };
 
   return (
@@ -108,6 +115,8 @@ const RowElement = ({ data, mode }) => {
           setupdateMember={setupdateMember}
           datasent={data}
           mode={mode}
+          reloadReq={reloadReq}
+          setReloadReq={setReloadReq}
         />
       )}
     </div>

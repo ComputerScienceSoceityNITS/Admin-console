@@ -3,7 +3,7 @@ import EditEvents from "../services/Events/EditEvents";
 import { useEffect } from "react";
 import Loader from "../components/loader";
 
-const EventUpdate = ({ id, updateEvent, setupdateEvent, datasent }) => {
+const EventUpdate = ({ id, updateEvent, setupdateEvent, datasent, reloadReq, setReloadReq }) => {
   const [name, setName] = useState();
   const [description, setDescription] = useState();
   const [images, setImages] = useState();
@@ -22,11 +22,9 @@ const EventUpdate = ({ id, updateEvent, setupdateEvent, datasent }) => {
     setStartDate(datasent.startDate.split('T')[0]);
     setEndDate(datasent.endDate.split('T')[0]);
     const imageBody = document.querySelector(".imageUploaded");
-
   }, [datasent])
 
   const handleSubmit = () => {
-
     const sendForm = new FormData()
     sendForm.set("name", name);
     if (images) {
@@ -38,8 +36,7 @@ const EventUpdate = ({ id, updateEvent, setupdateEvent, datasent }) => {
     sendForm.set("startDate", startDate);
     sendForm.set("endDate", endDate);
     setDataTransfer(true);
-    const events = EditEvents(sendForm, id, setDataTransfer);
-
+    const events = EditEvents(sendForm, id, setDataTransfer, reloadReq, setReloadReq);
   }
 
 
@@ -62,7 +59,6 @@ const EventUpdate = ({ id, updateEvent, setupdateEvent, datasent }) => {
         accept="image"
         onChange={(e) => setName(e.target.value)}
       />
-
       <label htmlFor="images">Images</label>
       <input
         type="file"
@@ -79,7 +75,6 @@ const EventUpdate = ({ id, updateEvent, setupdateEvent, datasent }) => {
           setImages([]);
           files.forEach((file) => {
             const reader = new FileReader();
-
             reader.onload = () => {
               if (reader.readyState === 2) {
                 setImages((old) => [...old, reader.result]);
@@ -92,14 +87,12 @@ const EventUpdate = ({ id, updateEvent, setupdateEvent, datasent }) => {
                 imageBody.appendChild(links);
               }
             };
-
             reader.readAsDataURL(file);
           });
         }}
       />
       <label htmlFor="imgupload">Image to be Uploaded</label>
       <div className="imageUploaded" id="imgupload">
-
       </div>
       <label htmlFor="formLink">Form Link</label>
       <input

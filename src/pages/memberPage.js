@@ -13,6 +13,8 @@ const MemberPage = ({ mode }) => {
   const [addMember, setAddMember] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [dataReserved, setDataReserved] = useState([]);
+  const [seSSion, setSeSSion] = useState("21-22");
+  const [reloadReq, setReloadReq] = useState(false);
 
   const fetch = async (session) => {
     setLoading(true);
@@ -22,8 +24,8 @@ const MemberPage = ({ mode }) => {
   };
 
   useEffect(() => {
-    fetch("21-22"); // for local testing, use the default session
-  }, []);
+    fetch(seSSion);
+  }, [reloadReq]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -53,6 +55,7 @@ const MemberPage = ({ mode }) => {
 
   const handleSelect = (e) => {
     const session = e.target.value;
+    setSeSSion(session);
     fetch(session);
   };
   return (
@@ -86,13 +89,32 @@ const MemberPage = ({ mode }) => {
           <option value="20-21">20-21</option>
           <option value="19-20">19-20</option>
         </select>
+        <div
+          className="btn"
+          onClick={() => {
+            fetch(seSSion);
+          }}
+        >
+          Reload
+        </div>
       </div>
-      {loading ? <Loader /> : <MemberGrid data={data} mode={mode} />}
+      {loading ? (
+        <Loader />
+      ) : (
+        <MemberGrid
+          data={data}
+          mode={mode}
+          reloadReq={reloadReq}
+          setReloadReq={setReloadReq}
+        />
+      )}
       {addMember && (
         <MemberCreate
           addMember={addMember}
           setAddMember={setAddMember}
           mode={mode}
+          reloadReq={reloadReq}
+          setReloadReq={setReloadReq}
         />
       )}
     </div>

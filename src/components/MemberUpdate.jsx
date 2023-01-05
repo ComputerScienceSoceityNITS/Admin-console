@@ -3,7 +3,7 @@ import EditMembers from "../services/Members/EditMembers";
 import { useEffect } from "react";
 import Loader from "../components/loader";
 
-const MemberUpdate = ({ id, updateMember, setupdateMember, datasent }) => {
+const MemberUpdate = ({ id, updateMember, setupdateMember, datasent, reloadReq, setReloadReq }) => {
   const [name, setName] = useState();
   const [image, setImage] = useState();
   const [role, setRole] = useState();
@@ -35,7 +35,7 @@ const MemberUpdate = ({ id, updateMember, setupdateMember, datasent }) => {
     sendForm.set("year", year);
     sendForm.set("socialMedia", JSON.stringify(social));
 
-    const members = EditMembers(sendForm, id, setDataTransfer);
+    const members = EditMembers(sendForm, id, setDataTransfer, reloadReq, setReloadReq);
   }
   return (
     <div className="createPage">

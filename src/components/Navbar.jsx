@@ -8,7 +8,7 @@ const Navbar = ({ setIn, In, mode, setMode }) => {
 
   const handleLogout = () => {
     setCookie('CSS_Website', undefined, { path: '/' });
-    setIn(false)
+    setIn(false);
   }
   const handleMode = () => {
     setCookie('Mode', !mode, { path: '/' });
@@ -24,7 +24,7 @@ const Navbar = ({ setIn, In, mode, setMode }) => {
       <h2>CSS Admin Console</h2>
       <div>
         {In ?
-          (<button type="button" className="btn" onClick={handleLogout}>Log Out</button>) : ""
+          (<button type="button" className="btn" onClick={handleLogout}>Log Out</button>) : ''
         }
       </div>
     </nav>

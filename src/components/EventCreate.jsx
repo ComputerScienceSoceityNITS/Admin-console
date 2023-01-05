@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CreateEvents from "../services/Events/CreateEvents";
 import Loader from "../components/loader";
 
-const EventCreate = ({ addEvent, setAddEvent }) => {
+const EventCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [images, setImages] = useState();
@@ -22,8 +22,7 @@ const EventCreate = ({ addEvent, setAddEvent }) => {
     sendForm.set("startTime", startTime);
     sendForm.set("startDate", startDate);
     sendForm.set("endDate", endDate);
-
-    const events = CreateEvents(sendForm, setDataTransfer);
+    const events = CreateEvents(sendForm, setDataTransfer, reloadReq, setReloadReq);
   }
 
   return (
@@ -45,7 +44,6 @@ const EventCreate = ({ addEvent, setAddEvent }) => {
         accept="image"
         onChange={(e) => setName(e.target.value)}
       />
-
       <label htmlFor="images">Images</label>
       <input
         type="file"
@@ -62,7 +60,6 @@ const EventCreate = ({ addEvent, setAddEvent }) => {
           setImages([]);
           files.forEach((file) => {
             const reader = new FileReader();
-
             reader.onload = () => {
               if (reader.readyState === 2) {
                 setImages((old) => [...old, reader.result]);
@@ -75,7 +72,6 @@ const EventCreate = ({ addEvent, setAddEvent }) => {
                 imageBody.appendChild(links);
               }
             };
-
             reader.readAsDataURL(file);
           });
         }}

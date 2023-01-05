@@ -35,6 +35,14 @@ function App() {
     }
   }, [cookies.Mode]);
 
+  const handleRouteChange = (e) => {
+    setPageRoute(!pageRoute);
+    if (e && e.stopPropagation) {
+      e.stopPropagation(); //for w3c browsers
+      e.cancelBubble = true; //for microsoft browsers
+    }
+  };
+
   return (
     <>
       <CookiesProvider>
@@ -57,14 +65,14 @@ function App() {
             >
               <p
                 id="eve"
-                onClick={() => setPageRoute(!pageRoute)}
+                onClick={handleRouteChange}
                 className={pageRoute ? null : "activeLink"}
               >
                 <MdEventNote /> {clicked ? "Events" : ""}
               </p>
               <p
                 id="mem"
-                onClick={() => setPageRoute(!pageRoute)}
+                onClick={handleRouteChange}
                 className={pageRoute ? "activeLink" : null}
               >
                 <MdGroups /> {clicked ? "Members" : ""}
@@ -77,7 +85,6 @@ function App() {
                 <EventPage mode={mode} />
               )}
             </div>
-            {/* <AuthPage /> */}
           </div>
         ) : (
           <Login setIn={setAuthenticated} In={authenticated} mode={mode} />

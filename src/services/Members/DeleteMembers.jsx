@@ -11,7 +11,7 @@ const DeleteMembers = async (id, reloadReq, setReloadReq) => {
     setReloadReq(!reloadReq);
     return res;
   } catch (err) {
-    toast.error(err);
+    toast.error(err.message);
     return err;
   }
 }

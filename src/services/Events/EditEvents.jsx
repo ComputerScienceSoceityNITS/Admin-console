@@ -17,7 +17,7 @@ const EditEvents = async (sendForm, id, setDataTransfer, reloadReq, setReloadReq
     return res.data.members
   } catch (err) {
     setDataTransfer(false);
-    toast.error(err)
+    toast.error(err.message)
   }
 }
 

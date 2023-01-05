@@ -11,7 +11,7 @@ const GetEvents = async () => {
 
     return (res.data.events);
   } catch (err) {
-    toast.error(err);
+    toast.error(err.message);
   }
 }
 

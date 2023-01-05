@@ -14,6 +14,7 @@ const MemberPage = ({ mode }) => {
   const [searchText, setSearchText] = useState("");
   const [dataReserved, setDataReserved] = useState([]);
   const [seSSion, setSeSSion] = useState("21-22");
+  const [reloadReq, setReloadReq] = useState(false);
 
   const fetch = async (session) => {
     setLoading(true);
@@ -24,7 +25,7 @@ const MemberPage = ({ mode }) => {
 
   useEffect(() => {
     fetch(seSSion);
-  }, [addMember]);
+  }, [reloadReq]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -97,12 +98,23 @@ const MemberPage = ({ mode }) => {
           Reload
         </div>
       </div>
-      {loading ? <Loader /> : <MemberGrid data={data} mode={mode} />}
+      {loading ? (
+        <Loader />
+      ) : (
+        <MemberGrid
+          data={data}
+          mode={mode}
+          reloadReq={reloadReq}
+          setReloadReq={setReloadReq}
+        />
+      )}
       {addMember && (
         <MemberCreate
           addMember={addMember}
           setAddMember={setAddMember}
           mode={mode}
+          reloadReq={reloadReq}
+          setReloadReq={setReloadReq}
         />
       )}
     </div>

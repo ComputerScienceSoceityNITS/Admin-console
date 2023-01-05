@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
-const EditEvents = async (sendForm, id, setDataTransfer) => {
-  const ServerUrl = process.env.REACT_APP_SERVER_URL;
 
+const EditEvents = async (sendForm, id, setDataTransfer, reloadReq, setReloadReq) => {
+  const ServerUrl = process.env.REACT_APP_SERVER_URL;
   try {
     const res = await axios.put(
       `${ServerUrl}/event/${id}`,
@@ -12,9 +12,9 @@ const EditEvents = async (sendForm, id, setDataTransfer) => {
       }
     );
     setDataTransfer(false);
-    toast.success("Event Updated")
+    setReloadReq(!reloadReq);
+    toast.success("Event Updated");
     return res.data.members
-
   } catch (err) {
     setDataTransfer(false);
     toast.error("There's an error")

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "../styles/EventPage.css";
 import EventGrid from "../components/EventGrid";
 import EventCreate from "../components/EventCreate";
-
 import Loader from "../components/loader";
 import GetEvents from "../services/Events/GetEvents";
 import "toastify-js/src/toastify.css";
@@ -14,6 +13,7 @@ const EventPage = ({ mode }) => {
   const [addEvent, setAddEvent] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [dataReserved, setDataReserved] = useState([]);
+  const [reloadReq, setReloadReq] = useState(false);
 
   const fetch = async () => {
     setLoading(true);
@@ -24,7 +24,7 @@ const EventPage = ({ mode }) => {
 
   useEffect(() => {
     fetch();
-  }, [addEvent]);
+  }, [reloadReq]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -77,12 +77,23 @@ const EventPage = ({ mode }) => {
           Reload
         </div>
       </div>
-      {loading ? <Loader /> : <EventGrid data={data} mode={mode} />}
+      {loading ? (
+        <Loader />
+      ) : (
+        <EventGrid
+          data={data}
+          mode={mode}
+          reloadReq={reloadReq}
+          setReloadReq={setReloadReq}
+        />
+      )}
       {addEvent && (
         <EventCreate
           addEvent={addEvent}
           setAddEvent={setAddEvent}
           mode={mode}
+          reloadReq={reloadReq}
+          setReloadReq={setReloadReq}
         />
       )}
     </div>

@@ -8,7 +8,7 @@ const Navbar = ({ setIn, In, mode, setMode }) => {
 
   const handleLogout = () => {
     setCookie('CSS_Website', undefined, { path: '/' });
-    setIn(false)
+    setIn(false);
   }
   const handleMode = () => {
     setCookie('Mode', !mode, { path: '/' });

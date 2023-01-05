@@ -1,22 +1,20 @@
 import EventUpdate from "./EventUpdate";
 import React, { useState } from "react";
-
 import DeleteEvents from "../services/Events/DeleteEvents";
 
-const EventGrid = ({ data, mode }) => {
-
+const EventGrid = ({ data, mode, reloadReq, setReloadReq }) => {
   return (
     <div className={mode ? "table bright" : "table dark"}>
-      {data ? data.map((event) => <RowElement data={event} mode={mode} />) : ''}
+      {data ? data.map((event) => <RowElement data={event} mode={mode} reloadReq={reloadReq} setReloadReq={setReloadReq} />) : ''}
     </div>
   );
 };
 
-const RowElement = ({ data, mode }) => {
+const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
   const [updateEvent, setupdateEvent] = useState(false);
   const [clickedRow, setClickedRow] = useState(false);
   const handleDelete = (id) => {
-    DeleteEvents(id);
+    DeleteEvents(id, reloadReq, setReloadReq);
   };
 
   return (
@@ -57,6 +55,8 @@ const RowElement = ({ data, mode }) => {
           setupdateEvent={setupdateEvent}
           datasent={data}
           mode={mode}
+          reloadReq={reloadReq}
+          setReloadReq={setReloadReq}
         />
       )}
     </div>

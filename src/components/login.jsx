@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { useCookies } from "react-cookie";
 
 
-const Login = ({ setIn, In, mode, logging, setLogging }) => {
+const Login = ({ setIn, In, mode }) => {
   const ServerUrl = process.env.REACT_APP_SERVER_URL;
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -27,7 +27,6 @@ const Login = ({ setIn, In, mode, logging, setLogging }) => {
         if (res.status === 201) {
           setCookie("CSS_Website", res.data.token, { path: '/' })
           setIn(true);
-          setLogging(!logging);
         } else {
           toast.error("Wrong email or password");
         }

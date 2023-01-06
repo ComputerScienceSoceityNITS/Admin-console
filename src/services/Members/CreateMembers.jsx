@@ -17,7 +17,7 @@ const CreateMembers = async (sendForm, setDataTransfer, reloadReq, setReloadReq)
     setReloadReq(!reloadReq);
     return res.data.members
   } catch (err) {
-    toast.error("There's an error");
+    toast.error(err.message);
     setDataTransfer(false);
   }
 

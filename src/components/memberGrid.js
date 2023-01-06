@@ -33,6 +33,13 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
   const handleDelete = (id) => {
     DeleteMembers(id, reloadReq, setReloadReq);
   };
+  const handleUpdateClick = (e) => {
+    setupdateMember(!updateMember);
+    if (e && e.stopPropagation) {
+      e.stopPropagation(); //for w3c browsers
+      e.cancelBubble = true; //for microsoft browsers
+    }
+  };
 
   return (
     <div key={data.id}>
@@ -97,10 +104,7 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
           )}
         </div>
         <div>
-          <button
-            className="btn"
-            onClick={() => setupdateMember(!updateMember)}
-          >
+          <button className="btn" onClick={handleUpdateClick}>
             Edit
           </button>
           <button className="btn" onClick={() => handleDelete(data._id)}>

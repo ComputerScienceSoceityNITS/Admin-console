@@ -31,7 +31,8 @@ const Login = ({ setIn, In, mode }) => {
           toast.error("Wrong email or password");
         }
       } catch (err) {
-        toast.error("error occured while login");
+        // console.log(err);
+        toast.error(err.message);
       }
     }
     login();

@@ -13,8 +13,16 @@ const EventGrid = ({ data, mode, reloadReq, setReloadReq }) => {
 const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
   const [updateEvent, setupdateEvent] = useState(false);
   const [clickedRow, setClickedRow] = useState(false);
+
   const handleDelete = (id) => {
     DeleteEvents(id, reloadReq, setReloadReq);
+  };
+  const handleUpdateClick = (e) => {
+    setupdateEvent(!updateEvent);
+    if (e && e.stopPropagation) {
+      e.stopPropagation(); //for w3c browsers
+      e.cancelBubble = true; //for microsoft browsers
+    }
   };
 
   return (
@@ -39,7 +47,7 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
         <div>
           <button
             className="btn"
-            onClick={() => setupdateEvent(!updateEvent)}
+            onClick={handleUpdateClick}
           >
             Edit
           </button>

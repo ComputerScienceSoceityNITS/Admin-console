@@ -17,7 +17,7 @@ const CreateEvents = async (sendForm, setDataTransfer, reloadReq, setReloadReq) 
     return res.data;
   } catch (err) {
     setDataTransfer(false);
-    toast.error("There's an error");
+    toast.error(err.message);
   }
 }
 

@@ -8,6 +8,7 @@ import { useCookies } from "react-cookie";
 const Login = ({ setIn, In, mode }) => {
   const ServerUrl = process.env.REACT_APP_SERVER_URL;
   const [email, setEmail] = useState();
+  const [role, setRole] = useState();
   const [password, setPassword] = useState();
   const [cookies, setCookie, removeCookie] = useCookies(['css']);
 
@@ -20,6 +21,7 @@ const Login = ({ setIn, In, mode }) => {
           `${ServerUrl}/login`,
           {
             "email": email,
+            "role": role,
             "password": password
           }
         );
@@ -49,6 +51,13 @@ const Login = ({ setIn, In, mode }) => {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Role"
+            required
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
           />
 
           <input

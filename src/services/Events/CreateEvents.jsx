@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const CreateEvents = async (sendForm, setDataTransfer, reloadReq, setReloadReq) => {
+const CreateEvents = async (sendForm, setDataTransfer, reloadReq, setReloadReq, event) => {
   const ServerUrl = process.env.REACT_APP_SERVER_URL;
   try {
     const res = await axios.post(
-      `${ServerUrl}/event/new`,
+      `${ServerUrl}/${event}/new`,
       sendForm,
       {
         headers: { "Content-Type": "multipart/form-data" }

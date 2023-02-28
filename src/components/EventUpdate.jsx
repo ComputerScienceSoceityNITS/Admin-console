@@ -36,7 +36,7 @@ const EventUpdate = ({ id, updateEvent, setupdateEvent, datasent, reloadReq, set
     sendForm.set("startDate", startDate);
     sendForm.set("endDate", endDate);
     setDataTransfer(true);
-    const events = EditEvents(sendForm, id, setDataTransfer, reloadReq, setReloadReq);
+    const events = EditEvents(sendForm, id, setDataTransfer, reloadReq, setReloadReq, 'abacus');
   }
 
 

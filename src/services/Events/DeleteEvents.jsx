@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const DeleteEvents = async (id, reloadReq, setReloadReq) => {
+const DeleteEvents = async (id, reloadReq, setReloadReq, event) => {
   const ServerUrl = process.env.REACT_APP_SERVER_URL;
   try {
     const res = await axios.delete(
-      `${ServerUrl}/event/${id}`
+      `${ServerUrl}/${event}/${id}`
     );
     toast.success("deleted successfully");
     setReloadReq(!reloadReq);

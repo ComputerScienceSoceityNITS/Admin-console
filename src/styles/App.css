@@ -8,19 +8,23 @@
 }
 
 .bright {
-    --orange: orange;
-    --orange2: rgba(255, 166, 0, 0.9);
-    --white: white;
-    --bg: rgb(221, 221, 221);
-    --bg2: rgba(221, 221, 221, 0.9);
-    --activeLink: rgb(151, 98, 0);
-    --whitesmoke: whitesmoke;
-    --dataTransfer: rgba(255, 192, 203, 0.9);
-    --black: black;
+    --orange: var(--primary-color-2);
+    --orange2: rgba(250, 234, 177, 0.9);
+    --white: var(--primary-color-4);
+    --bg: var(--primary-color-1);
+    --bg2: rgba(250, 248, 241, 0.9);
+    --activeLink: var(--primary-color-4);
+    --whitesmoke: var(--primary-color-1);
+    --dataTransfer: rgba(250, 234, 177, 0.9);
+    --black: var(--primary-color-4);
+    --primary-color-1: #FAF8F1;
+    --primary-color-2: #FAEAB1;
+    --primary-color-3: #E5BA73;
+    --primary-color-4: #C58940;
 }
 
 .dark {
-    --orange: rgba(45, 77, 99, 1);
+    /* --orange: rgba(45, 77, 99, 1);
     --orange2: rgba(45, 77, 99, .9);
     --white: white;
     --bg: rgb(28, 28, 56);
@@ -28,7 +32,20 @@
     --activeLink: rgba(45, 77, 99, 1);
     --whitesmoke: rgb(70, 70, 70);
     --dataTransfer: rgba(62, 48, 50, 0.9);
-    --black: white;
+    --black: white; */
+    --orange: var(--primary-color-2);
+    --orange2: rgba(48, 30, 103, 0.9);
+    --white: var(--primary-color-4);
+    --bg: var(--primary-color-1);
+    --bg2: rgba(3, 0, 28, 0.9);
+    --activeLink: var(--primary-color-4);
+    --whitesmoke: var(--primary-color-1);
+    --dataTransfer: rgba(91, 143, 185, 0.9);
+    --black: var(--primary-color-4);
+    --primary-color-1: #03001C;
+    --primary-color-2: #301E67;
+    --primary-color-3: #5B8FB9;
+    --primary-color-4: #B6EADA;
 }
 
 ::-webkit-scrollbar {
@@ -104,14 +121,14 @@
     width: 15rem;
     border-radius: 0.5rem;
     font-size: 1.5rem;
-    color: var(--orange2);
+    color: var(--primary-color-3);
     background: var(--bg);
     width: 80%;
 }
 
 .activeLink {
     color: var(--activeLink) !important;
-    background: var(--white) !important;
+    background: var(--primary-color-3) !important;
 }
 
 .App>.pages {
@@ -162,7 +179,7 @@
     border: none;
     outline: none;
     margin: 0 0.5rem;
-    background: var(--white);
+    background: var(--primary-color-2);
     padding: .5rem;
     border-radius: .2rem;
     transition: all 0.3s ease-in-out;

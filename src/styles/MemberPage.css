@@ -17,13 +17,23 @@
     --boxshadow: rgba(109, 109, 109, 0.9);
     --CPbg1: rgba(255, 203, 203, 0.95);
     --CPbg2: rgba(245, 245, 245, 0.95);
+    --primary-color-1: #FAF8F1;
+    --primary-color-2: #FAEAB1;
+    --primary-color-22: #ffe586;
+    --primary-color-3: #E5BA73;
+    --primary-color-4: #C58940;
 }
 
 .dark {
     --gray: rgba(27, 60, 84, 0.95);
-    --boxshadow: rgba(53, 53, 53, 0.9);
+    --boxshadow: rgba(0, 0, 0, 0.9);
     --CPbg1: rgba(32, 39, 62, 0.95);
     --CPbg2: rgba(37, 47, 75, 0.95);
+    --primary-color-1: #03001C;
+    --primary-color-2: #301E67;
+    --primary-color-22: #25174e;
+    --primary-color-3: #5B8FB9;
+    --primary-color-4: #B6EADA;
 }
 
 img {
@@ -37,7 +47,7 @@ img {
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 1rem;
-    background: radial-gradient(circle at top, var(--CPbg1), var(--CPbg2));
+    background: radial-gradient(circle at top, var(--primary-color-2), var(--primary-color-22));
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -56,7 +66,7 @@ img {
     border: none;
     outline: none;
     border-bottom: 3px solid black;
-    background: var(--whitesmoke);
+    background: var(--primary-color-1);
     padding: .5rem;
     border-radius: .2rem;
     transition: all 0.3s ease-in-out;
@@ -66,15 +76,15 @@ img {
 .createPage input:focus,
 .createPage textarea:focus,
 .createPage fieldset div input:focus {
-    border-bottom: 3px solid orange;
-    background: var(--gray);
+    border-bottom: 3px solid var(--primary-color-3);
+    background: var(--primary-color-2);
 }
 
 .createPage fieldset {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    border: 1px dashed var(--black);
+    border: 1px dashed var(--primary-color-4);
 }
 
 .createPage fieldset div {
@@ -114,7 +124,7 @@ img {
     justify-content: flex-start;
     flex-wrap: wrap;
     align-items: center;
-    background: var(--gray);
+    background: var(--primary-color-2);
     gap: 1rem;
     overflow-y: hidden;
     height: 7rem;
@@ -123,6 +133,12 @@ img {
     box-shadow: 0px 0px 5px 1px var(--boxshadow);
     transition: all 0.3s ease-in-out;
     cursor: pointer;
+    color: var(--primary-color-4);
+}
+
+.row .btn {
+    background: var(--primary-color-3);
+    color: var(--primary-color-1);
 }
 
 .row h3 {
@@ -135,20 +151,23 @@ img {
 }
 
 a:hover {
-    color: orange;
+    color: var(--primary-color-3);
 }
 
 .row p,
 .row div {
     padding: 0.5rem;
-    background: var(--gray);
     border-radius: .2rem;
 }
+
+/* .row div {
+    background: var(--primary-color-3);
+} */
 
 .row p:hover,
 .row div:hover {
     padding: 0.5rem;
-    background: var(--whitesmoke);
+    background: var(--primary-color-1);
     border-radius: .2rem;
 }
 

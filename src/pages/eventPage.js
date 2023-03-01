@@ -7,7 +7,7 @@ import GetEvents from "../services/Events/GetEvents";
 import "toastify-js/src/toastify.css";
 import { toast } from "react-toastify";
 
-const EventPage = ({ mode }) => {
+const EventPage = ({ mode, event, theTwoEvent }) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [addEvent, setAddEvent] = useState(false);
@@ -17,7 +17,7 @@ const EventPage = ({ mode }) => {
 
   const fetch = async () => {
     setLoading(true);
-    const events = await GetEvents();
+    const events = await GetEvents({ event });
     setData(events);
     setLoading(false);
   };
@@ -55,7 +55,7 @@ const EventPage = ({ mode }) => {
     <div>
       <div className="headBar">
         <button className="btn" onClick={() => setAddEvent(!addEvent)}>
-          Add New Events
+          Add {theTwoEvent} Event
         </button>
         <div className="searchbar">
           <form onSubmit={handleSearch}>
@@ -80,12 +80,14 @@ const EventPage = ({ mode }) => {
       {loading ? (
         <Loader />
       ) : (
+        // If event === 'abacus' then <AbacusGrid/>
+        // if event === 'enigma' then <EnigmaGrid/>
         <EventGrid
           data={data}
           mode={mode}
           reloadReq={reloadReq}
           setReloadReq={setReloadReq}
-        />
+        /> //EventGrid , EventCreate and EventUpdate will be diff for Abacus and Enigma based on the present event components.
       )}
       {addEvent && (
         <EventCreate

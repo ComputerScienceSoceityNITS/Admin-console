@@ -22,7 +22,7 @@ const EventCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
     sendForm.set("startTime", startTime);
     sendForm.set("startDate", startDate);
     sendForm.set("endDate", endDate);
-    const events = CreateEvents(sendForm, setDataTransfer, reloadReq, setReloadReq);
+    const events = CreateEvents(sendForm, setDataTransfer, reloadReq, setReloadReq, "abacus"); // In abacus create based on this file
   }
 
   return (

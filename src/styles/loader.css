@@ -1,11 +1,13 @@
-.loaderPage{
+.loaderPage {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 90vh;
+    overflow: hidden;
 }
-.loader1{
+
+.loader1 {
     width: 15rem;
     height: 15rem;
     position: absolute;
@@ -13,7 +15,8 @@
     border: 2px solid orange;
     animation: animate1 3s linear infinite;
 }
-.loader2{
+
+.loader2 {
     width: 10rem;
     height: 10rem;
     position: absolute;
@@ -21,7 +24,8 @@
     border: 2px solid orange;
     animation: animate1 2.5s linear infinite;
 }
-.loader3{
+
+.loader3 {
     width: 5rem;
     height: 5rem;
     position: absolute;
@@ -32,11 +36,12 @@
 }
 
 @keyframes animate1 {
-    0%{
-        scale:0;
+    0% {
+        scale: 0;
         opacity: 1;
     }
-    100%{
+
+    100% {
         scale: 2.5;
         opacity: 0;
     }

@@ -147,8 +147,17 @@ img {
 }
 
 .expand {
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-60% -60%); */
+    /* scale: 1.5; */
     height: 15rem;
 }
+
+/* .shrink {
+    position: unset;
+} */
 
 a:hover {
     color: var(--primary-color-3);

@@ -1,21 +1,19 @@
-import AbacusUpdate from "./AbacusUpdate";
+import EnigmaUpdate from "./EnigmaUpdate";
 import React, { useState } from "react";
-import DeleteEvents from "../services/Events/DeleteEvents";
 
-const AbacusGrid = ({ data, mode, reloadReq, setReloadReq }) => {
+const EnigmaGrid = ({ data, mode, reloadReq, setReloadReq }) => {
   return (
     <div className={mode ? "table bright" : "table dark"}>
       {data ? data.map((event) => <RowElement data={event} mode={mode} reloadReq={reloadReq} setReloadReq={setReloadReq} />) : ''}
     </div>
   );
 };
-
 const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
   const [updateEvent, setupdateEvent] = useState(false);
   const [clickedRow, setClickedRow] = useState(false);
 
   const handleDelete = (id) => {
-    DeleteEvents(id, reloadReq, setReloadReq, 'abacus');
+    DeleteEvents(id, reloadReq, setReloadReq, 'enigma');
   };
   const handleUpdateClick = (e) => {
     setupdateEvent(!updateEvent);
@@ -34,19 +32,27 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
         draggable
         title="Expandable on click"
       >
-        <h3 title="Name">{data.name}</h3>
-        {
-          data.images.map((img) => {
-            return <a href={img.url} target="_blank" rel="noopener noreferrer"><img src={img.url} alt="img" title="images" className="eventImages" /></a>
-          })
-        }
-        <p title="Group Link"><a href={data.groupLink} target="_blank" title="form" rel="noopener noreferrer">Group Link</a></p>
-        <p title="Event Type">Event Type : <b id="eventType">{data.eventType}</b></p>
-        <p title="startTime">Start Time : <b id="startTime">{data.startTime}</b></p>
-        <p title="start_end_Date">{data.startDate.split("T")[0]} to {data.endDate.split("T")[0]}</p>
-        <p title="Min Team Size">Min Team Size : <b id="minTeamSize">{data.minTeamSize}</b></p>
-        <p title="Max Team Size">Max Team Size : <b id="maxTeamSize">{data.maxTeamSize}</b></p>
-        <p title="description" id="desc">{data.description}</p>
+        <p title="cfContestLink"><a href={data.cfContestLink} target="_blank" title="form" rel="noopener noreferrer">CF Contest Link</a></p>
+        <p title="start_Date">{data.startDate.split("T")[0]}</p>
+        <p title="durationInHrs">Duration(In Hours) : <b id="durationInHrs">{data.durationInHrs}</b></p>
+        {data.questionSetters.map((trav) => {
+          return <>
+         <ul>
+          <li>{trav}</li>
+        </ul>
+          </>
+        })}
+        
+        {data.questionTesters.map((trav) => {
+          return <>
+         <ul>
+          <li>{trav}</li>
+        </ul>
+          </>
+        })}
+
+
+
         <div>
           <button
             className="btn"
@@ -60,7 +66,7 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
         </div>
       </div>
       {updateEvent && (
-        <AbacusUpdate
+        <EnigmaUpdate
           id={data._id}
           updateEvent={updateEvent}
           setupdateEvent={setupdateEvent}
@@ -74,4 +80,4 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
   );
 };
 
-export default AbacusGrid;
+export default EnigmaGrid;

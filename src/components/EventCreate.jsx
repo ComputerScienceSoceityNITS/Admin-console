@@ -134,5 +134,4 @@ const EventCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
     </div>
   );
 };
-
 export default EventCreate;

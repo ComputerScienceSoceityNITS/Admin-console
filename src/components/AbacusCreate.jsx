@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CreateEvents from "../services/Events/CreateEvents";
 import Loader from "../components/loader";
 
-const EventCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
+const AbacusCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [startTime, setStartTime] = useState("");
@@ -166,4 +166,4 @@ const EventCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
   );
 };
 
-export default EventCreate;
+export default AbacusCreate;

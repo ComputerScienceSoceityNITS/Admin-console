@@ -3,7 +3,7 @@ import EditEvents from "../services/Events/EditEvents";
 import { useEffect } from "react";
 import Loader from "../components/loader";
 
-const EventUpdate = ({ id, updateEvent, setupdateEvent, datasent, reloadReq, setReloadReq }) => {
+const AbacusUpdate = ({ id, updateEvent, setupdateEvent, datasent, reloadReq, setReloadReq }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [startTime, setStartTime] = useState("");
@@ -185,4 +185,4 @@ const EventUpdate = ({ id, updateEvent, setupdateEvent, datasent, reloadReq, set
   );
 };
 
-export default EventUpdate;
+export default AbacusUpdate;

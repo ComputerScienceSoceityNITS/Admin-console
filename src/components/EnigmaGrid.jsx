@@ -8,7 +8,6 @@ const EnigmaGrid = ({ data, mode, reloadReq, setReloadReq }) => {
     </div>
   );
 };
-
 const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
   const [updateEvent, setupdateEvent] = useState(false);
   const [clickedRow, setClickedRow] = useState(false);

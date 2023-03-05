@@ -1,47 +1,48 @@
 import React, { useState } from "react";
 import Loader from "../components/loader";
+import CreateEvents from "../services/Events/CreateEvents";
 const EnigmaCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
 
-  const [cfContestLink, setCfContestLink] = useState("");
+  const [cfContestLink, setCfContestLink] = useState();
   const [startDate, setStartDate] = useState();
-  const [durationInHrs, setDurationInHrs] = useState(); 
-  const [questionSetters,setquestionSetters]=useState([]);
-  const [questionTesters,setquestionTesters]=useState([]);
+  const [durationInHrs, setDurationInHrs] = useState();
+  const [questionSetters, setquestionSetters] = useState([]);
+  const [questionTesters, setquestionTesters] = useState([]);
   const [dataTransfer, setDataTransfer] = useState(false);
 
-   const handleAdd=()=>{
-       const abc=[...questionSetters,[]]
-       setquestionSetters(abc)
-   }
-   const handleChange=(onChangequestionSettersue,i)=>{
-    const inputdata=[...questionSetters]
-    inputdata[i]=onChangequestionSettersue.target.questionSettersue;
+  const handleAdd = () => {
+    const abc = [...questionSetters, []]
+    setquestionSetters(abc)
+  }
+  const handleChange = (onChangequestionSettersue, i) => {
+    const inputdata = [...questionSetters]
+    inputdata[i] = onChangequestionSettersue.target.questionSettersue;
     setquestionSetters(inputdata)
-   }
-   const handleDelete=(i)=>{
-       const deletquestionSetters=[...questionSetters]
-       deletquestionSetters.splice(i,1)
-       setquestionSetters(deletquestionSetters)  
-   }
-   //console.log(questionSetters,"data-")
+  }
+  const handleDelete = (i) => {
+    const deletquestionSetters = [...questionSetters]
+    deletquestionSetters.splice(i, 1)
+    setquestionSetters(deletquestionSetters)
+  }
+  //console.log(questionSetters,"data-")
 
 
 
 
-   const handleAdd1=()=>{
-       const abc=[...questionTesters,[]]
-       setquestionTesters(abc)
-   }
-   const handleChange1=(onChangequestionSettersue,i)=>{
-    const inputdata=[...questionTesters]
-    inputdata[i]=onChangequestionSettersue.target.questionSettersue;
+  const handleAdd1 = () => {
+    const abc = [...questionTesters, []]
+    setquestionTesters(abc)
+  }
+  const handleChange1 = (onChangequestionSettersue, i) => {
+    const inputdata = [...questionTesters]
+    inputdata[i] = onChangequestionSettersue.target.questionSettersue;
     setquestionTesters(inputdata)
-   }
-   const handleDelete1=(i)=>{
-       const deletquestionSetters=[...questionTesters]
-       deletquestionSetters.splice(i,1)
-       setquestionTesters(deletquestionSetters)  
-   }
+  }
+  const handleDelete1 = (i) => {
+    const deletquestionSetters = [...questionTesters]
+    deletquestionSetters.splice(i, 1)
+    setquestionTesters(deletquestionSetters)
+  }
 
 
 
@@ -56,7 +57,7 @@ const EnigmaCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
     sendForm.set("questionTesters", questionTesters);
     const events = CreateEvents(sendForm, setDataTransfer, reloadReq, setReloadReq, "enigma"); // In enigma create based on this file
   }
- 
+
 
   return (
     <div className="createPage">
@@ -77,7 +78,7 @@ const EnigmaCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
         accept="image"
         onChange={(e) => setCfContestLink(e.target.questionSettersue)}
       />
-      
+
       <fieldset>
         <legend>Event Date-Time</legend>
         <div>
@@ -105,28 +106,28 @@ const EnigmaCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
 
 
       <label htmlFor="questionSetters">Question Setters</label>
-      <button onClick={()=>handleAdd()}>+</button>
-        {questionSetters.map((data,i)=>{
-            return(
-               <div>
-                    <input questionSettersue={data} onChange={e=>handleChange(e,i)} />
-                    <button onClick={()=>handleDelete(i)}>x</button>
-               </div>
-            )
-        })}
+      <button onClick={() => handleAdd()}>+</button>
+      {questionSetters.map((data, i) => {
+        return (
+          <div>
+            <input questionSettersue={data} onChange={e => handleChange(e, i)} />
+            <button onClick={() => handleDelete(i)}>x</button>
+          </div>
+        )
+      })}
 
 
 
-   <label htmlFor="questionTesters">Question Testers</label>
-      <button onClick={()=>handleAdd1()}>+</button>
-        {questionTesters.map((data,i)=>{
-            return(
-               <div>
-                    <input questionSettersue={data} onChange={e=>handleChange1(e,i)} />
-                    <button onClick={()=>handleDelete1(i)}>x</button>
-               </div>
-            )
-        })}
+      <label htmlFor="questionTesters">Question Testers</label>
+      <button onClick={() => handleAdd1()}>+</button>
+      {questionTesters.map((data, i) => {
+        return (
+          <div>
+            <input questionSettersue={data} onChange={e => handleChange1(e, i)} />
+            <button onClick={() => handleDelete1(i)}>x</button>
+          </div>
+        )
+      })}
 
 
 

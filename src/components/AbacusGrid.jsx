@@ -5,7 +5,7 @@ import DeleteEvents from "../services/Events/DeleteEvents";
 const AbacusGrid = ({ data, mode, reloadReq, setReloadReq }) => {
   return (
     <div className={mode ? "table bright" : "table dark"}>
-      {data ? data.map((event) => <RowElement data={event} mode={mode} reloadReq={reloadReq} setReloadReq={setReloadReq} />) : ''}
+      {data.length > 0 ? data.map((event) => <RowElement data={event} mode={mode} reloadReq={reloadReq} setReloadReq={setReloadReq} />) : ''}
     </div>
   );
 };
@@ -36,7 +36,7 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
       >
         <h3 title="Name">{data.name}</h3>
         {
-          data.images.map((img) => {
+          data.length > 0 && data.images.map((img) => {
             return <a href={img.url} target="_blank" rel="noopener noreferrer"><img src={img.url} alt="img" title="images" className="eventImages" /></a>
           })
         }

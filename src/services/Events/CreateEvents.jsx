@@ -5,12 +5,13 @@ const CreateEvents = async (sendForm, setDataTransfer, reloadReq, setReloadReq, 
   const ServerUrl = process.env.REACT_APP_SERVER_URL;
   try {
     const res = await axios.post(
-      `${ServerUrl}/${event}/new`,
+      `${ServerUrl}/${event}`,
       sendForm,
       {
         headers: { "Content-Type": "multipart/form-data" }
       }
     );
+    console.log(res);
     setDataTransfer(false);
     toast.success("Event Created");
     setReloadReq(!reloadReq);

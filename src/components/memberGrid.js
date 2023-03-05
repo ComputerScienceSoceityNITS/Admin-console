@@ -13,12 +13,13 @@ const MemberGrid = ({ data, mode, reloadReq, setReloadReq }) => {
   return (
     <div className={mode ? "table bright" : "table dark"}>
       {data
-        ? data.map((member) => (
+        ? data.map((member, i) => (
             <RowElement
               data={member}
               mode={mode}
               reloadReq={reloadReq}
               setReloadReq={setReloadReq}
+              key={i}
             />
           ))
         : ""}

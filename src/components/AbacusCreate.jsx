@@ -5,7 +5,7 @@ import Loader from "../components/loader";
 const AbacusCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [startTime, setStartTime] = useState("");
+  const [startTime, setStartTime] = useState();
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState(); //default:Date.now
   const [images, setImages] = useState();
@@ -103,7 +103,7 @@ const AbacusCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
       />
       <label htmlFor="minTeamSize">Minimum Team Size</label>
       <input
-        type="text"
+        type="number"
         name="minTeamSize"
         id="minTeamSize"
         value={minTeamSize}
@@ -111,7 +111,7 @@ const AbacusCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
       />
       <label htmlFor="minTeamSize">Maximum Team Size</label>
       <input
-        type="text"
+        type="number"
         name="maxTeamSize"
         id="maxTeamSize"
         value={maxTeamSize}

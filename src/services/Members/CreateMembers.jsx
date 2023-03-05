@@ -12,6 +12,7 @@ const CreateMembers = async (sendForm, setDataTransfer, reloadReq, setReloadReq)
         withCredentials: true
       }
     );
+    console.log(res);
     toast.success("Members Created");
     setDataTransfer(false);
     setReloadReq(!reloadReq);

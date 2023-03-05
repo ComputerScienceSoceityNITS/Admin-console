@@ -5,6 +5,7 @@ const EnigmaCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
 
   const [cfContestLink, setCfContestLink] = useState();
   const [startDate, setStartDate] = useState();
+  const [startTime, setStartTime] = useState();  
   const [durationInHrs, setDurationInHrs] = useState();
   const [questionSetters, setquestionSetters] = useState([]);
   const [questionTesters, setquestionTesters] = useState([]);
@@ -52,6 +53,7 @@ const EnigmaCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
     const sendForm = new FormData();
     sendForm.set("cfContestLink", cfContestLink);
     sendForm.set("startDate", startDate);
+    sendForm.set("startTime", startTime);    
     sendForm.set("durationInHrs", durationInHrs);
     sendForm.set("questionSetters", questionSetters);
     sendForm.set("questionTesters", questionTesters);
@@ -99,6 +101,16 @@ const EnigmaCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
             id="startDate"
             questionSettersue={startDate}
             onChange={(e) => setStartDate(e.target.questionSettersue)}
+          />
+        </div>
+        <div>
+          <label htmlFor="startTime">Contest Start Time</label>
+          <input
+            type="time"
+            name="startTime"
+            id="startTime"
+            questionSettersue={startTime}
+            onChange={(e) => setStartTime(e.target.questionSettersue)}
           />
         </div>
       </fieldset>

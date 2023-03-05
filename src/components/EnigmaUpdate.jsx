@@ -6,6 +6,7 @@ import EditEvents from "../services/Events/EditEvents";
 const EnigmaUpdate = ({ id, updateEvent, setupdateEvent, datasent, reloadReq, setReloadReq }) => {
   const [cfContestLink, setCfContestLink] = useState("");
   const [startDate, setStartDate] = useState();
+  const [startTime, setStartTime] = useState();  
   const [durationInHrs, setDurationInHrs] = useState();
   const [questionSetters, setquestionSetters] = useState([]);
   const [questionTesters, setquestionTesters] = useState([]);
@@ -50,6 +51,7 @@ const EnigmaUpdate = ({ id, updateEvent, setupdateEvent, datasent, reloadReq, se
   useEffect(() => {
     setCfContestLink(datasent.cfContestLink);
     setStartDate(datasent.startDate.split('T')[0]);
+    startTime(datasent.startTime);        
     setDurationInHrs(datasent.durationInHrs);
     setquestionSetters(datasent.questionSetters);
     setquestionTesters(datasent.questionTesters);
@@ -59,6 +61,7 @@ const EnigmaUpdate = ({ id, updateEvent, setupdateEvent, datasent, reloadReq, se
     const sendForm = new FormData()
     sendForm.set("cfContestLink", cfContestLink);
     sendForm.set("startDate", startDate);
+    sendForm.set("startTime", startTime);    
     sendForm.set("durationInHrs", durationInHrs);
     sendForm.set("questionSetters", questionSetters);
     sendForm.set("questionTesters", questionTesters);
@@ -109,6 +112,16 @@ const EnigmaUpdate = ({ id, updateEvent, setupdateEvent, datasent, reloadReq, se
             onChange={(e) => setStartDate(e.target.value)}
           />
         </div>
+        <div>
+          <label htmlFor="startTime">Contest Start Time</label>
+          <input
+            type="time"
+            name="startTime"
+            id="startTime"
+            questionSettersue={startTime}
+            onChange={(e) => setStartTime(e.target.questionSettersue)}
+          />
+        </div>  
       </fieldset>
 
       <label htmlFor="questionSetters">Question Setters</label>

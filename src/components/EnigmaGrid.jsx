@@ -1,5 +1,6 @@
 import EnigmaUpdate from "./EnigmaUpdate";
 import React, { useState } from "react";
+import DeleteEvents from "../services/Events/DeleteEvents";
 
 const EnigmaGrid = ({ data, mode, reloadReq, setReloadReq }) => {
   return (
@@ -37,17 +38,17 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
         <p title="durationInHrs">Duration(In Hours) : <b id="durationInHrs">{data.durationInHrs}</b></p>
         {data.questionSetters.map((trav) => {
           return <>
-         <ul>
-          <li>{trav}</li>
-        </ul>
+            <ul>
+              <li>{trav}</li>
+            </ul>
           </>
         })}
-        
+
         {data.questionTesters.map((trav) => {
           return <>
-         <ul>
-          <li>{trav}</li>
-        </ul>
+            <ul>
+              <li>{trav}</li>
+            </ul>
           </>
         })}
 

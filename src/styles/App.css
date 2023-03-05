@@ -21,6 +21,7 @@
     --primary-color-2: #FAEAB1;
     --primary-color-3: #E5BA73;
     --primary-color-4: #C58940;
+    --createPage-btn: #C58940;
 }
 
 .dark {
@@ -46,6 +47,7 @@
     --primary-color-2: #301E67;
     --primary-color-3: #5B8FB9;
     --primary-color-4: #B6EADA;
+    --createPage-btn: #B6EADA;
 }
 
 ::-webkit-scrollbar {

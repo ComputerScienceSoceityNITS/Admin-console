@@ -102,6 +102,16 @@ img {
     right: 5%;
 }
 
+.createPage .btn {
+    background: var(--createPage-btn);
+    color: var(--primary-color-1);
+}
+
+.createPage .btn:hover {
+    background: var(--primary-color-3);
+    color: var(--primary-color-4);
+}
+
 .headBar {
     background-color: rgb(216, 216, 216);
     margin: 0;

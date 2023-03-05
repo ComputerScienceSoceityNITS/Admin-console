@@ -1,51 +1,52 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import Loader from "../components/loader";
+import EditEvents from "../services/Events/EditEvents";
 
 const EnigmaUpdate = ({ id, updateEvent, setupdateEvent, datasent, reloadReq, setReloadReq }) => {
-    const [cfContestLink, setCfContestLink] = useState("");
-    const [startDate, setStartDate] = useState();
-    const [durationInHrs, setDurationInHrs] = useState();
-    const [questionSetters,setquestionSetters]=useState([]);
-    const [questionTesters,setquestionTesters]=useState([]);
-    const [dataTransfer, setDataTransfer] = useState(false);
+  const [cfContestLink, setCfContestLink] = useState("");
+  const [startDate, setStartDate] = useState();
+  const [durationInHrs, setDurationInHrs] = useState();
+  const [questionSetters, setquestionSetters] = useState([]);
+  const [questionTesters, setquestionTesters] = useState([]);
+  const [dataTransfer, setDataTransfer] = useState(false);
 
 
-    const handleAdd=()=>{
-        const abc=[...questionSetters,[]]
-        setquestionSetters(abc)
-    }
-    const handleChange=(onChangequestionSettersue,i)=>{
-     const inputdata=[...questionSetters]
-     inputdata[i]=onChangequestionSettersue.target.questionSettersue;
-     setquestionSetters(inputdata)
-    }
-    const handleDelete=(i)=>{
-        const deletquestionSetters=[...questionSetters]
-        deletquestionSetters.splice(i,1)
-        setquestionSetters(deletquestionSetters)  
-    }
-    //console.log(questionSetters,"data-")
- 
- 
- 
- 
-    const handleAdd1=()=>{
-        const abc=[...questionTesters,[]]
-        setquestionTesters(abc)
-    }
-    const handleChange1=(onChangequestionSettersue,i)=>{
-     const inputdata=[...questionTesters]
-     inputdata[i]=onChangequestionSettersue.target.questionSettersue;
-     setquestionTesters(inputdata)
-    }
-    const handleDelete1=(i)=>{
-        const deletquestionSetters=[...questionTesters]
-        deletquestionSetters.splice(i,1)
-        setquestionTesters(deletquestionSetters)  
-    }
+  const handleAdd = () => {
+    const abc = [...questionSetters, []]
+    setquestionSetters(abc)
+  }
+  const handleChange = (onChangequestionSettersue, i) => {
+    const inputdata = [...questionSetters]
+    inputdata[i] = onChangequestionSettersue.target.questionSettersue;
+    setquestionSetters(inputdata)
+  }
+  const handleDelete = (i) => {
+    const deletquestionSetters = [...questionSetters]
+    deletquestionSetters.splice(i, 1)
+    setquestionSetters(deletquestionSetters)
+  }
+  //console.log(questionSetters,"data-")
 
-    
+
+
+
+  const handleAdd1 = () => {
+    const abc = [...questionTesters, []]
+    setquestionTesters(abc)
+  }
+  const handleChange1 = (onChangequestionSettersue, i) => {
+    const inputdata = [...questionTesters]
+    inputdata[i] = onChangequestionSettersue.target.questionSettersue;
+    setquestionTesters(inputdata)
+  }
+  const handleDelete1 = (i) => {
+    const deletquestionSetters = [...questionTesters]
+    deletquestionSetters.splice(i, 1)
+    setquestionTesters(deletquestionSetters)
+  }
+
+
   useEffect(() => {
     setCfContestLink(datasent.cfContestLink);
     setStartDate(datasent.startDate.split('T')[0]);
@@ -85,7 +86,7 @@ const EnigmaUpdate = ({ id, updateEvent, setupdateEvent, datasent, reloadReq, se
         accept="image"
         onChange={(e) => setCfContestLink(e.target.value)}
       />
-      
+
       <fieldset>
         <legend>Event Date-Time</legend>
         <div>
@@ -111,28 +112,28 @@ const EnigmaUpdate = ({ id, updateEvent, setupdateEvent, datasent, reloadReq, se
       </fieldset>
 
       <label htmlFor="questionSetters">Question Setters</label>
-      <button onClick={()=>handleAdd()}>+</button>
-        {questionSetters.map((data,i)=>{
-            return(
-               <div>
-                    <input questionSettersue={data} onChange={e=>handleChange(e,i)} />
-                    <button onClick={()=>handleDelete(i)}>x</button>
-               </div>
-            )
-        })}
+      <button onClick={() => handleAdd()}>+</button>
+      {questionSetters.map((data, i) => {
+        return (
+          <div>
+            <input questionSettersue={data} onChange={e => handleChange(e, i)} />
+            <button onClick={() => handleDelete(i)}>x</button>
+          </div>
+        )
+      })}
 
 
 
-   <label htmlFor="questionTesters">Question Testers</label>
-      <button onClick={()=>handleAdd1()}>+</button>
-        {questionTesters.map((data,i)=>{
-            return(
-               <div>
-                    <input questionSettersue={data} onChange={e=>handleChange1(e,i)} />
-                    <button onClick={()=>handleDelete1(i)}>x</button>
-               </div>
-            )
-        })}
+      <label htmlFor="questionTesters">Question Testers</label>
+      <button onClick={() => handleAdd1()}>+</button>
+      {questionTesters.map((data, i) => {
+        return (
+          <div>
+            <input questionSettersue={data} onChange={e => handleChange1(e, i)} />
+            <button onClick={() => handleDelete1(i)}>x</button>
+          </div>
+        )
+      })}
 
 
       <button className="btn" onClick={handleSubmit}>

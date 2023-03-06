@@ -35,6 +35,7 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
       >
         <p title="cfContestLink"><a href={data.cfContestLink} target="_blank" title="form" rel="noopener noreferrer">CF Contest Link</a></p>
         <p title="start_Date">{data.startDate.split("T")[0]}</p>
+        <p title="startTime">Start Time : <b id="startTime">{data.startTime}</b></p>
         <p title="durationInHrs">Duration(In Hours) : <b id="durationInHrs">{data.durationInHrs}</b></p>
         {data.questionSetters.map((trav) => {
           return <>

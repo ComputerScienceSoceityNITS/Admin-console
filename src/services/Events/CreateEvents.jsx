@@ -1,16 +1,18 @@
-import axios from 'axios';
-import { toast } from 'react-toastify';
+import axios from "axios";
+import { toast } from "react-toastify";
 
-const CreateEvents = async (sendForm, setDataTransfer, reloadReq, setReloadReq, event) => {
+const CreateEvents = async (
+  sendForm,
+  setDataTransfer,
+  reloadReq,
+  setReloadReq,
+  event
+) => {
   const ServerUrl = process.env.REACT_APP_SERVER_URL;
   try {
-    const res = await axios.post(
-      `${ServerUrl}/${event}`,
-      sendForm,
-      {
-        headers: { "Content-Type": "multipart/form-data" }
-      }
-    );
+    const res = await axios.post(`${ServerUrl}/${event}`, sendForm, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
     console.log(res);
     setDataTransfer(false);
     toast.success("Event Created");
@@ -20,6 +22,6 @@ const CreateEvents = async (sendForm, setDataTransfer, reloadReq, setReloadReq, 
     setDataTransfer(false);
     toast.error(err.message);
   }
-}
+};
 
-export default CreateEvents
+export default CreateEvents;

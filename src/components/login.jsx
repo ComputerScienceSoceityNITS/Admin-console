@@ -4,30 +4,25 @@ import "../styles/login.css";
 import { toast } from "react-toastify";
 import { useCookies } from "react-cookie";
 
-
 const Login = ({ setIn, In, mode }) => {
   const ServerUrl = process.env.REACT_APP_SERVER_URL;
   const [email, setEmail] = useState();
   const [role, setRole] = useState();
   const [password, setPassword] = useState();
-  const [cookies, setCookie, removeCookie] = useCookies(['css']);
-
+  const [cookies, setCookie, removeCookie] = useCookies(["css"]);
 
   const handleLogin = (e) => {
     e.preventDefault();
     async function login() {
       try {
-        const res = await axios.post(
-          `${ServerUrl}/login`,
-          {
-            "email": email,
-            "role": role,
-            "password": password
-          }
-        );
+        const res = await axios.post(`${ServerUrl}/login`, {
+          email: email,
+          role: role,
+          password: password,
+        });
 
         if (res.status === 201) {
-          setCookie("CSS_Website", res.data.token, { path: '/' })
+          setCookie("CSS_Website", res.data.token, { path: "/" });
           setIn(true);
         } else {
           toast.error("Wrong email or password");
@@ -77,5 +72,3 @@ const Login = ({ setIn, In, mode }) => {
 };
 
 export default Login;
-
-

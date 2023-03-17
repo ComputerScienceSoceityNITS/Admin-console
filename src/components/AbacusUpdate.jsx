@@ -3,7 +3,14 @@ import EditEvents from "../services/Events/EditEvents";
 import { useEffect } from "react";
 import Loader from "../components/loader";
 
-const AbacusUpdate = ({ id, updateEvent, setupdateEvent, datasent, reloadReq, setReloadReq }) => {
+const AbacusUpdate = ({
+  id,
+  updateEvent,
+  setupdateEvent,
+  datasent,
+  reloadReq,
+  setReloadReq,
+}) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [startTime, setStartTime] = useState("");
@@ -21,17 +28,17 @@ const AbacusUpdate = ({ id, updateEvent, setupdateEvent, datasent, reloadReq, se
     setDescription(datasent.description);
     setImages(datasent.images);
     setStartTime(datasent.startTime);
-    setStartDate(datasent.startDate.split('T')[0]);
-    setEndDate(datasent.endDate.split('T')[0]);
+    setStartDate(datasent.startDate.split("T")[0]);
+    setEndDate(datasent.endDate.split("T")[0]);
     setGroupLink(datasent.groupLink);
     setEventType(datasent.eventType);
     setMinTeamSize(datasent.minTeamSize);
     setMaxTeamSize(datasent.maxTeamSize);
     const imageBody = document.querySelector(".imageUploaded");
-  }, [datasent])
+  }, [datasent]);
 
   const handleSubmit = () => {
-    const sendForm = new FormData()
+    const sendForm = new FormData();
     sendForm.set("name", name);
     if (images) {
       sendForm.set("coverPic", images);
@@ -45,9 +52,15 @@ const AbacusUpdate = ({ id, updateEvent, setupdateEvent, datasent, reloadReq, se
     sendForm.set("minTeamSize", minTeamSize);
     sendForm.set("maxTeamSize", maxTeamSize);
     setDataTransfer(true);
-    const events = EditEvents(sendForm, id, setDataTransfer, reloadReq, setReloadReq, 'abacus');
-  }
-
+    const events = EditEvents(
+      sendForm,
+      id,
+      setDataTransfer,
+      reloadReq,
+      setReloadReq,
+      "abacus"
+    );
+  };
 
   return (
     <div className="createPage">
@@ -101,8 +114,7 @@ const AbacusUpdate = ({ id, updateEvent, setupdateEvent, datasent, reloadReq, se
         }}
       />
       <label htmlFor="imgupload">Image to be Uploaded</label>
-      <div className="imageUploaded" id="imgupload">
-      </div>
+      <div className="imageUploaded" id="imgupload"></div>
       <label htmlFor="groupLink">Group Link</label>
       <input
         type="text"
@@ -177,8 +189,15 @@ const AbacusUpdate = ({ id, updateEvent, setupdateEvent, datasent, reloadReq, se
         accept="image"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-      >{description}</textarea>
-      <button className="btn" onClick={() => { handleSubmit() }}>
+      >
+        {description}
+      </textarea>
+      <button
+        className="btn"
+        onClick={() => {
+          handleSubmit();
+        }}
+      >
         Update
       </button>
     </div>

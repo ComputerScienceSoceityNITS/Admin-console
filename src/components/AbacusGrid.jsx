@@ -46,6 +46,10 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
         <p title="start_end_Date">{data.startDate.split("T")[0]} to {data.endDate.split("T")[0]}</p>
         <p title="Min Team Size">Min Team Size : <b id="minTeamSize">{data.minTeamSize}</b></p>
         <p title="Max Team Size">Max Team Size : <b id="maxTeamSize">{data.maxTeamSize}</b></p>
+        {
+          data.participants?<p title="Participants">Participants : <b id="Participant">({data.participants.length})</b><b id="Participants">{data.participants.sort() && data.participants.map(ele => <li>{ele}</li>)}</b></p>:null
+        }
+        {/* <p title="Participants">Participants : <b id="Participants"></b><b id="Participants">{data.participants&&data.participants.sort() && data.participants.map(ele => <li>{ele}</li>)}</b></p> */}
         <p title="description" id="desc">{data.description}</p>
         <div>
           <button

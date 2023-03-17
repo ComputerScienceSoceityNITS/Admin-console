@@ -4,7 +4,6 @@ import { toast } from 'react-toastify';
 const CreateEvents = async (sendForm, setDataTransfer, reloadReq, setReloadReq, event) => {
   const ServerUrl = process.env.REACT_APP_SERVER_URL;
   try {
-    // console.log(sendForm);
     const res = await axios.post(
       `${ServerUrl}/${event}`,
       sendForm,
@@ -18,7 +17,6 @@ const CreateEvents = async (sendForm, setDataTransfer, reloadReq, setReloadReq, 
     setReloadReq(!reloadReq);
     return res.data;
   } catch (err) {
-    console.log(err);
     setDataTransfer(false);
     toast.error(err.message);
   }

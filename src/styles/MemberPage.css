@@ -17,11 +17,7 @@
     --boxshadow: rgba(109, 109, 109, 0.9);
     --CPbg1: rgba(255, 203, 203, 0.95);
     --CPbg2: rgba(245, 245, 245, 0.95);
-    --primary-color-1: #FAF8F1;
-    --primary-color-2: #FAEAB1;
-    --primary-color-22: #ffe586;
-    --primary-color-3: #E5BA73;
-    --primary-color-4: #C58940;
+    --primary-color-22: #dadada;
 }
 
 .dark {
@@ -29,11 +25,7 @@
     --boxshadow: rgba(0, 0, 0, 0.9);
     --CPbg1: rgba(32, 39, 62, 0.95);
     --CPbg2: rgba(37, 47, 75, 0.95);
-    --primary-color-1: #03001C;
-    --primary-color-2: #301E67;
-    --primary-color-22: #25174e;
-    --primary-color-3: #5B8FB9;
-    --primary-color-4: #B6EADA;
+    --primary-color-22: #2b2f47;
 }
 
 img {
@@ -47,7 +39,7 @@ img {
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 1rem;
-    background: radial-gradient(circle at top, var(--primary-color-2), var(--primary-color-22));
+    background: radial-gradient(circle at top, var(--primary-color-22), var(--primary-color-2));
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -139,8 +131,8 @@ img {
     overflow-y: hidden;
     height: 7rem;
     padding: 1rem;
-    border-radius: 0.5rem;
-    box-shadow: 0px 0px 5px 1px var(--boxshadow);
+    border-radius: 0.3rem;
+    /* box-shadow: 0px 0px 5px 1px var(--boxshadow); */
     transition: all 0.3s ease-in-out;
     cursor: pointer;
     color: var(--primary-color-4);

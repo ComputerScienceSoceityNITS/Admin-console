@@ -24,6 +24,7 @@ const EventPage = ({ mode, event, theTwoEvent }) => {
     setLoading(true);
     const events = await GetEvents({ event });
     setData(events);
+    console.log(events);
     setLoading(false);
   };
 

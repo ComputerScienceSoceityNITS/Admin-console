@@ -5,7 +5,16 @@ import DeleteEvents from "../services/Events/DeleteEvents";
 const EnigmaGrid = ({ data, mode, reloadReq, setReloadReq }) => {
   return (
     <div className={mode ? "table bright" : "table dark"}>
-      {data ? data.map((event) => <RowElement data={event} mode={mode} reloadReq={reloadReq} setReloadReq={setReloadReq} />) : ''}
+      {data
+        ? data.map((event) => (
+            <RowElement
+              data={event}
+              mode={mode}
+              reloadReq={reloadReq}
+              setReloadReq={setReloadReq}
+            />
+          ))
+        : ""}
     </div>
   );
 };
@@ -14,7 +23,7 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
   const [clickedRow, setClickedRow] = useState(false);
 
   const handleDelete = (id) => {
-    DeleteEvents(id, reloadReq, setReloadReq, 'enigma');
+    DeleteEvents(id, reloadReq, setReloadReq, "enigma");
   };
   const handleUpdateClick = (e) => {
     setupdateEvent(!updateEvent);
@@ -33,33 +42,45 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
         draggable
         title="Expandable on click"
       >
-        <p title="cfContestLink"><a href={data.cfContestLink} target="_blank" title="form" rel="noopener noreferrer">CF Contest Link</a></p>
+        <p title="cfContestLink">
+          <a
+            href={data.cfContestLink}
+            target="_blank"
+            title="form"
+            rel="noopener noreferrer"
+          >
+            CF Contest Link
+          </a>
+        </p>
         <p title="start_Date">{data.startDate.split("T")[0]}</p>
-        <p title="startTime">Start Time : <b id="startTime">{data.startTime}</b></p>
-        <p title="durationInHrs">Duration(In Hours) : <b id="durationInHrs">{data.durationInHrs}</b></p>
+        <p title="startTime">
+          Start Time : <b id="startTime">{data.startTime}</b>
+        </p>
+        <p title="durationInHrs">
+          Duration(In Hours) : <b id="durationInHrs">{data.durationInHrs}</b>
+        </p>
         {data.questionSetters.map((trav) => {
-          return <>
-            <ul>
-              <li>{trav}</li>
-            </ul>
-          </>
+          return (
+            <>
+              <ul>
+                <li>{trav}</li>
+              </ul>
+            </>
+          );
         })}
 
         {data.questionTesters.map((trav) => {
-          return <>
-            <ul>
-              <li>{trav}</li>
-            </ul>
-          </>
+          return (
+            <>
+              <ul>
+                <li>{trav}</li>
+              </ul>
+            </>
+          );
         })}
 
-
-
         <div>
-          <button
-            className="btn"
-            onClick={handleUpdateClick}
-          >
+          <button className="btn" onClick={handleUpdateClick}>
             Edit
           </button>
           <button className="btn" onClick={() => handleDelete(data._id)}>

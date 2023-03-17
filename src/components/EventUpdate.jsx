@@ -3,7 +3,14 @@ import EditEvents from "../services/Events/EditEvents";
 import { useEffect } from "react";
 import Loader from "../components/loader";
 
-const EventUpdate = ({ id, updateEvent, setupdateEvent, datasent, reloadReq, setReloadReq }) => {
+const EventUpdate = ({
+  id,
+  updateEvent,
+  setupdateEvent,
+  datasent,
+  reloadReq,
+  setReloadReq,
+}) => {
   const [name, setName] = useState();
   const [description, setDescription] = useState();
   const [images, setImages] = useState();
@@ -19,13 +26,13 @@ const EventUpdate = ({ id, updateEvent, setupdateEvent, datasent, reloadReq, set
     setImages(datasent.images);
     setFormLink(datasent.formLink);
     setStartTime(datasent.startTime);
-    setStartDate(datasent.startDate.split('T')[0]);
-    setEndDate(datasent.endDate.split('T')[0]);
+    setStartDate(datasent.startDate.split("T")[0]);
+    setEndDate(datasent.endDate.split("T")[0]);
     const imageBody = document.querySelector(".imageUploaded");
-  }, [datasent])
+  }, [datasent]);
 
   const handleSubmit = () => {
-    const sendForm = new FormData()
+    const sendForm = new FormData();
     sendForm.set("name", name);
     if (images) {
       sendForm.set("images", images);
@@ -36,9 +43,15 @@ const EventUpdate = ({ id, updateEvent, setupdateEvent, datasent, reloadReq, set
     sendForm.set("startDate", startDate);
     sendForm.set("endDate", endDate);
     setDataTransfer(true);
-    const events = EditEvents(sendForm, id, setDataTransfer, reloadReq, setReloadReq, 'abacus');
-  }
-
+    const events = EditEvents(
+      sendForm,
+      id,
+      setDataTransfer,
+      reloadReq,
+      setReloadReq,
+      "abacus"
+    );
+  };
 
   return (
     <div className="createPage">
@@ -92,8 +105,7 @@ const EventUpdate = ({ id, updateEvent, setupdateEvent, datasent, reloadReq, set
         }}
       />
       <label htmlFor="imgupload">Image to be Uploaded</label>
-      <div className="imageUploaded" id="imgupload">
-      </div>
+      <div className="imageUploaded" id="imgupload"></div>
       <label htmlFor="formLink">Form Link</label>
       <input
         type="text"
@@ -144,8 +156,15 @@ const EventUpdate = ({ id, updateEvent, setupdateEvent, datasent, reloadReq, set
         accept="image"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-      >{description}</textarea>
-      <button className="btn" onClick={() => { handleSubmit() }}>
+      >
+        {description}
+      </textarea>
+      <button
+        className="btn"
+        onClick={() => {
+          handleSubmit();
+        }}
+      >
         Update
       </button>
     </div>

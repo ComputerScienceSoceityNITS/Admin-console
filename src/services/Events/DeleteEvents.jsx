@@ -11,7 +11,7 @@ const DeleteEvents = async (id, reloadReq, setReloadReq, event) => {
   try {
     const Role = getCookie("CSS_Website_Role");
     if (
-      Role === "Admin" ||
+      Role === "admin" ||
       (Role === "Executive Head" && event === "abacus") ||
       (Role === "CP Head" && event === "enigma") || true //remove true
     ) {

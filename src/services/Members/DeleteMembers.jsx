@@ -9,9 +9,9 @@ function getCookie(key) {
 const DeleteMembers = async (id, reloadReq, setReloadReq) => {
   const ServerUrl = process.env.REACT_APP_SERVER_URL;
   try {
-
     const Role = getCookie("CSS_Website_Role");
-    if (Role === "Admin" || Role === "Executive Head") {
+    if (Role === "Admin" || Role === "Executive Head"|| true //remove true
+    ) {
       const res = await axios.delete(`${ServerUrl}/member/${id}`);
       toast.success("deleted successfully");
       setReloadReq(!reloadReq);

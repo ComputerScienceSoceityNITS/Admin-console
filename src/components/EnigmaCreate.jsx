@@ -14,9 +14,9 @@ const EnigmaCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
     const abc = [...questionSetters, []];
     setquestionSetters(abc);
   };
-  const handleChange = (onChangequestionSettersue, i) => {
+  const handleChange = (onChangevalue, i) => {
     const inputdata = [...questionSetters];
-    inputdata[i] = onChangequestionSettersue.target.questionSettersue;
+    inputdata[i] = onChangevalue.target.value;
     setquestionSetters(inputdata);
   };
   const handleDelete = (i) => {
@@ -30,9 +30,9 @@ const EnigmaCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
     const abc = [...questionTesters, []];
     setquestionTesters(abc);
   };
-  const handleChange1 = (onChangequestionSettersue, i) => {
+  const handleChange1 = (onChangevalue, i) => {
     const inputdata = [...questionTesters];
-    inputdata[i] = onChangequestionSettersue.target.questionSettersue;
+    inputdata[i] = onChangevalue.target.value;
     setquestionTesters(inputdata);
   };
   const handleDelete1 = (i) => {
@@ -74,9 +74,9 @@ const EnigmaCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
         type="text"
         name="name"
         id="name"
-        questionSettersue={cfContestLink}
+        value={cfContestLink}
         accept="image"
-        onChange={(e) => setCfContestLink(e.target.questionSettersue)}
+        onChange={(e) => setCfContestLink(e.target.value)}
       />
 
       <fieldset>
@@ -84,11 +84,11 @@ const EnigmaCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
         <div>
           <label htmlFor="startTime">Contest Duration In Hours</label>
           <input
-            type="time"
-            name="startTime"
-            id="startTime"
-            questionSettersue={durationInHrs}
-            onChange={(e) => setDurationInHrs(e.target.questionSettersue)}
+            type="number"
+            name="duration"
+            id="duration"
+            value={durationInHrs}
+            onChange={(e) => setDurationInHrs(e.target.value)}
           />
         </div>
         <div>
@@ -97,8 +97,8 @@ const EnigmaCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
             type="date"
             name="startDate"
             id="startDate"
-            questionSettersue={startDate}
-            onChange={(e) => setStartDate(e.target.questionSettersue)}
+            value={startDate}
+            onChange={(e) => setStartDate(e.target.value)}
           />
         </div>
         <div>
@@ -107,8 +107,8 @@ const EnigmaCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
             type="time"
             name="startTime"
             id="startTime"
-            questionSettersue={startTime}
-            onChange={(e) => setStartTime(e.target.questionSettersue)}
+            value={startTime}
+            onChange={(e) => setStartTime(e.target.value)}
           />
         </div>
       </fieldset>
@@ -119,7 +119,7 @@ const EnigmaCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
         return (
           <div>
             <input
-              questionSettersue={data}
+              value={data}
               onChange={(e) => handleChange(e, i)}
             />
             <button onClick={() => handleDelete(i)}>x</button>
@@ -133,7 +133,7 @@ const EnigmaCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
         return (
           <div>
             <input
-              questionSettersue={data}
+              value={data}
               onChange={(e) => handleChange1(e, i)}
             />
             <button onClick={() => handleDelete1(i)}>x</button>

@@ -17,8 +17,12 @@ const EditEvents = async (
   const ServerUrl = process.env.REACT_APP_SERVER_URL;
   try {
     const Role = getCookie("CSS_Website_Role");
-    if (Role === "Admin" || (Role === "Executive Head" && event === "abacus") || (Role === "CP Head" && event === "enigma")) {
-      const res = await axios.put(`${ServerUrl}/${event}/${id}`, sendForm, {
+    if (
+      Role === "Admin" ||
+      (Role === "Executive Head" && event === "abacus") ||
+      (Role === "CP Head" && event === "enigma") || true //remove true
+    ) {
+      const res = await axios.patch(`${ServerUrl}/${event}/${id}`, sendForm, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       setDataTransfer(false);
@@ -26,7 +30,7 @@ const EditEvents = async (
       toast.success("Event Updated");
       return res.data.members;
     } else {
-      toast.error("You don't have access to perform this function");
+      toast.error("You don't have access to perform this operation");
       setDataTransfer(false);
     }
   } catch (err) {

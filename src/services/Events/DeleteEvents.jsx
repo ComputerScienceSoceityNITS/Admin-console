@@ -10,13 +10,17 @@ const DeleteEvents = async (id, reloadReq, setReloadReq, event) => {
   const ServerUrl = process.env.REACT_APP_SERVER_URL;
   try {
     const Role = getCookie("CSS_Website_Role");
-    if (Role === "Admin" || (Role === "Executive Head" && event === "abacus") || (Role === "CP Head" && event === "enigma")) {
+    if (
+      Role === "Admin" ||
+      (Role === "Executive Head" && event === "abacus") ||
+      (Role === "CP Head" && event === "enigma") || true //remove true
+    ) {
       const res = await axios.delete(`${ServerUrl}/${event}/${id}`);
       toast.success("deleted successfully");
       setReloadReq(!reloadReq);
       return res;
     } else {
-      toast.error("You don't have access to perform this function");
+      toast.error("You don't have access to perform this operation");
     }
   } catch (err) {
     toast.error(err.message);

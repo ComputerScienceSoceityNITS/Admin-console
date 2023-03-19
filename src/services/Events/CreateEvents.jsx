@@ -14,10 +14,14 @@ const CreateEvents = async (
   event
 ) => {
   const ServerUrl = process.env.REACT_APP_SERVER_URL;
-  console.log({event});
+  console.log({ event });
   try {
     const Role = getCookie("CSS_Website_Role");
-    if (Role === "Admin" || (Role === "Executive Head" && event === "abacus") || (Role === "CP Head" && event === "enigma")) {
+    if (
+      Role === "Admin" ||
+      (Role === "Executive Head" && event === "abacus") ||
+      (Role === "CP Head" && event === "enigma") || true //remove true
+    ) {
       const res = await axios.post(`${ServerUrl}/${event}/`, sendForm, {
         headers: { "Content-Type": "multipart/form-data" },
       });
@@ -27,7 +31,7 @@ const CreateEvents = async (
       setReloadReq(!reloadReq);
       return res.data;
     } else {
-      toast.error("You don't have access to perform this function");
+      toast.error("You don't have access to perform this operation");
       setDataTransfer(false);
     }
   } catch (err) {

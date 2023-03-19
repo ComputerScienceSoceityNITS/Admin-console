@@ -118,10 +118,7 @@ const EnigmaCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
       {questionSetters.map((data, i) => {
         return (
           <div>
-            <input
-              value={data}
-              onChange={(e) => handleChange(e, i)}
-            />
+            <input value={data} onChange={(e) => handleChange(e, i)} />
             <button onClick={() => handleDelete(i)}>x</button>
           </div>
         );
@@ -132,10 +129,7 @@ const EnigmaCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
       {questionTesters.map((data, i) => {
         return (
           <div>
-            <input
-              value={data}
-              onChange={(e) => handleChange1(e, i)}
-            />
+            <input value={data} onChange={(e) => handleChange1(e, i)} />
             <button onClick={() => handleDelete1(i)}>x</button>
           </div>
         );

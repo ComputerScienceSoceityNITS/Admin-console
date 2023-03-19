@@ -13,7 +13,8 @@ const DeleteEvents = async (id, reloadReq, setReloadReq, event) => {
     if (
       Role === "admin" ||
       (Role === "Executive Head" && event === "abacus") ||
-      (Role === "CP Head" && event === "enigma") || true //remove true
+      (Role === "CP Head" && event === "enigma") ||
+      true //remove true
     ) {
       const res = await axios.delete(`${ServerUrl}/${event}/${id}`);
       toast.success("deleted successfully");

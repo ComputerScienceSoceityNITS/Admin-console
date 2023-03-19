@@ -47,15 +47,15 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
         {/* {data.length > 0 &&
           data.images.map((img) => {
             return ( */}
-              <a href={data.coverPic.url} target="_blank" rel="noopener noreferrer">
-                <img
-                  src={data.coverPic.url}
-                  alt="img"
-                  title="images"
-                  className="eventImages"
-                />
-              </a>
-            {/* );
+        <a href={data.coverPic.url} target="_blank" rel="noopener noreferrer">
+          <img
+            src={data.coverPic.url}
+            alt="img"
+            title="images"
+            className="eventImages"
+          />
+        </a>
+        {/* );
           })} */}
         <p title="Group Link">
           <a

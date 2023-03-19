@@ -7,13 +7,13 @@ const EnigmaGrid = ({ data, mode, reloadReq, setReloadReq }) => {
     <div className={mode ? "table bright" : "table dark"}>
       {data
         ? data.map((event) => (
-          <RowElement
-            data={event}
-            mode={mode}
-            reloadReq={reloadReq}
-            setReloadReq={setReloadReq}
-          />
-        ))
+            <RowElement
+              data={event}
+              mode={mode}
+              reloadReq={reloadReq}
+              setReloadReq={setReloadReq}
+            />
+          ))
         : ""}
     </div>
   );
@@ -59,30 +59,28 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
         <p title="durationInHrs">
           Duration(In Hours) : <b id="durationInHrs">{data.durationInHrs}</b>
         </p>
-        {
-          data.questionSetters.length > 0 && <p title="Question Setters">Question Setters :
+        {data.questionSetters.length > 0 && (
+          <p title="Question Setters">
+            Question Setters :
             {data.questionSetters.map((trav) => {
-              return (
-                <li>{trav}</li>
-              );
+              return <li>{trav}</li>;
             })}
           </p>
-        }
+        )}
         {/* {data.questionSetters.map((trav) => {
           return (
             <li>{trav}</li>
           );
         })} */}
 
-        {
-          data.questionTesters.length > 0 && <p title="Question Testers">Question Testers :
+        {data.questionTesters.length > 0 && (
+          <p title="Question Testers">
+            Question Testers :
             {data.questionTesters.map((trav) => {
-              return (
-                <li>{trav}</li>
-              );
+              return <li>{trav}</li>;
             })}
           </p>
-        }
+        )}
         {/* {data.questionTesters.map((trav) => {
           return (
             <li>{trav}</li>

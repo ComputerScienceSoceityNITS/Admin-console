@@ -4,9 +4,9 @@ import { toast } from "react-toastify";
 const GetEvents = async ({ event }) => {
   const ServerUrl = process.env.REACT_APP_SERVER_URL;
   try {
-    const res = await axios.get(`${ServerUrl}/${event}`);
+    const res = await axios.get(`${ServerUrl}/${event}/`);
 
-    return res.data.events;
+    return res.data.events || res.data.enigmas;
   } catch (err) {
     toast.error(err.message);
   }

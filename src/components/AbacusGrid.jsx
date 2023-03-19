@@ -44,19 +44,19 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
         title="Expandable on click"
       >
         <h3 title="Name">{data.name}</h3>
-        {data.length > 0 &&
+        {/* {data.length > 0 &&
           data.images.map((img) => {
-            return (
-              <a href={img.url} target="_blank" rel="noopener noreferrer">
+            return ( */}
+              <a href={data.coverPic.url} target="_blank" rel="noopener noreferrer">
                 <img
-                  src={img.url}
+                  src={data.coverPic.url}
                   alt="img"
                   title="images"
                   className="eventImages"
                 />
               </a>
-            );
-          })}
+            {/* );
+          })} */}
         <p title="Group Link">
           <a
             href={data.groupLink}

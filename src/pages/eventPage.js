@@ -38,14 +38,17 @@ const EventPage = ({ mode, event, theTwoEvent }) => {
     if (dataReserved.length > 0) {
       setData(dataReserved);
     }
-    const list1 = data.filter((element) =>
-      element.name.toLowerCase().includes(searchText.toLowerCase())
+    // console.log(data);
+    const list1 = data.filter(
+      (element) =>
+        element.name &&
+        element.name.toLowerCase().includes(searchText.toLowerCase())
     );
     const list2 = data.filter((element) =>
-      element.startTime.toLowerCase().includes(searchText.toLowerCase())
+      element.startTime.includes(searchText.toLowerCase())
     );
     const list4 = data.filter((element) =>
-      element.startDate.toLowerCase().includes(searchText.toLowerCase())
+      element.startDate.includes(searchText.toLowerCase())
     );
     const list_final = list1.concat(list2, list4);
     if (list_final.length > 0) {

@@ -7,12 +7,12 @@
 }
 
 .bg-img {
+    background-image: url('../images/coming3.jpeg');
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     min-height: 100%;
-    background-image: url('../images/coming3.jpeg');
     background-repeat: no-repeat;
     background-size: cover;
 }

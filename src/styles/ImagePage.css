@@ -12,8 +12,8 @@
     left: 0;
     width: 100%;
     min-height: 100%;
-    background-image: url('../images/wave4.jpeg');
-    filter: blur(2px);
+    background-image: url('../images/coming3.jpeg');
+    /* filter: blur(2px); */
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -25,7 +25,7 @@
     background-size: cover;
     min-height: 80%;
     color: white;
-    font-weight: bold;
+    /* font-weight: bold !important; */
     border: 3px solid #f1f1f1;
     position: relative;
     top: 50%;
@@ -37,11 +37,10 @@
 }
 
 .text {
-    color: black;
+    text-align: center;
     margin: 0;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-weight: 900;
 }

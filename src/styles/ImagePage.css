@@ -13,7 +13,6 @@
     width: 100%;
     min-height: 100%;
     background-image: url('../images/coming3.jpeg');
-    /* filter: blur(2px); */
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -25,7 +24,6 @@
     background-size: cover;
     min-height: 80%;
     color: white;
-    /* font-weight: bold !important; */
     border: 3px solid #f1f1f1;
     position: relative;
     top: 50%;

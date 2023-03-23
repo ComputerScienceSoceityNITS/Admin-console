@@ -10,7 +10,7 @@ import { CookiesProvider } from "react-cookie";
 import useCookies from "react-cookie/cjs/useCookies";
 import { MdEventNote, MdGroups } from "react-icons/md";
 import { BiAbacus, BiCodeAlt, BiImage } from "react-icons/bi";
-
+import ImagePage from "./pages/imagePage";
 function App() {
   const [pageRoute, setPageRoute] = useState("Members");
   const [authenticated, setAuthenticated] = useState(false);
@@ -129,11 +129,8 @@ function App() {
                 />
               )}
               {pageRoute === "Images" && (
-                <EventPage
-                  mode={mode}
-                  event={"image"}
-                  theTwoEvent={pageRoute}
-                />
+                <ImagePage
+                  />
               )}
               {/* (
                 <EventPage mode={mode} />

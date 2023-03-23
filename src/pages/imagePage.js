@@ -5,7 +5,7 @@ const ImagePage = () => {
      <div className="bg-text">
         <div className='bg-img'></div>
         <div className="text">
-            <h1>UNDER CONSTRUCTION</h1>
+          <h1>UNDER CONSTRUCTION</h1>
         </div>
     </div>
   )

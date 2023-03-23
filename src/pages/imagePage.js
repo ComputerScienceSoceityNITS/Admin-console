@@ -10,5 +10,4 @@ const ImagePage = () => {
     </div>
   )
 }
-
 export default ImagePage;

@@ -1,6 +1,7 @@
 import React from 'react'
 import "../styles/ImagePage.css";
 const ImagePage = () => {
+  
   return (
      <div className="bg-text">
         <div className='bg-img'></div>

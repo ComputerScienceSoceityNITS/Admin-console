@@ -19,10 +19,12 @@ const Login = ({ setIn, In, mode }) => {
           email: email,
           role: role,
           password: password,
+        }, {
+          withCredentials: true
         });
 
         if (res.status === 201) {
-          setCookie("CSS_Website", res.data.token, { path: "/" });
+          // setCookie("CSS_Website", res.data.token, { path: "/" });
           setCookie("CSS_Website_Role", res.data.user.role, { path: "/" });
           setIn(true);
           console.log({ res });

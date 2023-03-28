@@ -3,7 +3,7 @@ import EditEvents from "../services/Events/EditEvents";
 import { useEffect } from "react";
 import Loader from "../components/loader";
 
-const EventUpdate = ({
+const AbacusUpdate = ({
   id,
   updateEvent,
   setupdateEvent,
@@ -11,23 +11,29 @@ const EventUpdate = ({
   reloadReq,
   setReloadReq,
 }) => {
-  const [name, setName] = useState();
-  const [description, setDescription] = useState();
-  const [images, setImages] = useState();
-  const [formLink, setFormLink] = useState();
-  const [startTime, setStartTime] = useState();
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [startTime, setStartTime] = useState("");
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState(); //default:Date.now
+  const [images, setImages] = useState();
+  const [groupLink, setGroupLink] = useState();
+  const [eventType, setEventType] = useState();
+  const [minTeamSize, setMinTeamSize] = useState();
+  const [maxTeamSize, setMaxTeamSize] = useState();
   const [dataTransfer, setDataTransfer] = useState(false);
 
   useEffect(() => {
     setName(datasent.name);
     setDescription(datasent.description);
     setImages(datasent.images);
-    setFormLink(datasent.formLink);
     setStartTime(datasent.startTime);
     setStartDate(datasent.startDate.split("T")[0]);
     setEndDate(datasent.endDate.split("T")[0]);
+    setGroupLink(datasent.groupLink);
+    setEventType(datasent.eventType);
+    setMinTeamSize(datasent.minTeamSize);
+    setMaxTeamSize(datasent.maxTeamSize);
     const imageBody = document.querySelector(".imageUploaded");
   }, [datasent]);
 
@@ -35,13 +41,16 @@ const EventUpdate = ({
     const sendForm = new FormData();
     sendForm.set("name", name);
     if (images) {
-      sendForm.set("images", images);
+      sendForm.set("coverPic", images);
     }
     sendForm.set("description", description);
-    sendForm.set("formLink", formLink);
     sendForm.set("startTime", startTime);
     sendForm.set("startDate", startDate);
     sendForm.set("endDate", endDate);
+    sendForm.set("groupLink", groupLink);
+    sendForm.set("eventType", eventType);
+    sendForm.set("minTeamSize", minTeamSize);
+    sendForm.set("maxTeamSize", maxTeamSize);
     setDataTransfer(true);
     const events = EditEvents(
       sendForm,
@@ -106,13 +115,37 @@ const EventUpdate = ({
       />
       <label htmlFor="imgupload">Image to be Uploaded</label>
       <div className="imageUploaded" id="imgupload"></div>
-      <label htmlFor="formLink">Form Link</label>
+      <label htmlFor="groupLink">Group Link</label>
       <input
         type="text"
-        name="formLink"
-        id="formLink"
-        value={formLink}
-        onChange={(e) => setFormLink(e.target.value)}
+        name="groupLink"
+        id="groupLink"
+        value={groupLink}
+        onChange={(e) => setGroupLink(e.target.value)}
+      />
+      <label htmlFor="eventType">Event Type</label>
+      <input
+        type="text"
+        name="eventType"
+        id="eventType"
+        value={eventType}
+        onChange={(e) => setEventType(e.target.value)}
+      />
+      <label htmlFor="minTeamSize">Minimum Team Size</label>
+      <input
+        type="text"
+        name="minTeamSize"
+        id="minTeamSize"
+        value={minTeamSize}
+        onChange={(e) => setMinTeamSize(e.target.value)}
+      />
+      <label htmlFor="minTeamSize">Maximum Team Size</label>
+      <input
+        type="text"
+        name="maxTeamSize"
+        id="maxTeamSize"
+        value={maxTeamSize}
+        onChange={(e) => setMaxTeamSize(e.target.value)}
       />
       <fieldset>
         <legend>Event Date-Time</legend>
@@ -171,4 +204,4 @@ const EventUpdate = ({
   );
 };
 
-export default EventUpdate;
+export default AbacusUpdate;

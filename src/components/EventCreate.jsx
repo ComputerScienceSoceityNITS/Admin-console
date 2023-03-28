@@ -22,7 +22,13 @@ const EventCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
     sendForm.set("startTime", startTime);
     sendForm.set("startDate", startDate);
     sendForm.set("endDate", endDate);
-    const events = CreateEvents(sendForm, setDataTransfer, reloadReq, setReloadReq);
+    const events = CreateEvents(
+      sendForm,
+      setDataTransfer,
+      reloadReq,
+      setReloadReq,
+      "abacus"
+    ); // In abacus create based on this file
   }
 
   return (
@@ -127,12 +133,13 @@ const EventCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
         id="description"
         accept="image"
         onChange={(e) => setDescription(e.target.value)}
-      >{description}</textarea>
+      >
+        {description}
+      </textarea>
       <button className="btn" onClick={handleSubmit}>
         Create
       </button>
     </div>
   );
 };
-
 export default EventCreate;

@@ -3,7 +3,14 @@ import EditMembers from "../services/Members/EditMembers";
 import { useEffect } from "react";
 import Loader from "../components/loader";
 
-const MemberUpdate = ({ id, updateMember, setupdateMember, datasent, reloadReq, setReloadReq }) => {
+const MemberUpdate = ({
+  id,
+  updateMember,
+  setupdateMember,
+  datasent,
+  reloadReq,
+  setReloadReq,
+}) => {
   const [name, setName] = useState();
   const [image, setImage] = useState();
   const [role, setRole] = useState();
@@ -17,15 +24,21 @@ const MemberUpdate = ({ id, updateMember, setupdateMember, datasent, reloadReq, 
     setRole(datasent.role);
     setSession(datasent.session);
     setYear(datasent.year);
-    setSocial(datasent.socialMedia ? {
-      "instagram": `${datasent.socialMedia.instagram}`, "linkedin": `${datasent.socialMedia.linkedin}`, "github": `${datasent.socialMedia.github}`,
-      "facebook": `${datasent.socialMedia.facebook}`
-    } : undefined);
+    setSocial(
+      datasent.socialMedia
+        ? {
+            instagram: `${datasent.socialMedia.instagram}`,
+            linkedin: `${datasent.socialMedia.linkedin}`,
+            github: `${datasent.socialMedia.github}`,
+            facebook: `${datasent.socialMedia.facebook}`,
+          }
+        : undefined
+    );
   }, [datasent]);
 
   const handleSubmit = () => {
     setDataTransfer(true);
-    const sendForm = new FormData()
+    const sendForm = new FormData();
     sendForm.set("name", name);
     if (image) {
       sendForm.set("avatar", image);
@@ -35,8 +48,14 @@ const MemberUpdate = ({ id, updateMember, setupdateMember, datasent, reloadReq, 
     sendForm.set("year", year);
     sendForm.set("socialMedia", JSON.stringify(social));
 
-    const members = EditMembers(sendForm, id, setDataTransfer, reloadReq, setReloadReq);
-  }
+    const members = EditMembers(
+      sendForm,
+      id,
+      setDataTransfer,
+      reloadReq,
+      setReloadReq
+    );
+  };
   return (
     <div className="createPage">
       {dataTransfer && (
@@ -142,8 +161,17 @@ const MemberUpdate = ({ id, updateMember, setupdateMember, datasent, reloadReq, 
           />
         </div>
       </fieldset>
-      <img src={datasent.avatar && datasent.avatar.url} alt="" className="imageUpload" />
-      <button className="btn" onClick={() => { handleSubmit() }}>
+      <img
+        src={datasent.avatar && datasent.avatar.url}
+        alt=""
+        className="imageUpload"
+      />
+      <button
+        className="btn"
+        onClick={() => {
+          handleSubmit();
+        }}
+      >
         Update
       </button>
     </div>
@@ -151,4 +179,3 @@ const MemberUpdate = ({ id, updateMember, setupdateMember, datasent, reloadReq, 
 };
 
 export default MemberUpdate;
-

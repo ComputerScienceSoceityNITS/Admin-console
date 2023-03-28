@@ -1,8 +1,8 @@
-import EventUpdate from "./EventUpdate";
+import EnigmaUpdate from "./EnigmaUpdate";
 import React, { useState } from "react";
 import DeleteEvents from "../services/Events/DeleteEvents";
 
-const EventGrid = ({ data, mode, reloadReq, setReloadReq }) => {
+const EnigmaGrid = ({ data, mode, reloadReq, setReloadReq }) => {
   return (
     <div className={mode ? "table bright" : "table dark"}>
       {data
@@ -18,13 +18,12 @@ const EventGrid = ({ data, mode, reloadReq, setReloadReq }) => {
     </div>
   );
 };
-
 const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
   const [updateEvent, setupdateEvent] = useState(false);
   const [clickedRow, setClickedRow] = useState(false);
 
   const handleDelete = (id) => {
-    DeleteEvents(id, reloadReq, setReloadReq);
+    DeleteEvents(id, reloadReq, setReloadReq, "enigma");
   };
   const handleUpdateClick = (e) => {
     setupdateEvent(!updateEvent);
@@ -43,38 +42,51 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
         draggable
         title="Expandable on click"
       >
-        <h3 title="Name">{data.name}</h3>
-        {data.images.map((img) => {
-          return (
-            <a href={img.url} target="_blank" rel="noopener noreferrer">
-              <img
-                src={img.url}
-                alt="img"
-                title="images"
-                className="eventImages"
-              />
-            </a>
-          );
-        })}
-        <p title="formLink">
+        <p title="cfContestLink">
           <a
-            href={data.formLink}
+            href={data.cfContestLink}
             target="_blank"
             title="form"
             rel="noopener noreferrer"
           >
-            Form Link
+            CF Contest Link
           </a>
         </p>
+        <p title="start_Date">{data.startDate.split("T")[0]}</p>
         <p title="startTime">
           Start Time : <b id="startTime">{data.startTime}</b>
         </p>
-        <p title="start_end_Date">
-          {data.startDate.split("T")[0]} to {data.endDate.split("T")[0]}
+        <p title="durationInHrs">
+          Duration(In Hours) : <b id="durationInHrs">{data.durationInHrs}</b>
         </p>
-        <p title="description" id="desc">
-          {data.description}
-        </p>
+        {data.questionSetters.length > 0 && (
+          <p title="Question Setters">
+            Question Setters :
+            {data.questionSetters.map((trav) => {
+              return <li>{trav}</li>;
+            })}
+          </p>
+        )}
+        {/* {data.questionSetters.map((trav) => {
+          return (
+            <li>{trav}</li>
+          );
+        })} */}
+
+        {data.questionTesters.length > 0 && (
+          <p title="Question Testers">
+            Question Testers :
+            {data.questionTesters.map((trav) => {
+              return <li>{trav}</li>;
+            })}
+          </p>
+        )}
+        {/* {data.questionTesters.map((trav) => {
+          return (
+            <li>{trav}</li>
+          );
+        })} */}
+
         <div>
           <button className="btn" onClick={handleUpdateClick}>
             Edit
@@ -85,7 +97,7 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
         </div>
       </div>
       {updateEvent && (
-        <EventUpdate
+        <EnigmaUpdate
           id={data._id}
           updateEvent={updateEvent}
           setupdateEvent={setupdateEvent}
@@ -99,4 +111,4 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
   );
 };
 
-export default EventGrid;
+export default EnigmaGrid;

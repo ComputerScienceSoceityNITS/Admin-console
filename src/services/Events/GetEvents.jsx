@@ -1,18 +1,15 @@
-import axios from 'axios';
-import { toast } from 'react-toastify';
+import axios from "axios";
+import { toast } from "react-toastify";
 
-const GetEvents = async () => {
+const GetEvents = async ({ event }) => {
   const ServerUrl = process.env.REACT_APP_SERVER_URL;
   try {
-    const res = await axios.get(
+    const res = await axios.get(`${ServerUrl}/${event}/`);
 
-      `${ServerUrl}/events`
-    );
-
-    return (res.data.events);
+    return res.data.events || res.data.enigmas;
   } catch (err) {
     toast.error(err.message);
   }
-}
+};
 
-export default GetEvents
+export default GetEvents;

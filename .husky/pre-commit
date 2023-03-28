@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "commiting to Admin Console repo. This repo is officially property of CSS, NITS"
+# npx validate-branch-name
+npm run pretty

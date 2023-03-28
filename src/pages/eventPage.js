@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "../styles/EventPage.css";
-import EventGrid from "../components/EventGrid";
-import EventCreate from "../components/EventCreate";
+// import EventGrid from "../components/EventGrid";
+// import EventCreate from "../components/EventCreate";
 import Loader from "../components/loader";
 import GetEvents from "../services/Events/GetEvents";
 import "toastify-js/src/toastify.css";
 import { toast } from "react-toastify";
 
-const EventPage = ({ mode }) => {
+import AbacusGrid from "../components/AbacusGrid";
+import AbacusCreate from "../components/AbacusCreate";
+import EnigmaGrid from "../components/EnigmaGrid";
+import EnigmaCreate from "../components/EnigmaCreate";
+
+const EventPage = ({ mode, event, theTwoEvent }) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [addEvent, setAddEvent] = useState(false);
@@ -17,8 +22,9 @@ const EventPage = ({ mode }) => {
 
   const fetch = async () => {
     setLoading(true);
-    const events = await GetEvents();
+    const events = await GetEvents({ event });
     setData(events);
+    console.log(events);
     setLoading(false);
   };
 
@@ -32,14 +38,17 @@ const EventPage = ({ mode }) => {
     if (dataReserved.length > 0) {
       setData(dataReserved);
     }
-    const list1 = data.filter((element) =>
-      element.name.toLowerCase().includes(searchText.toLowerCase())
+    // console.log(data);
+    const list1 = data.filter(
+      (element) =>
+        element.name &&
+        element.name.toLowerCase().includes(searchText.toLowerCase())
     );
     const list2 = data.filter((element) =>
-      element.startTime.toLowerCase().includes(searchText.toLowerCase())
+      element.startTime.includes(searchText.toLowerCase())
     );
     const list4 = data.filter((element) =>
-      element.startDate.toLowerCase().includes(searchText.toLowerCase())
+      element.startDate.includes(searchText.toLowerCase())
     );
     const list_final = list1.concat(list2, list4);
     if (list_final.length > 0) {
@@ -55,7 +64,7 @@ const EventPage = ({ mode }) => {
     <div>
       <div className="headBar">
         <button className="btn" onClick={() => setAddEvent(!addEvent)}>
-          Add New Events
+          Add {theTwoEvent} Event
         </button>
         <div className="searchbar">
           <form onSubmit={handleSearch}>
@@ -80,22 +89,54 @@ const EventPage = ({ mode }) => {
       {loading ? (
         <Loader />
       ) : (
-        <EventGrid
-          data={data}
-          mode={mode}
-          reloadReq={reloadReq}
-          setReloadReq={setReloadReq}
-        />
+        // If event === 'abacus' then <AbacusGrid/>
+        // if event === 'enigma' then <EnigmaGrid/>
+        (event === "abacus" && (
+          <AbacusGrid
+            data={data}
+            mode={mode}
+            reloadReq={reloadReq}
+            setReloadReq={setReloadReq}
+          />
+        )) ||
+        (event === "enigma" && (
+          <EnigmaGrid
+            data={data}
+            mode={mode}
+            reloadReq={reloadReq}
+            setReloadReq={setReloadReq}
+          />
+        ))
+        //EventGrid , EventCreate and EventUpdate will be diff for Abacus and Enigma based on the present event components.
       )}
-      {addEvent && (
-        <EventCreate
-          addEvent={addEvent}
-          setAddEvent={setAddEvent}
-          mode={mode}
-          reloadReq={reloadReq}
-          setReloadReq={setReloadReq}
-        />
-      )}
+      {
+        addEvent &&
+          ((event === "abacus" && (
+            <AbacusCreate
+              addEvent={addEvent}
+              setAddEvent={setAddEvent}
+              mode={mode}
+              reloadReq={reloadReq}
+              setReloadReq={setReloadReq}
+            />
+          )) ||
+            (event === "enigma" && (
+              <EnigmaCreate
+                addEvent={addEvent}
+                setAddEvent={setAddEvent}
+                mode={mode}
+                reloadReq={reloadReq}
+                setReloadReq={setReloadReq}
+              />
+            )))
+        // <EventCreate
+        //   addEvent={addEvent}
+        //   setAddEvent={setAddEvent}
+        //   mode={mode}
+        //   reloadReq={reloadReq}
+        //   setReloadReq={setReloadReq}
+        // />
+      }
     </div>
   );
 };

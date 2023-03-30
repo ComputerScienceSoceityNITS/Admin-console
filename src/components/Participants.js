@@ -13,8 +13,6 @@ const Participants = ({ participants,
       {datasent
         ? datasent.map((teams) => (
             <RowParticipants
-              participants={participants}
-              setparticipants={setparticipants}
               data={teams}
             />
           ))
@@ -23,8 +21,6 @@ const Participants = ({ participants,
   );
 };
 const RowParticipants = ({
-    participants,
-  setparticipants,
   data
 }) => {
   const [clickedRow, setClickedRow] = useState(false);

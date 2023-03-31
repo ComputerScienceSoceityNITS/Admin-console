@@ -1,7 +1,7 @@
 import AbacusUpdate from "./AbacusUpdate";
 import React, { useState } from "react";
 import DeleteEvents from "../services/Events/DeleteEvents";
-
+import Participants from "../components/Participants";
 const AbacusGrid = ({ data, mode, reloadReq, setReloadReq }) => {
   return (
     <div className={mode ? "table bright" : "table dark"}>
@@ -20,9 +20,10 @@ const AbacusGrid = ({ data, mode, reloadReq, setReloadReq }) => {
 };
 
 const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
+  //console.log(data.teams)
   const [updateEvent, setupdateEvent] = useState(false);
   const [clickedRow, setClickedRow] = useState(false);
-
+  const [participants, setparticipants] = useState(false);
   const handleDelete = (id) => {
     DeleteEvents(id, reloadReq, setReloadReq, "abacus");
   };
@@ -34,6 +35,13 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
     }
   };
 
+  const handleUpdateClick1 = (e) => {
+    setparticipants(!participants);
+    if (e && e.stopPropagation) {
+      e.stopPropagation(); //for w3c browsers
+      e.cancelBubble = true; //for microsoft browsers
+    }
+  };
   return (
     <div key={data.id}>
       <div
@@ -83,13 +91,13 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
           Max Team Size : <b id="maxTeamSize">{data.maxTeamSize}</b>
         </p>
         {data.participants ? (
-          <p title="Participants">
-            Participants : <b id="Participant">({data.participants.length})</b>
-            <b id="Participants">
-              {data.participants.sort() &&
-                data.participants.map((ele) => <li>{ele}</li>)}
-            </b>
-          </p>
+          <p title="Participants" onClick={handleUpdateClick1}>
+          Participants : <b id="Participant">({data.participants.length})</b>
+          <b id="Participants">
+            {data.participants.sort() &&
+              data.participants.map((ele) => <li>{ele}</li>)}
+          </b>
+        </p>
         ) : null}
         {/* <p title="Participants">Participants : <b id="Participants"></b><b id="Participants">{data.participants&&data.participants.sort() && data.participants.map(ele => <li>{ele}</li>)}</b></p> */}
         <p title="description" id="desc">
@@ -113,6 +121,13 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
           mode={mode}
           reloadReq={reloadReq}
           setReloadReq={setReloadReq}
+        />
+      )}
+      {participants && (
+        <Participants
+        participants={participants}
+        setparticipants={setparticipants}
+        datasent={data.teams}
         />
       )}
     </div>

@@ -89,16 +89,14 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
         </p>
         <p title="Max Team Size">
           Max Team Size : <b id="maxTeamSize">{data.maxTeamSize}</b>
+
         </p>
-        {data.participants ? (
-          <p title="Participants" onClick={handleUpdateClick1}>
-          Participants : <b id="Participant">({data.participants.length})</b>
+          <p title="Participants" onClick={handleUpdateClick1} className="all_teams">
           <b id="Participants">
-            {data.participants.sort() &&
-              data.participants.map((ele) => <li>{ele}</li>)}
+             TEAMS
           </b>
         </p>
-        ) : null}
+
         {/* <p title="Participants">Participants : <b id="Participants"></b><b id="Participants">{data.participants&&data.participants.sort() && data.participants.map(ele => <li>{ele}</li>)}</b></p> */}
         <p title="description" id="desc">
           {data.description}

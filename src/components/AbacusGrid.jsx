@@ -93,7 +93,7 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
         </p>
           <p title="Participants" onClick={handleUpdateClick1} className="all_teams">
           <b id="Participants">
-             TEAMS
+             PARTICIPANTS: <b id="Participant">{data.participants.length}</b>
           </b>
         </p>
 

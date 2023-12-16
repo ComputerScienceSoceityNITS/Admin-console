@@ -56,37 +56,7 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
         <p title="startTime">
           Start Time : <b id="startTime">{data.startTime}</b>
         </p>
-        <p title="durationInHrs">
-          Duration(In Hours) : <b id="durationInHrs">{data.durationInHrs}</b>
-        </p>
-        {data.questionSetters.length > 0 && (
-          <p title="Question Setters">
-            Question Setters :
-            {data.questionSetters.map((trav) => {
-              return <li>{trav}</li>;
-            })}
-          </p>
-        )}
-        {/* {data.questionSetters.map((trav) => {
-          return (
-            <li>{trav}</li>
-          );
-        })} */}
-
-        {data.questionTesters.length > 0 && (
-          <p title="Question Testers">
-            Question Testers :
-            {data.questionTesters.map((trav) => {
-              return <li>{trav}</li>;
-            })}
-          </p>
-        )}
-        {/* {data.questionTesters.map((trav) => {
-          return (
-            <li>{trav}</li>
-          );
-        })} */}
-
+        
         <div>
           <button className="btn" onClick={handleUpdateClick}>
             Edit

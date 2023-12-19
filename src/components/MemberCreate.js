@@ -6,7 +6,7 @@ const MemberCreate = ({ addMember, setAddMember, reloadReq, setReloadReq }) => {
   const [name, setName] = useState("John");
   const [image, setImage] = useState();
   const [role, setRole] = useState("Dev-Wing");
-  const [session, setSession] = useState("22-23");
+  const [session, setSession] = useState("23-24");
   const [year, setYear] = useState(2);
   const [social, setSocial] = useState({});
   const [dataTransfer, setDataTransfer] = useState(false);

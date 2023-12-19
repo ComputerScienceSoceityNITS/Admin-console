@@ -13,7 +13,7 @@ const MemberPage = ({ mode }) => {
   const [addMember, setAddMember] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [dataReserved, setDataReserved] = useState([]);
-  const [seSSion, setSeSSion] = useState("22-23");
+  const [seSSion, setSeSSion] = useState("23-24");
   const [reloadReq, setReloadReq] = useState(false);
 
   const fetch = async (session) => {
@@ -82,9 +82,8 @@ const MemberPage = ({ mode }) => {
           onChange={handleSelect}
           title="select session"
         >
-          <option value="22-23" selected>
-            22-23
-          </option>
+        <option value="23-24" selected>23-24</option>
+          <option value="22-23">22-23</option>
           <option value="21-22">21-22</option>
           <option value="20-21">20-21</option>
           <option value="19-20">19-20</option>

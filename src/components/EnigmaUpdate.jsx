@@ -23,7 +23,6 @@ const EnigmaUpdate = ({
   }, [datasent]);
 
   const handleSubmit = () => {
-    
     const sendForm = new FormData();
     sendForm.set("cfContestLink", cfContestLink);
     sendForm.set("startDate", startDate);

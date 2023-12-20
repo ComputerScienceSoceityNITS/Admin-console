@@ -82,7 +82,9 @@ const MemberPage = ({ mode }) => {
           onChange={handleSelect}
           title="select session"
         >
-        <option value="23-24" selected>23-24</option>
+          <option value="23-24" selected>
+            23-24
+          </option>
           <option value="22-23">22-23</option>
           <option value="21-22">21-22</option>
           <option value="20-21">20-21</option>

@@ -16,7 +16,8 @@
   height: 91.5vh;
   width: 100%;
   background: linear-gradient(45deg, var(--loginBg1), var(--loginBg2)),
-    url("../../public/media/background-2462431_1920.jpg") no-repeat center center/cover;
+    url("../../public/media/background-2462431_1920.jpg") no-repeat center
+      center/cover;
 }
 
 .Form {
@@ -62,7 +63,7 @@ input {
   color: var(--primary-color-4);
 }
 
-.Form>form>input[placeholder] {
+.Form > form > input[placeholder] {
   font-size: 1rem;
   font-weight: 500;
   letter-spacing: 1px;
@@ -72,7 +73,7 @@ input:focus {
   border-bottom: 2px solid var(--primary-color-3);
 }
 
-.Form>form>.btn {
+.Form > form > .btn {
   width: 7rem;
   margin-top: 1rem;
 }

@@ -56,7 +56,7 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
         <p title="startTime">
           Start Time : <b id="startTime">{data.startTime}</b>
         </p>
-        
+
         <div>
           <button className="btn" onClick={handleUpdateClick}>
             Edit

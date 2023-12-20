@@ -89,11 +89,14 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
         </p>
         <p title="Max Team Size">
           Max Team Size : <b id="maxTeamSize">{data.maxTeamSize}</b>
-
         </p>
-          <p title="Participants" onClick={handleUpdateClick1} className="all_teams">
+        <p
+          title="Participants"
+          onClick={handleUpdateClick1}
+          className="all_teams"
+        >
           <b id="Participants">
-             PARTICIPANTS: <b id="Participant">{data.participants.length}</b>
+            PARTICIPANTS: <b id="Participant">{data.participants.length}</b>
           </b>
         </p>
 
@@ -123,9 +126,9 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
       )}
       {participants && (
         <Participants
-        participants={participants}
-        setparticipants={setparticipants}
-        datasent={data.teams}
+          participants={participants}
+          setparticipants={setparticipants}
+          datasent={data.teams}
         />
       )}
     </div>

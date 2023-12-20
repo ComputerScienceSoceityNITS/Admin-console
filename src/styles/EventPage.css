@@ -1,201 +1,205 @@
 .EventPage {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s ease-in-out;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
 }
 
 .createPage {
-    max-height: 95vh;
-    overflow-y: auto;
-    align-items: flex-start;
-    justify-content: flex-start;
+  max-height: 95vh;
+  overflow-y: auto;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .createPage #image {
-    min-height: 2.5rem;
+  min-height: 2.5rem;
 }
 
 .createPage .imageUploaded {
-    min-height: 7rem;
-    min-width: 7rem;
-    object-fit: cover;
-    background: var(--whitesmoke);
-    border-radius: 10px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    overflow-x: auto;
-    max-width: 90vw;
+  min-height: 7rem;
+  min-width: 7rem;
+  object-fit: cover;
+  background: var(--whitesmoke);
+  border-radius: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  overflow-x: auto;
+  max-width: 90vw;
 }
 
 .createPage .imageUploaded img {
-    width: 10rem;
-    object-fit: cover;
+  width: 10rem;
+  object-fit: cover;
 }
 
 .createPage textarea {
-    min-height: 10rem;
-    resize: none;
+  min-height: 10rem;
+  resize: none;
 }
 
 .expand {
-    --height: unset;
+  --height: unset;
 }
 
 .shrink {
-    --height: 15rem;
+  --height: 15rem;
 }
 
 .e_row {
-    width: 25rem;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: flex-start;
-    background: var(--primary-color-2);
-    gap: 0.5rem;
-    overflow-y: hidden;
-    height: var(--height);
-    padding: 1rem;
-    border-radius: 0.3rem;
-    /* box-shadow: 0px 0px 5px 1px var(--boxshadow); */
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-    color: var(--primary-color-4);
+  width: 25rem;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  background: var(--primary-color-2);
+  gap: 0.5rem;
+  overflow-y: hidden;
+  height: var(--height);
+  padding: 1rem;
+  border-radius: 0.3rem;
+  /* box-shadow: 0px 0px 5px 1px var(--boxshadow); */
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  color: var(--primary-color-4);
 }
 
 .e_row h3 {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 1rem;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
 a:hover {
-    color: var(--primary-color-3);
+  color: var(--primary-color-3);
 }
 
 .e_row p,
 .e_row div {
-    padding: 0.5rem;
-    border-radius: 0.2rem;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
 }
 
 .e_row p:hover,
 .e_row div:hover {
-    padding: 0.5rem;
-    background: var(--primary-color-1);
-    border-radius: 0.2rem;
+  padding: 0.5rem;
+  background: var(--primary-color-1);
+  border-radius: 0.2rem;
 }
 
 .e_row a {
-    text-decoration: none;
-    color: darkcyan;
+  text-decoration: none;
+  color: darkcyan;
 }
 
 .e_row img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    background: var(--gray);
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: var(--gray);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 a:hover {
-    color: orange;
+  color: orange;
 }
 
 .e_row p {
-    padding: 0.5rem;
-    border-radius: 0.2rem;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
 }
 
 .e_row p:hover,
 .e_row div:hover {
-    padding: 0.5rem;
-    background: var(--primary-color-1);
-    border-radius: 0.2rem;
+  padding: 0.5rem;
+  background: var(--primary-color-1);
+  border-radius: 0.2rem;
 }
 
 .e_row #desc {
-    color: darkgray;
-    width: 100%;
+  color: darkgray;
+  width: 100%;
 }
 
 .e_row #startTime {
-    color: red;
+  color: red;
 }
 
 .e_row .btn {
-    background: var(--primary-color-3);
-    color: var(--primary-color-1);
+  background: var(--primary-color-3);
+  color: var(--primary-color-1);
 }
 
 .participants_page {
-    overflow: scroll;
-    width: 60%;
-    height: 70%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 1rem;
-    background: radial-gradient( circle at top, var(--primary-color-22), var(--primary-color-2));
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    z-index: 10;
-    border: 2px solid var(--gray);
-    border-radius: 0.5rem;
-    box-shadow: 0px 0px 7px 2px var(--boxshadow);
-    color: var(--black);
+  overflow: scroll;
+  width: 60%;
+  height: 70%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem;
+  background: radial-gradient(
+    circle at top,
+    var(--primary-color-22),
+    var(--primary-color-2)
+  );
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  z-index: 10;
+  border: 2px solid var(--gray);
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 7px 2px var(--boxshadow);
+  color: var(--black);
 }
 
 .expand_p {
-    --height: unset;
+  --height: unset;
 }
 
 .shrink_p {
-    --height: 3rem;
+  --height: 3rem;
 }
 
 .p_row {
-    width: 20rem;
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    align-items: center;
-    background: var(--primary-color-2);
-    gap: 0.5rem;
-    overflow-y: hidden;
-    height: var(--height);
-    padding: 1rem;
-    border-radius: 0.3rem;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-    color: var(--primary-color-4);
+  width: 20rem;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+  background: var(--primary-color-2);
+  gap: 0.5rem;
+  overflow-y: hidden;
+  height: var(--height);
+  padding: 1rem;
+  border-radius: 0.3rem;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  color: var(--primary-color-4);
 }
 
 .p_row h3,
 h5 {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 1rem;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
 .mems {
-    margin-bottom: 2px;
+  margin-bottom: 2px;
 }
 
 .all_teams {
-    background-color: rgba(9, 249, 37, 0.611);
+  background-color: rgba(9, 249, 37, 0.611);
 }

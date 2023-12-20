@@ -16,7 +16,9 @@ const DeleteEvents = async (id, reloadReq, setReloadReq, event) => {
       (Role === "CP Head" && event === "enigma") ||
       true //remove true
     ) {
-      const res = await axios.delete(`${ServerUrl}/${event}/${id}`, { withCredentials: true });
+      const res = await axios.delete(`${ServerUrl}/${event}/${id}`, {
+        withCredentials: true,
+      });
       toast.success("deleted successfully");
       setReloadReq(!reloadReq);
       return res;

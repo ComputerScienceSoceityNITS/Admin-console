@@ -19,7 +19,7 @@ const EnigmaUpdate = ({
   useEffect(() => {
     setCfContestLink(datasent.cfContestLink);
     setStartDate(datasent.startDate.split("T")[0]);
-    startTime(datasent.startTime);
+    setStartTime(datasent.startTime);
   }, [datasent]);
 
   const handleSubmit = () => {
@@ -27,7 +27,7 @@ const EnigmaUpdate = ({
     sendForm.set("cfContestLink", cfContestLink);
     sendForm.set("startDate", startDate);
     sendForm.set("startTime", startTime);
-    
+
     setDataTransfer(true);
     const events = EditEvents(
       sendForm,
@@ -35,7 +35,7 @@ const EnigmaUpdate = ({
       setDataTransfer,
       reloadReq,
       setReloadReq,
-      "abacus"
+      "enigma"
     );
   };
 
@@ -61,7 +61,7 @@ const EnigmaUpdate = ({
 
       <fieldset>
         <legend>Event Date-Time</legend>
-        
+
         <div>
           <label htmlFor="startDate">Start Date</label>
           <input
@@ -78,8 +78,8 @@ const EnigmaUpdate = ({
             type="time"
             name="startTime"
             id="startTime"
-            questionSettersue={startTime}
-            onChange={(e) => setStartTime(e.target.questionSettersue)}
+            value={startTime}
+            onChange={(e) => setStartTime(e.target.value)}
           />
         </div>
       </fieldset>

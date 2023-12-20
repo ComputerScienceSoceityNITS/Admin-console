@@ -44,7 +44,7 @@ const EnigmaCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
 
       <fieldset>
         <legend>Event Date-Time</legend>
-        
+
         <div>
           <label htmlFor="startDate">Start Date</label>
           <input
@@ -66,10 +66,6 @@ const EnigmaCreate = ({ addEvent, setAddEvent, reloadReq, setReloadReq }) => {
           />
         </div>
       </fieldset>
-
-      
-
-      
 
       <button className="btn" onClick={handleSubmit}>
         Create

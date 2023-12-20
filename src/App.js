@@ -128,10 +128,7 @@ function App() {
                   theTwoEvent={pageRoute}
                 />
               )}
-              {pageRoute === "Images" && (
-                <ImagePage
-                  />
-              )}
+              {pageRoute === "Images" && <ImagePage />}
               {/* (
                 <EventPage mode={mode} />
               )} */}

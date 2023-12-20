@@ -15,13 +15,17 @@ const Login = ({ setIn, In, mode }) => {
     e.preventDefault();
     async function login() {
       try {
-        const res = await axios.post(`${ServerUrl}/login`, {
-          email: email,
-          role: role,
-          password: password,
-        }, {
-          withCredentials: true
-        });
+        const res = await axios.post(
+          `${ServerUrl}/login`,
+          {
+            email: email,
+            role: role,
+            password: password,
+          },
+          {
+            withCredentials: true,
+          }
+        );
 
         if (res.status === 201) {
           // setCookie("CSS_Website", res.data.token, { path: "/" });

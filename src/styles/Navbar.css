@@ -1,28 +1,28 @@
 nav {
-    height: 8.5vh;
-    width: 100%;
-    background-color: var(--orange);
-    color: var(--white);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 30px;
-    padding-bottom: 30px;
+  height: 8.5vh;
+  width: 100%;
+  background-color: var(--orange);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 nav h2 {
-    color: var(--white);
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 nav .btn {
-    margin: 40px;
-    border: 1px solid var(--white);
+  margin: 40px;
+  border: 1px solid var(--white);
 }
 
 nav .btn:hover {
-    margin: 40px;
-    border: 1px solid var(--white);
+  margin: 40px;
+  border: 1px solid var(--white);
 }

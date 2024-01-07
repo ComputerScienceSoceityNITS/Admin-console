@@ -220,8 +220,6 @@ body {
   margin-left: 1rem;
 }
 
-
-
 .menu-toggle {
   display: none;
   background: none;
@@ -278,8 +276,5 @@ body {
   .menu-toggle {
     top: 5.5rem;
     left: 1rem;
-   
   }
 }
-
-

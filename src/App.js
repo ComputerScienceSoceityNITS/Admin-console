@@ -43,6 +43,10 @@ function App() {
       e.cancelBubble = true; //for microsoft browsers
     }
   };
+  
+  const toggleMenu = () => {
+    setClicked(!clicked);
+  };
 
   return (
     <>
@@ -55,13 +59,18 @@ function App() {
         />
         {authenticated ? (
           <div className={mode ? "App bright" : "App dark"}>
-            <div
+          <button className="menu-toggle" onClick={toggleMenu}>
+              <div className="bar"></div>
+              <div className="bar"></div>
+              <div className="bar"></div>
+            </button>
+           <div
               className={
                 clicked
                   ? "controlBoard expandControl"
                   : "controlBoard shrinkControl"
               }
-              onClick={() => setClicked(!clicked)}
+             onClick={() => setClicked(!clicked)}
               title="Control Board (Click to expand)"
             >
               <p

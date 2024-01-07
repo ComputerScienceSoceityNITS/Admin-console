@@ -220,7 +220,7 @@ body {
   margin-left: 1rem;
 }
 
-/* ... Your existing CSS ... */
+
 
 .menu-toggle {
   display: none;
@@ -253,7 +253,6 @@ body {
 
   .expandControl {
     width: 15rem;
-    
   }
 
   .menu-toggle.active .bar:nth-child(1) {
@@ -270,10 +269,17 @@ body {
   .App > .shrinkControl {
     display: none;
   }
-  .App >.expandControl {
+  .App > .expandControl {
     width: 15rem;
+    z-index: 1;
+  }
+}
+@media screen and (max-width: 530px) {
+  .menu-toggle {
+    top: 5.5rem;
+    left: 1rem;
+   
   }
 }
 
 
-/* ... Your existing CSS ... */

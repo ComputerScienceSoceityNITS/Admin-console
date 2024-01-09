@@ -220,8 +220,8 @@ a:hover {
     width: 36%;
   }
 }
-#reload{
-  display:flex;
+#reload {
+  display: flex;
   justify-content: center;
   align-items: center;
 }

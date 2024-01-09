@@ -220,49 +220,10 @@ body {
   margin-left: 1rem;
 }
 
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  top: 9rem;
-  left: 1rem;
-  z-index: 10;
-}
-
-.bar {
-  width: 25px;
-  height: 3px;
-  background-color: var(--white);
-  margin: 6px 0;
-  transition: 0.4s;
-}
-
 @media screen and (max-width: 767px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  .controlBoard {
-    width: 0;
+  .App > .controlBoard {
+    width: 5rem;
     overflow: hidden;
-  }
-
-  .expandControl {
-    width: 15rem;
-  }
-
-  .menu-toggle.active .bar:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
-  }
-
-  .menu-toggle.active .bar:nth-child(2) {
-    opacity: 0;
-  }
-
-  .menu-toggle.active .bar:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
   }
   .App > .shrinkControl {
     display: none;
@@ -270,11 +231,5 @@ body {
   .App > .expandControl {
     width: 15rem;
     z-index: 1;
-  }
-}
-@media screen and (max-width: 530px) {
-  .menu-toggle {
-    top: 5.5rem;
-    left: 1rem;
   }
 }

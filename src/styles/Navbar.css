@@ -36,9 +36,8 @@ nav .btn:hover {
   }
 }
 @media screen and (max-width: 767px) {
-  
   nav .btn {
-    font-size:10px ;
+    font-size: 10px;
     font-weight: lighter;
     padding: 0.2rem;
   }

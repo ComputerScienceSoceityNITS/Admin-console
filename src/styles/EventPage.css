@@ -210,10 +210,9 @@ h5 {
   align-items: center;
 }
 @media screen and (max-width: 767px) {
-  
   .headBar .btn {
-    font-size:0.8rem ;
-    font-weight:lighter;
+    font-size: 0.8rem;
+    font-weight: lighter;
     padding: 0.3rem;
   }
   .e_row h3 {

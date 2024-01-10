@@ -225,3 +225,21 @@ a:hover {
   justify-content: center;
   align-items: center;
 }
+@media screen and (max-width: 767px) {
+  
+  .headBar .btn {
+    font-size:0.8rem ;
+    font-weight:lighter;
+    padding: 0.3rem;
+  }
+  .row h3 {
+    font-size: 0.9rem;
+  }
+}
+@media screen and (max-width: 281px) {
+  .row{
+    justify-content:flex-end;
+    
+  }
+  
+}

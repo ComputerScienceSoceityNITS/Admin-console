@@ -232,4 +232,10 @@ body {
     width: 15rem;
     z-index: 1;
   }
+  .App > .controlBoard > p {
+    font-size: 1rem;
+  }
+  .App > .controlBoard > p:hover {
+    font-size: 1rem;
+  }
 }

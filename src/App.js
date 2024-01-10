@@ -48,7 +48,6 @@ function App() {
   const toggleMenu = () => {
     setClicked(!clicked);
   };
-  
 
   return (
     <>
@@ -61,10 +60,7 @@ function App() {
         />
         {authenticated ? (
           <div className={mode ? "App bright" : "App dark"}>
-             <Hamburger
-              clicked={clicked}
-              setClicked={setClicked}
-            />
+            <Hamburger clicked={clicked} setClicked={setClicked} />
             <div
               className={
                 clicked

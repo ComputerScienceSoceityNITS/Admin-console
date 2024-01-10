@@ -31,7 +31,15 @@ nav .btn:hover {
     margin-left: 30px;
   }
   nav .btn {
-    margin-right: 20px;
+    margin-right: 15px;
     margin-left: 20px;
+  }
+}
+@media screen and (max-width: 767px) {
+  
+  nav .btn {
+    font-size:10px ;
+    font-weight: lighter;
+    padding: 0.2rem;
   }
 }

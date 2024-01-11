@@ -79,6 +79,7 @@ const EventPage = ({ mode, event, theTwoEvent }) => {
         </div>
         <div
           className="btn"
+          id="reload"
           onClick={() => {
             fetch();
           }}

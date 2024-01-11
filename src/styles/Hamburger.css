@@ -1,0 +1,42 @@
+.hamMenu {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 9rem;
+  left: 1.5rem;
+  z-index: 10;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: var(--white);
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+@media screen and (max-width: 767px) {
+  .hamMenu {
+    display: block;
+  }
+
+  .hamMenu.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .hamMenu.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamMenu.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+}
+@media screen and (max-width: 530px) {
+  .hamMenu {
+    top: 5.5rem;
+    left: 1rem;
+  }
+}

@@ -11,6 +11,7 @@ import useCookies from "react-cookie/cjs/useCookies";
 import { MdEventNote, MdGroups } from "react-icons/md";
 import { BiAbacus, BiCodeAlt, BiImage } from "react-icons/bi";
 import ImagePage from "./pages/imagePage";
+import Hamburger from "./components/Hamburger";
 function App() {
   const [pageRoute, setPageRoute] = useState("Members");
   const [authenticated, setAuthenticated] = useState(false);
@@ -44,6 +45,10 @@ function App() {
     }
   };
 
+  const toggleMenu = () => {
+    setClicked(!clicked);
+  };
+
   return (
     <>
       <CookiesProvider>
@@ -55,6 +60,7 @@ function App() {
         />
         {authenticated ? (
           <div className={mode ? "App bright" : "App dark"}>
+            <Hamburger clicked={clicked} setClicked={setClicked} />
             <div
               className={
                 clicked

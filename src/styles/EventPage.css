@@ -203,3 +203,19 @@ h5 {
 .all_teams {
   background-color: rgba(9, 249, 37, 0.611);
 }
+
+#reload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 767px) {
+  .headBar .btn {
+    font-size: 0.8rem;
+    font-weight: lighter;
+    padding: 0.3rem;
+  }
+  .e_row h3 {
+    font-size: 0.9rem;
+  }
+}

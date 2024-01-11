@@ -92,6 +92,7 @@ const MemberPage = ({ mode }) => {
         </select>
         <div
           className="btn"
+          id="reload"
           onClick={() => {
             fetch(seSSion);
           }}

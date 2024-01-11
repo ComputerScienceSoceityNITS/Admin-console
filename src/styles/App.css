@@ -53,7 +53,7 @@ body {
   --primary-color-4: #b6eada;
   --createPage-btn: #b6eada;
 }
-
+@media screen and (min-width: 767px) {
 ::-webkit-scrollbar {
   width: 1rem;
 }
@@ -71,6 +71,7 @@ body {
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+}
 
 .App {
   width: 100vw;
@@ -87,7 +88,7 @@ body {
   position: absolute;
   left: 0;
   background: var(--orange2);
-  height: 70%;
+  height: 50%;
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
   display: flex;
@@ -145,7 +146,7 @@ body {
 
 @media screen and (max-width: 767px) {
   .App > .controlBoard {
-    width: 3rem;
+    width: 5rem;
   }
 }
 
@@ -218,4 +219,24 @@ body {
   padding: 0.3rem;
   border: 2px solid var(--white);
   margin-left: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .App > .controlBoard {
+    width: 5rem;
+    overflow: hidden;
+  }
+  .App > .shrinkControl {
+    display: none;
+  }
+  .App > .expandControl {
+    width: 15rem;
+    z-index: 1;
+  }
+  .App > .controlBoard > p {
+    font-size: 1rem;
+  }
+  .App > .controlBoard > p:hover {
+    font-size: 1rem;
+  }
 }

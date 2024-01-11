@@ -26,3 +26,19 @@ nav .btn:hover {
   margin: 40px;
   border: 1px solid var(--white);
 }
+@media screen and (max-width: 400px) {
+  nav h2 {
+    margin-left: 30px;
+  }
+  nav .btn {
+    margin-right: 15px;
+    margin-left: 20px;
+  }
+}
+@media screen and (max-width: 767px) {
+  nav .btn {
+    font-size: 10px;
+    font-weight: lighter;
+    padding: 0.2rem;
+  }
+}

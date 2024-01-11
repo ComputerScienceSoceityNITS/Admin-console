@@ -195,3 +195,48 @@ a:hover {
   width: 15rem;
   height: 15rem;
 }
+@media screen and (max-width: 530px) {
+  .headBar {
+    background-color: rgb(216, 216, 216);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .headBar button,
+  .headBar input,
+  .headBar select,
+  .headBar div {
+    margin-bottom: 0.5rem;
+    width: 40%;
+  }
+
+  .searchbar input {
+    width: 93%;
+  }
+  #sessionSelect {
+    width: 36%;
+  }
+}
+#reload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 767px) {
+  .headBar .btn {
+    font-size: 0.8rem;
+    font-weight: lighter;
+    padding: 0.3rem;
+  }
+  .row h3 {
+    font-size: 0.9rem;
+  }
+}
+@media screen and (max-width: 281px) {
+  .row {
+    justify-content: flex-end;
+  }
+}

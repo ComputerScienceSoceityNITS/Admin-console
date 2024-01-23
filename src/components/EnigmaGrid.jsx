@@ -1,6 +1,7 @@
 import EnigmaUpdate from "./EnigmaUpdate";
 import React, { useState } from "react";
 import DeleteEvents from "../services/Events/DeleteEvents";
+import Participants from "../components/Participants";
 
 const EnigmaGrid = ({ data, mode, reloadReq, setReloadReq }) => {
   return (
@@ -21,12 +22,20 @@ const EnigmaGrid = ({ data, mode, reloadReq, setReloadReq }) => {
 const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
   const [updateEvent, setupdateEvent] = useState(false);
   const [clickedRow, setClickedRow] = useState(false);
-
+  const [participants, setparticipants] = useState(false);
+  
   const handleDelete = (id) => {
     DeleteEvents(id, reloadReq, setReloadReq, "enigma");
   };
   const handleUpdateClick = (e) => {
     setupdateEvent(!updateEvent);
+    if (e && e.stopPropagation) {
+      e.stopPropagation(); //for w3c browsers
+      e.cancelBubble = true; //for microsoft browsers
+    }
+  };
+  const handleUpdateClick1 = (e) => {
+    setparticipants(!participants);
     if (e && e.stopPropagation) {
       e.stopPropagation(); //for w3c browsers
       e.cancelBubble = true; //for microsoft browsers
@@ -56,6 +65,15 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
         <p title="startTime">
           Start Time : <b id="startTime">{data.startTime}</b>
         </p>
+        <p
+          title="Participants"
+          onClick={handleUpdateClick1}
+          className="all_teams"
+        >
+          <b id="Participants">
+            PARTICIPANTS: <b id="Participant">{data.participants.length}</b>
+          </b>
+        </p>
 
         <div>
           <button className="btn" onClick={handleUpdateClick}>
@@ -75,6 +93,13 @@ const RowElement = ({ data, mode, reloadReq, setReloadReq }) => {
           mode={mode}
           reloadReq={reloadReq}
           setReloadReq={setReloadReq}
+        />
+      )}
+      {participants && (
+        <Participants
+          participants={participants}
+          setparticipants={setparticipants}
+          datasent={data.teams}
         />
       )}
     </div>

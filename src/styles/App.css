@@ -54,23 +54,23 @@ body {
   --createPage-btn: #b6eada;
 }
 @media screen and (min-width: 767px) {
-::-webkit-scrollbar {
-  width: 1rem;
-}
+  ::-webkit-scrollbar {
+    width: 1rem;
+  }
 
-::-webkit-scrollbar-thumb {
-  background: var(--primary-color-2);
-  border-radius: 0.2rem;
-}
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary-color-2);
+    border-radius: 0.2rem;
+  }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-color-3);
-  border-radius: 0.2rem;
-}
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color-3);
+    border-radius: 0.2rem;
+  }
 
-::-webkit-scrollbar-track {
-  background: transparent;
-}
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
 }
 
 .App {
